@@ -24,7 +24,7 @@ function getImageUrl(image: string, size?: string): string {
 </script>
 
 <template>
-  <NuxtLink :to="'/product/' + item.id" class="card group">
+  <NuxtLink :to="'/product/' + item.id" class="card card-overlay group">
     <div class="card-media">
       <picture>
         <source :srcset="getImageUrl(displayImage, 'small')" media="(max-width: 768px)" type="image/webp">
@@ -32,11 +32,11 @@ function getImageUrl(image: string, size?: string): string {
           @error="(e: any) => e.target.src = '/uploads/placeholder.png'">
       </picture>
     </div>
-    <div class="card-body">
+    <div class="card-overlay-text">
       <h3 class="card-title">{{ displayTitle }} / {{ item.name }}</h3>
       <div v-if="item.price" class="flex items-baseline gap-2 mt-1">
-        <span class="text-sm font-semibold text-text-primary">US ${{ item.price }}</span>
-        <span v-if="item.comparePrice" class="text-xs line-through" style="color:#bf3a30">${{ item.comparePrice }}</span>
+        <span class="text-sm font-semibold text-white">US ${{ item.price }}</span>
+        <span v-if="item.comparePrice" class="text-xs line-through" style="color:#C41E24">${{ item.comparePrice }}</span>
       </div>
     </div>
   </NuxtLink>

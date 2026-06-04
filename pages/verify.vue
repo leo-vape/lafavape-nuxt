@@ -53,7 +53,7 @@ useHead({ title: 'LAFA — Verify' })
           :style="verifyValid
             ? 'background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.15)'
             : 'background:rgba(191,58,48,0.08);border:1px solid rgba(191,58,48,0.15)'">
-          <p class="text-lg font-semibold mb-1" :style="verifyValid ? 'color:#4ade80' : 'color:#bf3a30'">
+          <p class="text-lg font-semibold mb-1" :style="verifyValid ? 'color:#4ade80' : 'color:#C41E24'">
             {{ verifyResult }}
           </p>
           <p v-if="verifyValid && verifyFlavor" class="text-[0.875rem] text-text-secondary mt-2">

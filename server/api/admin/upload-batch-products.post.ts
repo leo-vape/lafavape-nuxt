@@ -39,7 +39,18 @@ export default defineEventHandler(async (event) => {
   }
 
   const products = await readJsonFile(getDataPath('products')) || []
+
+  // Build existing name+flavor lookup for dedup
+  const existing = new Set<string>()
+  for (const p of products) {
+    const f = p.series?.[0]?.flavors?.[0]
+    if (f) existing.add(`${p.name}|||${f.name}`)
+  }
+
   let count = 0
+  let skipped = 0
+  const importedNames: string[] = []
+  const skippedNames: string[] = []
 
   for (const row of rows) {
     // Helper: find column by prefix match (for annotated headers like "price($)")
@@ -59,6 +70,15 @@ export default defineEventHandler(async (event) => {
     const flavorName = get('flavorName', 'flavor_en')
     const flavorZh = get('flavorZh', 'flavor_cn') || flavorName
     if (!name || !flavorName) continue
+
+    // Skip duplicates
+    const dedupKey = `${name}|||${flavorName}`
+    if (existing.has(dedupKey)) {
+      skippedNames.push(`${name} - ${flavorZh || flavorName}`)
+      skipped++
+      continue
+    }
+    existing.add(dedupKey)
 
     const seriesName = get('categoryName', 'seriesName', 'series') || 'Other'
     const seriesZh = get('categoryZh', 'seriesZh', 'series_cn') || '其他'
@@ -94,9 +114,10 @@ export default defineEventHandler(async (event) => {
     if (compareVal) entry.comparePrice = parseFloat(compareVal)
 
     products.push(entry)
+    importedNames.push(`${name} - ${flavorZh || flavorName}`)
     count++
   }
 
   await writeJsonFile(getDataPath('products'), products)
-  return { success: true, count }
+  return { success: true, count, skipped, names: importedNames.slice(0, 10), skippedNames: skippedNames.slice(0, 5) }
 })

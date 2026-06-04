@@ -26,8 +26,8 @@ definePageMeta({ layout: false })
         <h1 class="text-xl font-semibold text-text-primary">LAFA</h1>
         <button @click="toggleLang" class="text-xs text-gold bg-gold/10 px-2 py-1 rounded">{{ lang === 'zh' ? 'EN' : '中文' }}</button>
       </div>
-      <form @submit.prevent="login" class="space-y-4">
-        <input type="password" v-model="password" :placeholder="t('admin.password')" required class="form-input text-center">
+      <form @submit.prevent="login" class="space-y-4" autocomplete="off" name="admin-login">
+        <input type="password" v-model="password" :placeholder="t('admin.password')" required class="form-input text-center" autocomplete="new-password" name="admin-pass">
         <button type="submit" class="btn btn-filled w-full">{{ t('admin.signIn') }}</button>
       </form>
       <p v-if="error" class="text-red text-[0.8125rem] mt-4 text-center">{{ error }}</p>

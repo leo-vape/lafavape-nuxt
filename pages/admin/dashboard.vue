@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, lang } = useI18n()
 definePageMeta({ layout: false })
 
 const activeSection = ref('products')
@@ -8,6 +8,8 @@ const loading = ref(false)
 
 // Notification
 const notification = ref({ message: '', type: 'success', show: false })
+const aMsg = (zh: string, en: string) => lang.value === 'zh' ? zh : en
+
 function showNotification(msg: string, type = 'success') {
   notification.value = { message: msg, type, show: true }
   setTimeout(() => { notification.value.show = false }, 3000)
@@ -69,8 +71,8 @@ async function submitEdit() {
   if (fi?.files?.[0]) fd.append('image', fi.files[0])
   try {
     const r = await fetch(`/api/admin/${ep}`, { method: 'POST', body: fd }); const d = await r.json()
-    if (r.ok && d.success) { showNotification('保存成功'); closeEditModal(); loadSection(m.type === 'product' ? 'products' : m.type === 'blog' ? 'blogs' : 'hero') }
-    else showNotification(d.message || d.error || '操作失败', 'error')
+    if (r.ok && d.success) { showNotification(aMsg('保存成功', 'Saved')); closeEditModal(); loadSection(m.type === 'product' ? 'products' : m.type === 'blog' ? 'blogs' : 'hero') }
+    else showNotification(d.message || d.error || aMsg('操作失败', 'Operation failed'), 'error')
   } catch (e: any) { showNotification(e.message, 'error') }
 }
 
@@ -84,7 +86,7 @@ async function uploadItem(endpoint: string, formData: FormData, reloadSection: s
     })
     const data = await res.json()
     if (res.ok && data.success) {
-      showNotification(`上传成功！ID： ${data.heroId || data.productId || data.blogId || ''}`)
+      showNotification(aMsg(`上传成功！ID： ${data.heroId || data.productId || data.blogId || ''}`, `Uploaded! ID: ${data.heroId || data.productId || data.blogId || ''}`))
       loadSection(reloadSection)
     } else {
       showNotification(`Failed: ${data.message || data.error}`, 'error')
@@ -104,7 +106,7 @@ async function deleteItem(endpoint: string, id: string, reloadSection: string) {
       body: JSON.stringify({ id, code: id })
     })
     const data = await res.json()
-    if (data.success) { showNotification('删除成功'); loadSection(reloadSection) }
+    if (data.success) { showNotification(aMsg('删除成功', 'Deleted')); loadSection(reloadSection) }
     else showNotification(`Failed: ${data.message || data.error}`, 'error')
   } catch (e: any) { showNotification(`Failed: ${e.message}`, 'error') }
 }
@@ -116,22 +118,22 @@ async function saveWxId() {
     if (emailVerified && pendingEmail) body.contactEmail = pendingEmail
     const r = await fetch('/api/settings', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })
     const d = await r.json()
-    if (d.success) { emailVerified = false; pendingEmail = ''; showNotification('保存成功') }
-    else showNotification('保存失败', 'error')
+    if (d.success) { emailVerified = false; pendingEmail = ''; showNotification(aMsg('保存成功', 'Saved')) }
+    else showNotification(aMsg('保存失败', 'Save failed'), 'error')
   } catch (e: any) { showNotification(e.message, 'error') }
 }
 async function changePassword() {
   const cur = (document.getElementById('currentPassword') as HTMLInputElement)?.value
   const pwd = (document.getElementById('newPassword') as HTMLInputElement)?.value
   const cfm = (document.getElementById('confirmPassword') as HTMLInputElement)?.value
-  if (!cur) return showNotification('请输入当前密码', 'error')
-  if (!pwd || pwd.length < 6) return showNotification('新密码至少6位', 'error')
-  if (pwd !== cfm) return showNotification('两次密码不一致', 'error')
+  if (!cur) return showNotification(aMsg('请输入当前密码', 'Enter current password'), 'error')
+  if (!pwd || pwd.length < 6) return showNotification(aMsg('新密码至少6位', 'Min 6 characters'), 'error')
+  if (pwd !== cfm) return showNotification(aMsg('两次密码不一致', 'Passwords do not match'), 'error')
   try {
     const r = await fetch('/api/change-password', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ currentPassword: cur, newPassword: pwd }) })
     const d = await r.json()
-    if (d.success) showNotification('密码修改成功')
-    else showNotification(d.message || '密码修改失败', 'error')
+    if (d.success) showNotification(aMsg('密码修改成功', 'Password changed'))
+    else showNotification(d.message || aMsg('密码修改失败', 'Password change failed'), 'error')
   } catch (e: any) { showNotification(e.message, 'error') }
 }
 
@@ -139,7 +141,7 @@ async function uploadHero() {
   const title = (document.getElementById('heroTitle') as HTMLInputElement)?.value
   const desc = (document.getElementById('heroDesc') as HTMLTextAreaElement)?.value
   const file = (document.getElementById('heroImage') as HTMLInputElement)?.files?.[0]
-  if (!title || !desc || !file) return showNotification('请填写所有字段', 'error')
+  if (!title || !desc || !file) return showNotification(aMsg('请填写所有字段', 'All fields required'), 'error')
   const fd = new FormData(); fd.append('title', title); fd.append('description', desc); fd.append('image', file)
   await uploadItem('upload-hero', fd, 'hero')
 }
@@ -180,7 +182,7 @@ function updateProductPreview() {
   const prevTitle = document.getElementById('prevTitle')
   const prevPrice = document.getElementById('prevPrice')
   const prevCompare = document.getElementById('prevCompare')
-  if (prevTitle) prevTitle.textContent = `${flavorZh || flavorName}${name ? ' / ' + name : ''}`
+  if (prevTitle) prevTitle.textContent = `${flavorZh || flavorName} / ${name}`
   if (prevPrice) prevPrice.textContent = price ? `$${price}` : ''
   if (prevCompare) {
     prevCompare.textContent = compare ? `$${compare}` : ''
@@ -197,7 +199,7 @@ async function uploadProduct() {
   const seriesZh = (document.getElementById('productSeries') as HTMLSelectElement)?.value
   const flavorName = (document.getElementById('specFlavor') as HTMLInputElement)?.value?.trim()
   const flavorZh = (document.getElementById('specFlavorZh') as HTMLInputElement)?.value?.trim()
-  if (!name || !flavorName) return showNotification('请填写产品名称和口味名称', 'error')
+  if (!name || !flavorName) return showNotification(aMsg('请填写产品名称和口味名称', 'Product name and flavor required'), 'error')
 
   // Series mapping
   const seriesMap: Record<string, { name: string; zh: string }> = {
@@ -246,19 +248,74 @@ async function uploadProduct() {
 async function batchUploadProducts() {
   const file = (document.getElementById('batchCsvFile') as HTMLInputElement)?.files?.[0]
   const defaultImg = (document.getElementById('batchDefaultImage') as HTMLInputElement)?.files?.[0]
-  if (!file) return showNotification('请选择CSV文件', 'error')
+  if (!file) return showNotification(aMsg('请选择CSV文件', 'Select a CSV file'), 'error')
+
+  const btn = document.querySelector('#batchImportBtn') as HTMLButtonElement
+  const result = document.getElementById('batchResult')
+
+  // Read CSV locally to count rows
+  const text = await file.text()
+  const lines = text.trim().split('\n')
+  const rowCount = lines.length - 1 // minus header
+  if (rowCount <= 0) return showNotification(aMsg('CSV无数据行', 'CSV has no data'), 'error')
+
+  const isZh = lang.value === 'zh'
+  // Show preview
+  if (result) {
+    result.classList.remove('hidden', 'animate-pulse')
+    result.innerHTML = isZh ? `📋 预览：将导入 <b>${rowCount}</b> 个产品` : `📋 Preview: importing <b>${rowCount}</b> products`
+  }
+  await new Promise(r => setTimeout(r, 800))
+
+  // Start upload with progress
+  if (btn) { btn.disabled = true; btn.textContent = isZh ? '⏳ 导入中...' : '⏳ Importing...' }
+  if (result) { result.classList.add('animate-pulse'); result.innerHTML = isZh ? `⏳ 正在导入 ${rowCount} 个产品...` : `⏳ Importing ${rowCount} products...` }
+
   const fd = new FormData(); fd.append('file', file)
   if (defaultImg) fd.append('defaultImage', defaultImg)
+
+  const startTime = Date.now()
+  // Progress dots animation
+  let dots = 0
+  const progressTimer = setInterval(() => {
+    if (result) {
+      dots = (dots + 1) % 4
+      result.innerHTML = isZh ? `⏳ 正在导入 ${rowCount} 个产品${'.'.repeat(dots)}` : `⏳ Importing ${rowCount} products${'.'.repeat(dots)}`
+    }
+  }, 500)
+
   try {
     const r = await fetch('/api/admin/upload-batch-products', { method: 'POST', body: fd })
+    clearInterval(progressTimer)
     const d = await r.json()
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)
     if (d.success) {
-      showNotification(`成功导入 ${d.count} 个产品`)
-      loadSection('products')
+      if (result) {
+        result.classList.remove('animate-pulse')
+        let namesHtml = ''
+        if (d.names?.length) {
+          namesHtml = '<div class="mt-1 text-xs text-text-tertiary">' + d.names.map((n: string) => n).join(' · ') + '</div>'
+        }
+        let skippedHtml = ''
+        if (d.skipped > 0) {
+          skippedHtml = isZh
+            ? `<div class="mt-1 text-xs text-text-tertiary/60">⚠ 跳过 ${d.skipped} 个重复：${(d.skippedNames||[]).join(' · ')}</div>`
+            : `<div class="mt-1 text-xs text-text-tertiary/60">⚠ Skipped ${d.skipped} duplicates: ${(d.skippedNames||[]).join(' · ')}</div>`
+        }
+        result.innerHTML = (isZh ? `✅ 成功导入 <b>${d.count}</b> 个产品（${elapsed}秒）` : `✅ Imported <b>${d.count}</b> products (${elapsed}s)`) + namesHtml + skippedHtml
+      }
+      showNotification(isZh ? `成功导入 ${d.count} 个产品` + (d.skipped > 0 ? `，跳过 ${d.skipped} 个重复` : '') : `Imported ${d.count} products` + (d.skipped > 0 ? `, skipped ${d.skipped} duplicates` : ''))
+      setTimeout(() => loadSection('products'), 2500)
     } else {
-      showNotification(d.message || '导入失败', 'error')
+      if (result) { result.classList.remove('animate-pulse'); result.innerHTML = `❌ ${d.message || (isZh ? '导入失败' : 'Import failed')}` }
+      showNotification(d.message || aMsg('导入失败', 'Import failed'), 'error')
     }
-  } catch (e: any) { showNotification(e.message, 'error') }
+  } catch (e: any) {
+    clearInterval(progressTimer)
+    if (result) { result.classList.remove('animate-pulse'); result.innerHTML = `❌ ${e.message}` }
+    showNotification(e.message, 'error')
+  }
+  if (btn) { btn.disabled = false; btn.textContent = isZh ? '导入' : 'Import' }
 }
 
 async function uploadBlog() {
@@ -267,14 +324,14 @@ async function uploadBlog() {
   const author = (document.getElementById('blogAuthor') as HTMLInputElement)?.value
   const tags = (document.getElementById('blogTags') as HTMLInputElement)?.value
   const file = (document.getElementById('blogImage') as HTMLInputElement)?.files?.[0]
-  if (!title || !content || !author || !tags || !file) return showNotification('请填写所有字段', 'error')
+  if (!title || !content || !author || !tags || !file) return showNotification(aMsg('请填写所有字段', 'All fields required'), 'error')
   const fd = new FormData(); fd.append('title', title); fd.append('content', content); fd.append('author', author); fd.append('tags', tags); fd.append('image', file)
   await uploadItem('upload-blog', fd, 'blogs')
 }
 
 async function uploadCode() {
   const file = (document.getElementById('codeFile') as HTMLInputElement)?.files?.[0]
-  if (!file) return showNotification('请选择CSV文件', 'error')
+  if (!file) return showNotification(aMsg('请选择CSV文件', 'Select a CSV file'), 'error')
   const fd = new FormData(); fd.append('file', file)
   await uploadItem('upload-code', fd, 'codes')
 }
@@ -388,9 +445,9 @@ async function loadSection(section: string) {
                 <div class="grid grid-cols-[1fr_1fr_auto] gap-2">
                   <div><label class="form-label text-xs">CSV 文件</label><input id="batchCsvFile" type="file" accept=".csv" class="text-xs text-text-secondary w-full" /></div>
                   <div><label class="form-label text-xs">默认图片 <span class="text-text-tertiary">(选填)</span></label><input id="batchDefaultImage" type="file" accept="image/jpeg,image/png,image/webp" class="text-xs text-text-secondary w-full" /></div>
-                  <div class="flex items-end"><button onclick="window._batchUploadProducts()" class="btn btn-filled text-xs">导入</button></div>
+                  <div class="flex items-end"><button id="batchImportBtn" onclick="window._batchUploadProducts()" class="btn btn-filled text-xs">导入</button></div>
                 </div>
-                <p id="batchResult" class="text-xs text-gold hidden"></p>
+                <p id="batchResult" class="text-xs text-gold/80 hidden animate-pulse">正在处理，请稍候...</p>
               </div>
             </details>
 
@@ -421,7 +478,7 @@ async function loadSection(section: string) {
                 <h3 id="prevTitle" class="text-sm font-semibold text-text-primary">LAFA Pod Pro - Lychee Ice</h3>
                 <div class="flex items-baseline gap-2 mt-2">
                   <span id="prevPrice" class="text-sm font-semibold text-text-primary">$24.99</span>
-                  <span id="prevCompare" class="text-xs line-through" style="color:#bf3a30">$34.99</span>
+                  <span id="prevCompare" class="text-xs line-through" style="color:#C41E24">$34.99</span>
                 </div>
               </div>
             </div>
