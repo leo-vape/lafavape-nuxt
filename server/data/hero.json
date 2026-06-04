@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Tang-Song Flavors",
+    "description": "Premium vape crafted for the global Chinese community. Every flavor tells a story from a golden age.",
+    "image": "/Uploads/ac9115de-e170-4bf1-b332-418642878bb1.webp"
+  },
+  {
+    "id": 2,
+    "title": "New: Song Collection",
+    "description": "Inspired by the tea ceremonies of the Song Dynasty. Ceramic coil for pure, refined taste.",
+    "image": "/Uploads/2cb72af3-572d-47fc-b272-e4253d2c3f5b.webp"
+  },
+  {
+    "id": 3,
+    "title": "3",
+    "description": "3",
+    "image": "/uploads/a9aba0bd-fcc3-49bc-9792-88e837d9225b.webp"
+  },
+  {
+    "id": 4,
+    "title": "灵感与匠心",
+    "description": "灵感与匠心",
+    "image": "/uploads/96a24416-3da1-4f24-958a-200047736b33.webp"
+  }
+]
