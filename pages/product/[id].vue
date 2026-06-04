@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const { t, lang } = useI18n()
+const route = useRoute()
 const { data: products } = await useFetch('/api/data/products', { default: () => [] })
-const product = computed(() => (products.value as any[])?.find((p: any) => String(p.id) === '1') || {})
+const product = computed(() => (products.value as any[])?.find((p: any) => String(p.id) === String(route.params.id)) || {})
 
 const seriesList = computed(() => product.value.series || [])
 const activeSeriesIdx = ref(0)
