@@ -1,6 +1,5 @@
 import { readJsonFile, writeJsonFile, getDataPath } from '../../utils/fileUtils'
-import { deleteImages } from '../../utils/imageUtils'
-import path from 'path'
+import { deleteImages, getUploadsDir } from '../../utils/imageUtils'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -11,7 +10,7 @@ export default defineEventHandler(async (event) => {
   const index = products.findIndex((p: any) => String(p.id) === String(id))
   if (index === -1) throw createError({ statusCode: 404, message: '产品不存在' })
 
-  await deleteImages(products[index].image, path.join(process.cwd(), 'public', 'uploads'))
+  await deleteImages(products[index].image, getUploadsDir())
   products.splice(index, 1)
   await writeJsonFile(getDataPath('products'), products)
 

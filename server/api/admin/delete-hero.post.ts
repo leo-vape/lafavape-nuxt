@@ -1,6 +1,5 @@
 import { readJsonFile, writeJsonFile, getDataPath } from '../../utils/fileUtils'
-import { deleteImages } from '../../utils/imageUtils'
-import path from 'path'
+import { deleteImages, getUploadsDir } from '../../utils/imageUtils'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -11,7 +10,7 @@ export default defineEventHandler(async (event) => {
   const index = heroes.findIndex((h: any) => String(h.id) === String(id))
   if (index === -1) throw createError({ statusCode: 404, message: '英雄不存在' })
 
-  await deleteImages(heroes[index].image, path.join(process.cwd(), 'public', 'uploads'))
+  await deleteImages(heroes[index].image, getUploadsDir())
   heroes.splice(index, 1)
   await writeJsonFile(getDataPath('hero'), heroes)
 

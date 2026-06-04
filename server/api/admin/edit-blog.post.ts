@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { readJsonFile, writeJsonFile, getDataPath } from '../../utils/fileUtils'
-import { processImage, deleteImages, cleanupTempFile } from '../../utils/imageUtils'
+import { processImage, deleteImages, cleanupTempFile, getUploadsDir } from '../../utils/imageUtils'
 import path from 'path'
 import fs from 'fs'
 
@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
     fs.writeFileSync(tempPath, Buffer.from(await image.arrayBuffer()))
 
     try {
-      await deleteImages(blogs[index].image, path.join(process.cwd(), 'public', 'uploads'))
+      await deleteImages(blogs[index].image, getUploadsDir())
       const baseFilename = uuidv4()
       const webpImage = await processImage(tempPath, baseFilename)
       blogs[index].image = webpImage
