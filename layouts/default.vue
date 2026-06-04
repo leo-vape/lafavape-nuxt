@@ -3,6 +3,7 @@ const { lang } = useI18n()
 const isAgeVerified = ref(true)
 const showAgeGate = ref(false)
 const ageVerificationMessage = ref('')
+const rememberAge = ref(true)
 
 // Age gate: check on all pages, 30-day cookie
 onMounted(() => {
@@ -18,8 +19,10 @@ onMounted(() => {
 })
 
 function confirmAge() {
+  if (rememberAge.value) {
     localStorage.setItem('ageVerified', 'true')
-    // 30 day expiry
+    localStorage.setItem('ageVerifiedExpiry', String(Date.now() + 30 * 24 * 60 * 60 * 1000))
+  }
   showAgeGate.value = false
   isAgeVerified.value = true
 }
@@ -52,6 +55,12 @@ function denyAge() {
           <p class="text-[0.9375rem] text-text-secondary mb-8">
             {{ lang === 'zh' ? '请确认您已年满21岁' : 'Please verify your age' }}
           </p>
+
+          <!-- Remember checkbox -->
+          <label class="flex items-center justify-center gap-2 mb-4 cursor-pointer">
+            <input type="checkbox" v-model="rememberAge" class="w-4 h-4 accent-gold">
+            <span class="text-xs text-text-tertiary">{{ lang === 'zh' ? '30天内不再提示' : 'Remember for 30 days' }}</span>
+          </label>
 
           <!-- Buttons — RELX style -->
           <button class="w-full py-3.5 rounded-full text-[0.9375rem] font-semibold bg-white text-black mb-3 transition-opacity hover:opacity-90"
