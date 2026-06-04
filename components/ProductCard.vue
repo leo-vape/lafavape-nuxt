@@ -33,10 +33,10 @@ function getImageUrl(image: string, size?: string): string {
       </picture>
     </div>
     <div class="card-body">
-      <h3 class="card-title">{{ item.name }} - {{ displayTitle }}</h3>
+      <h3 class="card-title">{{ displayTitle }} / {{ item.name }}</h3>
       <div v-if="item.price" class="flex items-baseline gap-2 mt-1">
         <span class="text-sm font-semibold text-text-primary">US ${{ item.price }}</span>
-        <span v-if="item.comparePrice" class="text-xs text-text-tertiary line-through">${{ item.comparePrice }}</span>
+        <span v-if="item.comparePrice" class="text-xs line-through" style="color:#bf3a30">${{ item.comparePrice }}</span>
       </div>
     </div>
   </NuxtLink>

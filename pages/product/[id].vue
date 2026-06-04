@@ -91,7 +91,7 @@ useHead({ title: computed(() => `${dName.value} — LAFA`) })
             <div class="specs-divider"></div>
 
             <!-- Series -->
-            <p class="specs-section-title">{{ lang === 'zh' ? '系列' : 'Collection' }}</p>
+            <p class="specs-section-title">{{ lang === 'zh' ? '口味分类' : 'Category' }}</p>
             <div class="flex gap-1 mb-3">
               <button v-for="(s,i) in seriesList" :key="s.name" class="series-tab" :class="{active:activeSeriesIdx===i}" @click="selectSeries(i)">{{ lang==='zh'?s.zh:s.name }}</button>
             </div>

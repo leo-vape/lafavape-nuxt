@@ -2,7 +2,7 @@
 const { t } = useI18n()
 definePageMeta({ layout: false })
 
-const activeSection = ref('hero')
+const activeSection = ref('products')
 const contentHtml = ref('')
 const loading = ref(false)
 
@@ -144,28 +144,121 @@ async function uploadHero() {
   await uploadItem('upload-hero', fd, 'hero')
 }
 
+// Quick flavor data
+const quickFlavors: Record<string, { en: string; zh: string }[]> = {
+  '水果味': [
+    { en: 'Lychee Ice', zh: '荔枝冰' }, { en: 'Grape Mist', zh: '葡萄雾' },
+    { en: 'Watermelon Ice', zh: '西瓜冰' }, { en: 'Strawberry Blast', zh: '草莓爆炸' },
+    { en: 'Green Grape', zh: '青提' }, { en: 'Mango Ice', zh: '芒果冰' },
+    { en: 'Blueberry', zh: '蓝莓' }, { en: 'Peach Oolong', zh: '蜜桃乌龙' },
+  ],
+  '茶味': [
+    { en: 'Jasmine Green Tea', zh: '茉莉花茶' }, { en: 'Osmanthus Oolong', zh: '桂花乌龙' },
+    { en: 'Longjing Green', zh: '龙井' }, { en: 'Earl Grey', zh: '伯爵茶' },
+    { en: 'Matcha Latte', zh: '抹茶拿铁' }, { en: 'Tieguanyin', zh: '铁观音' },
+  ],
+  '其他': [
+    { en: 'Mung Bean', zh: '绿豆' }, { en: 'Taro Milk', zh: '香芋奶茶' },
+    { en: 'Cola Ice', zh: '可乐冰' }, { en: 'Mint Blast', zh: '薄荷爆炸' },
+    { en: 'Coffee Latte', zh: '咖啡拿铁' }, { en: 'Energy Drink', zh: '能量饮料' },
+  ],
+}
+
+function buildFlavorPicker(series: string) {
+  const flavors = quickFlavors[series] || quickFlavors['其他']
+  return flavors.map(f =>
+    `<button onclick="document.getElementById('specFlavor').value='${f.en}';document.getElementById('specFlavorZh').value='${f.zh}';updateProductPreview()" class="text-xs px-2 py-1 rounded-lg bg-white/5 hover:bg-gold/15 text-text-secondary hover:text-gold border border-white/5 hover:border-gold/30 transition-all">${f.zh}<span class="text-text-tertiary ml-1">${f.en}</span></button>`
+  ).join('')
+}
+
+function updateProductPreview() {
+  const name = (document.getElementById('productName') as HTMLInputElement)?.value || '产品名称'
+  const flavor = (document.getElementById('specFlavor') as HTMLInputElement)?.value || ''
+  const flavorZh = (document.getElementById('specFlavorZh') as HTMLInputElement)?.value || flavor
+  const price = (document.getElementById('productPrice') as HTMLInputElement)?.value
+  const compare = (document.getElementById('productComparePrice') as HTMLInputElement)?.value
+  const prevTitle = document.getElementById('prevTitle')
+  const prevPrice = document.getElementById('prevPrice')
+  const prevCompare = document.getElementById('prevCompare')
+  if (prevTitle) prevTitle.textContent = `${flavorZh || flavorName}${name ? ' / ' + name : ''}`
+  if (prevPrice) prevPrice.textContent = price ? `$${price}` : ''
+  if (prevCompare) {
+    prevCompare.textContent = compare ? `$${compare}` : ''
+    prevCompare.style.display = compare ? '' : 'none'
+  }
+}
+
 async function uploadProduct() {
   const name = (document.getElementById('productName') as HTMLInputElement)?.value
   const desc = (document.getElementById('productDesc') as HTMLTextAreaElement)?.value
   const price = (document.getElementById('productPrice') as HTMLInputElement)?.value
   const comparePrice = (document.getElementById('productComparePrice') as HTMLInputElement)?.value
-  const file = (document.getElementById('productImage') as HTMLInputElement)?.files?.[0]
-  if (!name || !desc || !file) return showNotification('请填写所有字段', 'error')
-  const specFields = [
-    { id: 'specFlavor', label: 'Flavor' }, { id: 'specPuffs', label: 'Puffs' },
-    { id: 'specNicotine', label: 'Nicotine' }, { id: 'specBattery', label: 'Battery' },
-    { id: 'specPod', label: 'Pod' }, { id: 'specCharging', label: 'Charging' },
+  const files = (document.getElementById('productImage') as HTMLInputElement)?.files
+  const seriesZh = (document.getElementById('productSeries') as HTMLSelectElement)?.value
+  const flavorName = (document.getElementById('specFlavor') as HTMLInputElement)?.value?.trim()
+  const flavorZh = (document.getElementById('specFlavorZh') as HTMLInputElement)?.value?.trim()
+  if (!name || !flavorName) return showNotification('请填写产品名称和口味名称', 'error')
+
+  // Series mapping
+  const seriesMap: Record<string, { name: string; zh: string }> = {
+    '水果味': { name: 'Fruit', zh: '水果味' },
+    '茶味': { name: 'Tea', zh: '茶味' },
+    '其他': { name: 'Other', zh: '其他' },
+  }
+  const series = seriesMap[seriesZh] || { name: 'Other', zh: '其他' }
+
+  // Auto-append units to specs
+  const specFields: { id: string; label: string; suffix: string }[] = [
+    { id: 'specPuffs', label: 'Puffs', suffix: ' Puffs' },
+    { id: 'specNicotine', label: 'Nicotine', suffix: '%' },
+    { id: 'specBattery', label: 'Battery', suffix: 'mAh' },
+    { id: 'specPod', label: 'Pod', suffix: 'ml' },
+    { id: 'specCharging', label: 'Charging', suffix: '' },
   ]
   const specs: {label:string,value:string}[] = []
   specFields.forEach(f => {
-    const val = (document.getElementById(f.id) as HTMLInputElement)?.value?.trim()
-    if (val) specs.push({ label: f.label, value: val })
+    let val = (document.getElementById(f.id) as HTMLInputElement)?.value?.trim()
+    if (!val) return
+    if (f.suffix && !val.endsWith(f.suffix.replace(' ', ''))) {
+      val += f.suffix
+    }
+    specs.push({ label: f.label, value: val })
   })
+
   const fd = new FormData()
-  fd.append('name', name); fd.append('description', desc); fd.append('specs', JSON.stringify(specs)); fd.append('image', file)
+  fd.append('name', name)
+  fd.append('description', desc || '')
+  fd.append('specs', JSON.stringify(specs))
+  if (files && files.length > 0) {
+    for (let i = 0; i < files.length; i++) {
+      fd.append('images', files[i])
+    }
+  }
+  fd.append('seriesName', series.name)
+  fd.append('seriesZh', series.zh)
+  fd.append('flavorName', flavorName)
+  fd.append('flavorZh', flavorZh || flavorName)
   if (price) fd.append('price', price)
   if (comparePrice) fd.append('comparePrice', comparePrice)
   await uploadItem('upload-product', fd, 'products')
+}
+
+async function batchUploadProducts() {
+  const file = (document.getElementById('batchCsvFile') as HTMLInputElement)?.files?.[0]
+  const defaultImg = (document.getElementById('batchDefaultImage') as HTMLInputElement)?.files?.[0]
+  if (!file) return showNotification('请选择CSV文件', 'error')
+  const fd = new FormData(); fd.append('file', file)
+  if (defaultImg) fd.append('defaultImage', defaultImg)
+  try {
+    const r = await fetch('/api/admin/upload-batch-products', { method: 'POST', body: fd })
+    const d = await r.json()
+    if (d.success) {
+      showNotification(`成功导入 ${d.count} 个产品`)
+      loadSection('products')
+    } else {
+      showNotification(d.message || '导入失败', 'error')
+    }
+  } catch (e: any) { showNotification(e.message, 'error') }
 }
 
 async function uploadBlog() {
@@ -194,8 +287,9 @@ async function loadSection(section: string) {
     switch (section) {
       case 'hero': {
         html += `<div class="bg-surface rounded-2xl p-6 border border-border mb-8 space-y-4">
-          <input id="heroTitle" placeholder="标题" class="form-input" />
-          <textarea id="heroDesc" placeholder="描述" class="form-input"></textarea>
+          <p class="text-xs text-text-tertiary">以下为默认模板值，可直接使用或修改</p>
+          <input id="heroTitle" placeholder="标题" value="唐宋风味 · 新品尝鲜" class="form-input" />
+          <textarea id="heroDesc" placeholder="描述" class="form-input">匠心打造，致敬东方韵味。每一口都是千年的传承。</textarea>
           <input id="heroImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" class="text-text-secondary text-sm" />
           <button onclick="window._uploadHero()" class="btn btn-filled">上传轮播</button></div>
           <h3 class="text-lg font-semibold text-text-primary mb-4">轮播列表</h3>`
@@ -212,33 +306,127 @@ async function loadSection(section: string) {
         break
       }
       case 'products': {
-        html += `<div class="bg-surface rounded-2xl p-6 border border-border mb-8 space-y-4">
-          <input id="productName" placeholder="产品名称" class="form-input" />
-          <textarea id="productDesc" placeholder="描述" class="form-input" rows="2"></textarea>
-          <div class="grid grid-cols-2 gap-3">
-            <div><label class="form-label">价格（$）</label><input id="productPrice" placeholder="24.99" class="form-input" /></div>
-            <div><label class="form-label">对比价（$）</label><input id="productComparePrice" placeholder="34.99" class="form-input" /></div>
-            <div><label class="form-label">口味</label><input id="specFlavor" placeholder="Lychee Ice" class="form-input" /></div>
-            <div><label class="form-label">口数</label><input id="specPuffs" placeholder="600" class="form-input" /></div>
-            <div><label class="form-label">尼古丁</label><input id="specNicotine" placeholder="3%" class="form-input" /></div>
-            <div><label class="form-label">电池</label><input id="specBattery" placeholder="350mAh" class="form-input" /></div>
-            <div><label class="form-label">烟弹</label><input id="specPod" placeholder="1.8ml" class="form-input" /></div>
-            <div><label class="form-label">充电</label><input id="specCharging" placeholder="USB-C" class="form-input" /></div>
-          </div>
-          <input id="productImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" class="text-text-secondary text-sm" />
-          <button onclick="window._uploadProduct()" class="btn btn-filled">上传产品</button></div>
-          <h3 class="text-lg font-semibold text-text-primary mb-4">产品列表</h3>`
+        html += `<div class="grid lg:grid-cols-[1fr_300px] gap-6">
+          <div class="space-y-5">
+            <div class="bg-surface rounded-2xl p-6 border border-border space-y-4">
+              <!-- 1. Name + Series -->
+              <div class="flex gap-3">
+                <input id="productName" placeholder="英文名 / 中文名" value="LAFA Pod Pro / 拉法雾化器" class="form-input flex-1" autocomplete="off" oninput="updateProductPreview()" />
+                <label class="flex items-center gap-2">
+                  <span class="text-xs text-text-secondary shrink-0">口味分类</span>
+                  <select id="productSeries" onchange="
+                    document.getElementById('flavorPicker').innerHTML = window._buildFlavorPicker(this.value);
+                    document.getElementById('specFlavor').value=''; document.getElementById('specFlavorZh').value='';
+                    updateProductPreview();
+                  " class="form-input">
+                    <option value="水果味">水果味</option>
+                    <option value="茶味">茶味</option>
+                    <option value="其他" selected>其他</option>
+                  </select>
+                </label>
+              </div>
+
+              <!-- 2. Quick flavor picker -->
+              <div>
+                <label class="form-label mb-1.5">快捷选口味 <span class="text-xs text-text-tertiary">（点击自动填入）</span></label>
+                <div id="flavorPicker" class="flex flex-wrap gap-1.5">${buildFlavorPicker('其他')}</div>
+                <div class="flex gap-2 mt-3">
+                  <input id="specFlavor" placeholder="口味英文名" value="Lychee Ice" class="form-input flex-1" autocomplete="off" oninput="updateProductPreview()" />
+                  <input id="specFlavorZh" placeholder="口味中文名" value="荔枝冰" class="form-input flex-1" autocomplete="off" oninput="updateProductPreview()" />
+                </div>
+              </div>
+
+              <!-- 3. Price -->
+              <div class="flex gap-3">
+                <div class="flex-1"><label class="form-label">价格 $</label><input id="productPrice" value="24.99" class="form-input" oninput="updateProductPreview()" /></div>
+                <div class="flex-1"><label class="form-label">原价 $ <span class="text-text-tertiary text-xs">(划线)</span></label><input id="productComparePrice" value="34.99" class="form-input" oninput="updateProductPreview()" /></div>
+              </div>
+
+              <!-- 4. Image drop zone -->
+              <div>
+                <label class="form-label">产品图片 <span class="text-xs text-text-tertiary">（可多张）</span></label>
+                <label id="imgDropZone" for="productImage" class="flex flex-col items-center justify-center gap-2 p-8 border-2 border-dashed border-border rounded-xl cursor-pointer hover:border-gold/40 hover:bg-gold/[0.02] transition-all">
+                  <span class="text-2xl">📸</span>
+                  <p class="text-sm text-text-secondary">点击或拖拽上传图片</p>
+                  <p class="text-xs text-text-tertiary">第一张为主图，可多选</p>
+                  <p id="imgCount" class="text-xs text-gold hidden"></p>
+                </label>
+                <input id="productImage" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="document.getElementById('imgCount').textContent='已选 '+this.files.length+' 张';document.getElementById('imgCount').classList.remove('hidden')" />
+              </div>
+
+              <!-- 5. Advanced (hidden by default) -->
+              <details class="mt-2">
+                <summary class="text-xs text-text-tertiary cursor-pointer hover:text-text-secondary">⚙️ 高级设置（参数、描述）</summary>
+                <div class="mt-3 space-y-3 pl-1">
+                  <div>
+                    <label class="form-label">产品描述 <span class="text-text-tertiary text-xs">(选填，支持HTML/图片)</span></label>
+                    <textarea id="productDesc" placeholder="产品描述（可选，可粘贴图片地址）" class="form-input" rows="2">新一代雾化体验，口感纯净，造型优雅。</textarea>
+                    <p class="text-xs text-text-tertiary mt-1">插入图片：&lt;img src="/uploads/xxx.webp" /&gt;</p>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <div><label class="form-label text-xs">口数 <span class="text-text-tertiary">(puffs)</span></label><input id="specPuffs" placeholder="600" value="600" class="form-input" /></div>
+                    <div><label class="form-label text-xs">尼古丁 <span class="text-text-tertiary">(%)</span></label><input id="specNicotine" placeholder="3" value="3" class="form-input" /></div>
+                    <div><label class="form-label text-xs">电池 <span class="text-text-tertiary">(mAh)</span></label><input id="specBattery" placeholder="350" value="350" class="form-input" /></div>
+                    <div><label class="form-label text-xs">烟弹 <span class="text-text-tertiary">(ml)</span></label><input id="specPod" placeholder="1.8" value="1.8" class="form-input" /></div>
+                    <div><label class="form-label text-xs">充电</label><input id="specCharging" placeholder="USB-C" value="USB-C" class="form-input" /></div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- 6. Submit -->
+              <button onclick="window._uploadProduct()" class="btn btn-filled w-full py-2.5 text-sm font-semibold">🚀 发布产品</button>
+            </div>
+
+            <!-- Batch import -->
+            <details class="bg-surface rounded-2xl p-5 border border-border">
+              <summary class="text-sm font-medium text-text-primary cursor-pointer">📦 批量导入 CSV</summary>
+              <div class="mt-3 space-y-3">
+                <p class="text-xs text-text-tertiary">
+                  列：name(品名), categoryName(分类), categoryZh(分类中文), flavorName, flavorZh, price, comparePrice, puffs, nicotine, battery, pod, charging
+                  <a href="/product-template.csv" download class="text-gold hover:underline ml-2">📥 下载模板</a>
+                </p>
+                <div class="grid grid-cols-[1fr_1fr_auto] gap-2">
+                  <div><label class="form-label text-xs">CSV 文件</label><input id="batchCsvFile" type="file" accept=".csv" class="text-xs text-text-secondary w-full" /></div>
+                  <div><label class="form-label text-xs">默认图片 <span class="text-text-tertiary">(选填)</span></label><input id="batchDefaultImage" type="file" accept="image/jpeg,image/png,image/webp" class="text-xs text-text-secondary w-full" /></div>
+                  <div class="flex items-end"><button onclick="window._batchUploadProducts()" class="btn btn-filled text-xs">导入</button></div>
+                </div>
+                <p id="batchResult" class="text-xs text-gold hidden"></p>
+              </div>
+            </details>
+
+            <!-- Product list -->
+            <h3 class="text-lg font-semibold text-text-primary mt-4">产品列表</h3>`
         const res = await fetch('/api/data/products'); const items = await res.json()
         if (items?.length) {
-          html += '<div class="space-y-3">'
+          html += '<div class="space-y-2">'
           items.forEach((item: any) => {
-            const priceStr = item.price ? ` — $${item.price}` : ''
-            html += `<div class="content-item"><img src="${(item.image || '').replace(/^\/Uploads\b/, '/uploads') || '/uploads/placeholder.png'}" class="w-16 h-16 object-cover rounded-xl" />
-              <div class="flex-1"><h4 class="text-sm font-medium text-text-primary">${item.name}${priceStr}</h4><p class="text-xs text-text-tertiary">${(item.description||'').slice(0,50)}</p></div>
-              <div class="flex items-center gap-2"><button class="text-xs text-gold bg-gold/8 px-3 py-1 rounded-full hover:bg-gold/15 transition-colors" onclick="window._editProduct('${item.id}','${item.name.replace(/'/g,"\\'")}','${item.description.replace(/'/g,"\\'")}')">编辑</button>
-              <button class="btn-destructive" onclick="window._deleteProduct('${item.id}')">删除</button></div></div>`
+            const flavors = item.series?.[0]?.flavors?.map((f:any) => f.zh || f.name).join(', ') || ''
+            const priceStr = item.price ? `$${item.price}` : ''
+            html += `<div class="content-item"><img src="${(item.image || '').replace(/^\/Uploads\b/, '/uploads') || '/uploads/placeholder.png'}" class="w-12 h-12 object-cover rounded-lg" />
+              <div class="flex-1 min-w-0"><h4 class="text-sm font-medium text-text-primary truncate">${item.name}</h4><p class="text-xs text-text-tertiary">${flavors || '无口味'} · ${item.series?.[0]?.zh || ''}</p></div>
+              <span class="text-sm font-semibold text-gold shrink-0">${priceStr}</span>
+              <button class="btn-destructive text-xs" onclick="window._deleteProduct('${item.id}')">🗑</button></div>`
           }); html += '</div>'
-        } else html += '<p class="text-text-secondary text-sm">暂无内容</p>'
+        } else html += '<p class="text-text-secondary text-sm">暂无产品</p>'
+        html += '</div>'
+
+        // Right: Live Preview
+        html += `<div class="hidden lg:block">
+            <h3 class="text-sm font-medium text-text-secondary mb-3">实时预览</h3>
+            <div id="productPreview" class="card overflow-hidden sticky top-6" style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:16px">
+              <div class="card-media bg-white/5 h-40 flex items-center justify-center text-text-tertiary text-sm">
+                上传图片后预览
+              </div>
+              <div class="card-body p-4">
+                <h3 id="prevTitle" class="text-sm font-semibold text-text-primary">LAFA Pod Pro - Lychee Ice</h3>
+                <div class="flex items-baseline gap-2 mt-2">
+                  <span id="prevPrice" class="text-sm font-semibold text-text-primary">$24.99</span>
+                  <span id="prevCompare" class="text-xs line-through" style="color:#bf3a30">$34.99</span>
+                </div>
+              </div>
+            </div>
+          </div>`
+
         break
       }
       case 'codes': {
@@ -255,10 +443,11 @@ async function loadSection(section: string) {
       }
       case 'blogs': {
         html += `<div class="bg-surface rounded-2xl p-6 border border-border mb-8 space-y-4">
-          <input id="blogTitle" placeholder="标题" class="form-input" />
-          <textarea id="blogContent" placeholder="内容" class="form-input"></textarea>
-          <input id="blogAuthor" placeholder="作者" class="form-input" />
-          <input id="blogTags" placeholder="标签（逗号分隔）" class="form-input" />
+          <p class="text-xs text-text-tertiary">以下为默认模板值，可直接使用或修改</p>
+          <input id="blogTitle" placeholder="标题" value="新品发布：东方韵味系列" class="form-input" />
+          <textarea id="blogContent" placeholder="内容" class="form-input">从唐宋茶文化中汲取灵感，我们推出了全新东方韵味系列...</textarea>
+          <input id="blogAuthor" placeholder="作者" value="LAFA Editorial" class="form-input" />
+          <input id="blogTags" placeholder="标签（逗号分隔）" value="新品,东方,风味" class="form-input" />
           <input id="blogImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" class="text-text-secondary text-sm" />
           <button onclick="window._uploadBlog()" class="btn btn-filled">上传文章</button></div>
           <h3 class="text-lg font-semibold text-text-primary mb-4">文章列表</h3>`
@@ -344,6 +533,9 @@ async function loadSection(section: string) {
       }, 100);
       ;(window as any)._uploadHero = uploadHero
       ;(window as any)._uploadProduct = uploadProduct
+      ;(window as any)._batchUploadProducts = batchUploadProducts
+      ;(window as any)._buildFlavorPicker = buildFlavorPicker
+      ;(window as any).updateProductPreview = updateProductPreview
       ;(window as any)._uploadBlog = uploadBlog
       ;(window as any)._uploadCode = uploadCode
       ;(window as any)._saveWxId = saveWxId
@@ -391,7 +583,7 @@ async function loadSection(section: string) {
   }
 }
 
-onMounted(() => { loadSection('hero') })
+onMounted(() => { loadSection('products') })
 const menuOpen = ref(false)
 function toggleMenu() { menuOpen.value = !menuOpen.value }
 </script>
@@ -403,7 +595,7 @@ function toggleMenu() { menuOpen.value = !menuOpen.value }
         <div class="flex items-center gap-8">
           <span class="text-sm font-semibold text-text-primary">管理后台</span>
           <div class="hidden md:flex items-center gap-6">
-            <a v-for="s in ['hero', 'products', 'codes', 'blogs', 'contacts', 'settings', 'referrals']" :key="s" href="#" @click.prevent="loadSection(s)" class="text-xs text-text-secondary hover:text-text-primary transition-colors uppercase tracking-wider" :class="{ 'admin-nav-link-active': activeSection===s }">{{ s==='hero'?'首页轮播':s==='products'?'产品管理':s==='codes'?'防伪码':s==='blogs'?'博客管理':s==='contacts'?'消息订阅':s==='settings'?'系统设置':'推荐裂变' }}</a>
+            <a v-for="s in ['products', 'hero', 'codes', 'blogs', 'contacts', 'settings', 'referrals']" :key="s" href="#" @click.prevent="loadSection(s)" class="text-xs text-text-secondary hover:text-text-primary transition-colors uppercase tracking-wider" :class="{ 'admin-nav-link-active': activeSection===s }">{{ s==='hero'?'首页轮播':s==='products'?'产品管理':s==='codes'?'防伪码':s==='blogs'?'博客管理':s==='contacts'?'消息订阅':s==='settings'?'系统设置':'推荐裂变' }}</a>
           </div>
         </div>
         <div class="flex items-center gap-4">
@@ -413,9 +605,9 @@ function toggleMenu() { menuOpen.value = !menuOpen.value }
       </div>
     </nav>
     <div v-if="menuOpen" class="fixed inset-0 top-12 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center pt-16 gap-6 md:hidden" @click="menuOpen=false">
-      <a v-for="s in ['hero', 'products', 'codes', 'blogs', 'contacts', 'settings', 'referrals']" :key="s" href="#" @click.prevent="loadSection(s);menuOpen=false" class="text-xl font-medium text-text-secondary hover:text-text-primary transition-colors uppercase tracking-wider" :class="{ 'admin-nav-link-active': activeSection===s }">{{ s==='hero'?'首页轮播':s==='products'?'产品管理':s==='codes'?'防伪码':s==='blogs'?'博客管理':s==='contacts'?'消息订阅':s==='settings'?'系统设置':'推荐裂变' }}</a>
+      <a v-for="s in ['products', 'hero', 'codes', 'blogs', 'contacts', 'settings', 'referrals']" :key="s" href="#" @click.prevent="loadSection(s);menuOpen=false" class="text-xl font-medium text-text-secondary hover:text-text-primary transition-colors uppercase tracking-wider" :class="{ 'admin-nav-link-active': activeSection===s }">{{ s==='hero'?'首页轮播':s==='products'?'产品管理':s==='codes'?'防伪码':s==='blogs'?'博客管理':s==='contacts'?'消息订阅':s==='settings'?'系统设置':'推荐裂变' }}</a>
     </div>
-    <div class="max-w-4xl mx-auto p-5 md:p-10" style="padding-top:100px">
+    <div class="max-w-[1280px] mx-auto p-5 md:p-8" style="padding-top:100px">
       <div v-if="loading" class="flex justify-center py-8"><div class="skeleton h-6 w-32"></div></div>
       <div v-html="contentHtml"></div>
     </div>

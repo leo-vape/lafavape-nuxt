@@ -1,0 +1,4 @@
+name(品名),categoryName(分类_EN),categoryZh(分类_ZH),flavorName(口味_EN),flavorZh(口味_ZH),price($),comparePrice($),puffs(口数),nicotine%(尼古丁),battery_mAh(电池),pod_ml(烟弹),charging(充电)
+LAFA Pod Pro / 拉法雾化器,Fruit,水果味,Lychee Ice,荔枝冰,24.99,29.99,600,3,350,1.8,USB-C
+LAFA Pod Mini / 拉法迷你,Tea,茶味,Jasmine Green Tea,茉莉花茶,19.99,,500,2,280,1.2,Type-C
+LAFA Classic / 拉法经典,Other,其他,Cola Ice,可乐冰,22.99,27.99,600,3,350,1.8,USB-C
