@@ -32,9 +32,9 @@
         "name": "Tea",
         "zh": "茶味",
         "flavors": [
-          { "name": "Jasmine Green Tea", "zh": "茉莉花茶", "image": "/Uploads/d812903d-892e-4f7d-a9e9-9797806b415d.webp", "desc": "Floral jasmine with smooth green tea" },
+          { "name": "Jasmine Green Tea", "zh": "茉莉花茶", "image": "/uploads/d812903d-892e-4f7d-a9e9-9797806b415d.webp", "desc": "Floral jasmine with smooth green tea" },
           { "name": "Osmanthus Oolong", "zh": "桂花乌龙", "image": "/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp", "desc": "Sweet osmanthus with roasted oolong" },
-          { "name": "Longjing Green", "zh": "龙井", "image": "/Uploads/d812903d-892e-4f7d-a9e9-9797806b415d.webp", "desc": "Classic Dragon Well tea" },
+          { "name": "Longjing Green", "zh": "龙井", "image": "/uploads/d812903d-892e-4f7d-a9e9-9797806b415d.webp", "desc": "Classic Dragon Well tea" },
           { "name": "Earl Grey", "zh": "伯爵茶", "image": "/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp", "desc": "Bergamot-infused black tea" }
         ]
       },

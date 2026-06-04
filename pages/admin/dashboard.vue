@@ -203,7 +203,7 @@ async function loadSection(section: string) {
         if (items?.length) {
           html += '<div class="space-y-3">'
           items.forEach((item: any) => {
-            html += `<div class="content-item"><img src="${item.image || '/uploads/placeholder.png'}" class="w-16 h-16 object-cover rounded-xl" />
+            html += `<div class="content-item"><img src="${(item.image || '').replace(/^\/Uploads\b/, '/uploads') || '/uploads/placeholder.png'}" class="w-16 h-16 object-cover rounded-xl" />
               <div class="flex-1"><h4 class="text-sm font-medium text-text-primary">${item.title}</h4><p class="text-xs text-text-tertiary">${(item.description||'').slice(0,50)}</p></div>
               <div class="flex items-center gap-2"><button class="text-xs text-gold bg-gold/8 px-3 py-1 rounded-full hover:bg-gold/15 transition-colors" onclick="window._editHero('${item.id}','${item.title.replace(/'/g,"\\'")}','${item.description.replace(/'/g,"\\'")}')">编辑</button>
               <button class="btn-destructive" onclick="window._deleteHero('${item.id}')">删除</button></div></div>`
@@ -233,7 +233,7 @@ async function loadSection(section: string) {
           html += '<div class="space-y-3">'
           items.forEach((item: any) => {
             const priceStr = item.price ? ` — $${item.price}` : ''
-            html += `<div class="content-item"><img src="${item.image || '/uploads/placeholder.png'}" class="w-16 h-16 object-cover rounded-xl" />
+            html += `<div class="content-item"><img src="${(item.image || '').replace(/^\/Uploads\b/, '/uploads') || '/uploads/placeholder.png'}" class="w-16 h-16 object-cover rounded-xl" />
               <div class="flex-1"><h4 class="text-sm font-medium text-text-primary">${item.name}${priceStr}</h4><p class="text-xs text-text-tertiary">${(item.description||'').slice(0,50)}</p></div>
               <div class="flex items-center gap-2"><button class="text-xs text-gold bg-gold/8 px-3 py-1 rounded-full hover:bg-gold/15 transition-colors" onclick="window._editProduct('${item.id}','${item.name.replace(/'/g,"\\'")}','${item.description.replace(/'/g,"\\'")}')">编辑</button>
               <button class="btn-destructive" onclick="window._deleteProduct('${item.id}')">删除</button></div></div>`
