@@ -2,9 +2,7 @@ import sharp from 'sharp'
 import fs from 'fs'
 import path from 'path'
 
-const isDev = process.env.NODE_ENV !== 'production'
-const publicDir = isDev ? 'public' : path.join('.output', 'public')
-const uploadsDir = path.join(process.cwd(), publicDir, 'uploads')
+const uploadsDir = path.join(process.cwd(), 'public', 'uploads')
 fs.mkdirSync(uploadsDir, { recursive: true })
 
 export function getUploadsDir(): string {

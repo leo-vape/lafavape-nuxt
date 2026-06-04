@@ -60,7 +60,10 @@ export default defineNuxtConfig({
     prerender: {
       routes: ['/', '/blog', '/story', '/faq', '/refer', '/verify'],
       crawlLinks: true
-    }
+    },
+    publicAssets: [
+      { baseURL: '/uploads', dir: 'public/uploads' }
+    ]
   },
 
   hooks: {
