@@ -59,7 +59,7 @@ export default defineNuxtConfig({
     preset: 'node-server',
     prerender: {
       routes: ['/blog', '/story', '/faq', '/refer', '/verify'],
-      crawlLinks: true
+      crawlLinks: false
     },
   },
 
