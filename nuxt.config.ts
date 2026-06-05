@@ -71,7 +71,7 @@ export default defineNuxtConfig({
 
   // Nitro route rules for better SEO
   routeRules: {
-    '/': { prerender: true },
+    '/': { swr: 60 },
     '/blog': { prerender: true },
     '/blog/**': { swr: 3600 },
     '/product/**': { swr: 3600 },
