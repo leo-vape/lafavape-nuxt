@@ -53,7 +53,7 @@ function getImageUrl(image: string, size?: string): string {
   return base
 }
 const { data: hero } = await useFetch('/api/data/hero', { default: () => [] })
-const { data: products } = await useFetch('/api/data/products', { default: () => [], key: 'products-home' })
+const { data: products } = await useAsyncData('products-home', () => $fetch('/api/data/products'), { default: () => [] })
 const { data: blogs } = await useFetch('/api/data/blog', { default: () => [] })
 const toastMsg = ref(''); const toastType = ref('success')
 function showToast(d: { message: string; type: string }) { toastMsg.value = d.message; toastType.value = d.type }
