@@ -58,7 +58,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'node-server',
     prerender: {
-      routes: ['/', '/blog', '/story', '/faq', '/refer', '/verify'],
+      routes: ['/blog', '/story', '/faq', '/refer', '/verify'],
       crawlLinks: true
     },
   },
