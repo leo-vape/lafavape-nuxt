@@ -1,18 +1,16 @@
-import { readJsonFile, writeJsonFile, getDataPath } from '../../utils/fileUtils'
 import { deleteImages, getUploadsDir } from '../../utils/imageUtils'
+import { getProductById, deleteProduct } from '../../utils/productDb'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   const { id } = body || {}
   if (!id) throw createError({ statusCode: 400, message: '产品 ID 缺失' })
 
-  const products = await readJsonFile(getDataPath('products'))
-  const index = products.findIndex((p: any) => String(p.id) === String(id))
-  if (index === -1) throw createError({ statusCode: 404, message: '产品不存在' })
+  const product = getProductById(Number(id))
+  if (!product) throw createError({ statusCode: 404, message: '产品不存在' })
 
-  await deleteImages(products[index].image, getUploadsDir())
-  products.splice(index, 1)
-  await writeJsonFile(getDataPath('products'), products)
+  if (product.image) await deleteImages(product.image, getUploadsDir())
+  deleteProduct(Number(id))
 
   return { success: true }
 })

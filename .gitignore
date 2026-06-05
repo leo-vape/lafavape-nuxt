@@ -34,3 +34,4 @@ server/data/contacts.txt
 # Temp
 tmp/
 .env
+server/data/products.db*

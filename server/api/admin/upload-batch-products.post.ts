@@ -3,8 +3,8 @@ import { parse } from 'csv-parse/sync'
 import { v4 as uuidv4 } from 'uuid'
 import path from 'path'
 import fs from 'fs'
-import { readJsonFile, writeJsonFile, getDataPath, generateNewId } from '../../utils/fileUtils'
 import { processImage, cleanupTempFile } from '../../utils/imageUtils'
+import { getAllProducts, insertProduct } from '../../utils/productDb'
 
 export default defineEventHandler(async (event) => {
   const formData = await readFormData(event)
@@ -14,7 +14,6 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, message: '请上传CSV文件' })
   }
 
-  // Process default image if provided
   let defaultImageUrl = ''
   if (defaultImage && defaultImage.size > 0) {
     const tempDir = path.join(process.cwd(), 'tmp')
@@ -38,7 +37,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, message: 'CSV格式错误' })
   }
 
-  const products = await readJsonFile(getDataPath('products')) || []
+  const products = getAllProducts()
 
   // Build existing name+flavor lookup for dedup
   const existing = new Set<string>()
@@ -95,29 +94,25 @@ export default defineEventHandler(async (event) => {
     if (pod) specs.push({ label: 'Pod', value: pod.includes('ml') ? pod : pod + 'ml' })
     if (charging) specs.push({ label: 'Charging', value: charging })
 
-    const newId = generateNewId(products)
-    const entry: any = {
-      id: newId,
+    insertProduct({
       name,
       description: get('description') || '',
       image: defaultImageUrl || '',
+      images: defaultImageUrl ? [defaultImageUrl] : [],
+      price: get('price') ? parseFloat(get('price')) : undefined,
+      comparePrice: get('comparePrice') ? parseFloat(get('comparePrice')) : undefined,
       specs,
       series: [{
         name: seriesName,
         zh: seriesZh,
         flavors: [{ name: flavorName, zh: flavorZh, image: defaultImageUrl || '', desc: '' }]
       }]
-    }
-    const priceVal = get('price')
-    const compareVal = get('comparePrice')
-    if (priceVal) entry.price = parseFloat(priceVal)
-    if (compareVal) entry.comparePrice = parseFloat(compareVal)
-
-    products.push(entry)
+    })
     importedNames.push(`${name} - ${flavorZh || flavorName}`)
     count++
   }
 
-  await writeJsonFile(getDataPath('products'), products)
-  return { success: true, count, skipped, names: importedNames.slice(0, 10), skippedNames: skippedNames.slice(0, 5) }
+  const result = { success: true, count, skipped, names: importedNames.slice(0, 10), skippedNames: skippedNames.slice(0, 5) }
+  if (count === 0 && skipped > 0) result.success = true // all skipped = still success
+  return result
 })

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
-import { readJsonFile, writeJsonFile, getDataPath, generateNewId } from '../../utils/fileUtils'
 import { processImage, cleanupTempFile } from '../../utils/imageUtils'
+import { insertProduct } from '../../utils/productDb'
 import path from 'path'
 import fs from 'fs'
 
@@ -26,7 +26,6 @@ export default defineEventHandler(async (event) => {
     try { specs = JSON.parse(specsJson) } catch {}
   }
 
-  // Process all uploaded images
   const imageUrls: string[] = []
   for (const img of imageFiles) {
     if (!img || img.size === 0) continue
@@ -37,41 +36,23 @@ export default defineEventHandler(async (event) => {
     fs.writeFileSync(tempPath, Buffer.from(await img.arrayBuffer()))
     try {
       const baseFilename = uuidv4()
-      const webpUrl = await processImage(tempPath, baseFilename)
-      imageUrls.push(webpUrl)
+      imageUrls.push(await processImage(tempPath, baseFilename))
     } catch (e: any) {
       await cleanupTempFile(tempPath)
       throw createError({ statusCode: 500, message: e.message })
     }
   }
 
-  const primaryImage = imageUrls[0] || ''
-  const products = await readJsonFile(getDataPath('products')) || []
-  const newId = generateNewId(products)
-
-  const seriesEntry = {
-    name: seriesName,
-    zh: seriesZh,
-    flavors: [{
-      name: flavorName,
-      zh: flavorZh,
-      image: primaryImage,
-      desc: (description || '').slice(0, 100)
-    }]
-  }
-
-  const entry: any = {
-    id: newId,
+  const newId = insertProduct({
     name,
-    description: description || '',
-    image: primaryImage,
+    description,
+    image: imageUrls[0] || '',
     images: imageUrls,
+    price: priceStr ? parseFloat(priceStr) : undefined,
+    comparePrice: comparePriceStr ? parseFloat(comparePriceStr) : undefined,
     specs,
-    series: [seriesEntry]
-  }
-  if (priceStr) entry.price = parseFloat(priceStr)
-  if (comparePriceStr) entry.comparePrice = parseFloat(comparePriceStr)
-  products.push(entry)
-  await writeJsonFile(getDataPath('products'), products)
+    series: [{ name: seriesName, zh: seriesZh, flavors: [{ name: flavorName, zh: flavorZh, image: imageUrls[0] || '', desc: (description || '').slice(0, 100) }] }]
+  })
+
   return { success: true, productId: newId }
 })

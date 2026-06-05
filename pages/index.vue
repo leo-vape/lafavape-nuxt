@@ -30,7 +30,7 @@ const storyLines = computed(() => {
   ]
 })
 
-const heroFont = computed(() => lang.value === 'zh' ? "'Liu Jian Mao Cao', 'Ma Shan Zheng', 'PingFang SC', cursive" : "'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif")
+const heroFont = computed(() => lang.value === 'zh' ? "'Long Cang', 'PingFang SC', cursive" : "'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif")
 
 onMounted(() => {
   const heroCount = ((hero.value as any[]) || []).length || 1
@@ -39,7 +39,7 @@ onMounted(() => {
   textTimer = setInterval(() => {
     textIndex.value = (textIndex.value + 1) % storyLines.value.length
     textKey.value++ // trigger re-mount for animation
-  }, 2200)
+  }, 2600)
 
   const params = new URLSearchParams(window.location.search)
   if (params.get('checkout') === 'success') checkoutStatus.value = 'success'
@@ -79,13 +79,13 @@ useHead({ title: 'LAFA — Tang-Song Flavors' })
       </div>
 
       <!-- Overlay -->
-      <div class="absolute inset-0 bg-black/50 z-[1]"></div>
+      <div class="absolute inset-0 z-[1]"></div>
 
       <!-- Story text on top -->
       <div class="absolute inset-0 z-[2] flex items-center justify-center text-center px-6 sm:px-12">
         <p :key="textKey"
-          class="hero-shockwave text-xl sm:text-2xl md:text-3xl font-bold text-text-primary leading-relaxed tracking-wider max-w-[700px]"
-          :style="{ animation: 'heroScaleIn 2.2s cubic-bezier(0.1,0.8,0.2,1) both', fontFamily: heroFont }"
+          class="hero-shockwave text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-relaxed tracking-wider max-w-[700px]" style="text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 40px rgba(184,148,31,0.7), 0 0 80px rgba(184,148,31,0.4), 0 2px 4px rgba(0,0,0,0.8);"
+          :style="{ animation: 'heroScaleIn 2.6s cubic-bezier(0.1,0.8,0.2,1) both', fontFamily: heroFont }"
           v-html="storyLines[textIndex]">
         </p>
       </div>
