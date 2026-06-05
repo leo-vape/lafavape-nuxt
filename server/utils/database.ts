@@ -61,6 +61,36 @@ prodDb.exec(`
   );
 `)
 
+// Seed: insert default product if DB is empty
+const rowCount = prodDb.prepare('SELECT COUNT(*) as c FROM products').get() as any
+if (rowCount.c === 0) {
+  prodDb.prepare('INSERT INTO products (id, name, description, price, comparePrice, image, created_at) VALUES (?,?,?,?,?,?,?)')
+    .run(1, 'LAFA Pod Pro', 'Premium pod system with ceramic coil for pure flavor delivery.', 24.99, 29.99, '/uploads/384c4c0c-1b71-4f09-a9ce-15a45457d936.webp', new Date().toISOString())
+  prodDb.prepare('INSERT INTO product_specs (product_id, label, value) VALUES (?,?,?)').run(1, 'Puffs', '600 Puffs')
+  prodDb.prepare('INSERT INTO product_specs (product_id, label, value) VALUES (?,?,?)').run(1, 'Nicotine', '3% / 5%')
+  prodDb.prepare('INSERT INTO product_specs (product_id, label, value) VALUES (?,?,?)').run(1, 'Battery', '350mAh')
+  prodDb.prepare('INSERT INTO product_specs (product_id, label, value) VALUES (?,?,?)').run(1, 'Pod', '1.8ml')
+  const s1 = prodDb.prepare('INSERT INTO product_series (product_id, name, zh, sort_order) VALUES (?,?,?,?)').run(1, 'Fruit', '水果味', 0)
+  const flavors1 = [
+    ['Lychee Ice', '荔枝冰', '/uploads/384c4c0c-1b71-4f09-a9ce-15a45457d936.webp', 'Crisp lychee with cool menthol finish'],
+    ['Grape Mist', '葡萄雾', '/uploads/2bedb5cd-198a-4ae7-9379-4555a8e1bb27.webp', 'Bold grape with chilled mist'],
+    ['Watermelon Ice', '西瓜冰', '/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp', 'Sweet watermelon with icy exhale'],
+    ['Strawberry Blast', '草莓爆炸', '/uploads/384c4c0c-1b71-4f09-a9ce-15a45457d936.webp', 'Ripe strawberry burst'],
+    ['Green Grape', '青提', '/uploads/2bedb5cd-198a-4ae7-9379-4555a8e1bb27.webp', 'Crisp green grape essence'],
+    ['Guava Ice', '番石榴冰', '/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp', 'Tropical guava with cool touch'],
+  ]
+  flavors1.forEach((f, i) => prodDb.prepare('INSERT INTO product_flavors (series_id, name, zh, image, desc, sort_order) VALUES (?,?,?,?,?,?)').run(s1.lastInsertRowid, f[0], f[1], f[2], f[3], i))
+  const s2 = prodDb.prepare('INSERT INTO product_series (product_id, name, zh, sort_order) VALUES (?,?,?,?)').run(1, 'Tea', '茶味', 1)
+  const flavors2 = [
+    ['Jasmine Green Tea', '茉莉花茶', '/uploads/d812903d-892e-4f7d-a9e9-9797806b415d.webp', 'Floral jasmine with smooth green tea'],
+    ['Osmanthus Oolong', '桂花乌龙', '/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp', 'Sweet osmanthus with roasted oolong'],
+    ['Longjing Green', '龙井', '/uploads/d812903d-892e-4f7d-a9e9-9797806b415d.webp', 'Classic Dragon Well tea'],
+    ['Earl Grey', '伯爵茶', '/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp', 'Bergamot-infused black tea'],
+  ]
+  flavors2.forEach((f, i) => prodDb.prepare('INSERT INTO product_flavors (series_id, name, zh, image, desc, sort_order) VALUES (?,?,?,?,?,?)').run(s2.lastInsertRowid, f[0], f[1], f[2], f[3], i))
+  console.log('Default product seeded')
+}
+
 // Migration: import existing JSON products into SQLite
 const migratedFlag = path.join(dataDir, '.products_migrated')
 if (!fs.existsSync(migratedFlag)) {
