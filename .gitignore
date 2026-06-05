@@ -35,3 +35,4 @@ server/data/contacts.txt
 tmp/
 .env
 server/data/products.db*
+server/data/.products_migrated
