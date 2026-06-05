@@ -14,6 +14,7 @@ WORKDIR /app
 COPY --from=builder /app/.output /app/.output
 COPY --from=builder /app/package.json /app/
 COPY --from=builder /app/package-lock.json /app/
+COPY --from=builder /app/server/data /app/server/data
 RUN npm ci --production
 ENV NODE_ENV=production PORT=3000 HOST=0.0.0.0
 EXPOSE 3000

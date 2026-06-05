@@ -5,3 +5,9 @@ tmp
 .DS_Store
 *.md
 .env
+server/data/*.db
+server/data/*.db-shm
+server/data/*.db-wal
+server/data/.products_migrated
+server/data/contacts.txt
+server/data/email-codes.json
