@@ -129,3 +129,4 @@ useHead({ title: 'LAFA — Tang-Song Flavors' })
     <ToastNotification :message="toastMsg" :type="toastType" />
   </div>
 </template>
+<!-- DEPLOY-MARKER 2026年 6月 5日 星期五 21時11分37秒 CST -->
