@@ -57,31 +57,23 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'vercel',
-    serverAssets: [{
-      baseName: 'data',
-      dir: 'server/data'
-    }],
     prerender: {
       crawlLinks: true,
       failOnError: false,
     },
     hooks: {
       async 'prerender:routes'(routes) {
-        // Dynamically add product and blog pages for prerendering
         const fs = await import('fs')
-        const path = await import('path')
-        const dataDir = path.join('server/data')
-
+        const dataDir = 'server/data'
         try {
-          const products = JSON.parse(fs.readFileSync(path.join(dataDir, 'products.json'), 'utf-8'))
-          products.forEach((p: any) => routes.add(`/product/${p.id}`))
+          JSON.parse(fs.readFileSync(`${dataDir}/products.json`, 'utf-8'))
+            .forEach((p: any) => routes.add(`/product/${p.id}`))
         } catch {}
-
         try {
-          const blogs = JSON.parse(fs.readFileSync(path.join(dataDir, 'blog.json'), 'utf-8'))
-          blogs.forEach((b: any) => routes.add(`/blog/${b.id}`))
+          JSON.parse(fs.readFileSync(`${dataDir}/blog.json`, 'utf-8'))
+            .forEach((b: any) => routes.add(`/blog/${b.id}`))
         } catch {}
-      }
+      },
     }
   },
 

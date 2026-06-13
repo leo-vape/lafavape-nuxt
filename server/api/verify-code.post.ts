@@ -1,4 +1,4 @@
-import { readJsonFile, getDataPath } from '../utils/fileUtils'
+import codesData from '../../server/data/codes.json'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -6,14 +6,8 @@ export default defineEventHandler(async (event) => {
 
   if (!code) throw createError({ statusCode: 400, message: '请输入防伪码' })
 
-  let codes: any[] = []
-
-  try { const assets = useStorage('assets:data'); const raw = await assets.getItem('codes.json'); codes = raw ? (typeof raw === 'string' ? JSON.parse(raw) : raw) : []; } catch {}
-  if (!codes.length) try { codes = await readJsonFile(getDataPath('codes')) || []; } catch {}
-
-  const found = Array.isArray(codes)
-    ? codes.find((c: any) => c.code?.toUpperCase() === code.toUpperCase())
-    : null
+  const codes: any[] = Array.isArray(codesData) ? codesData : []
+  const found = codes.find((c: any) => c.code?.toUpperCase() === code.toUpperCase())
 
   if (found) {
     return { valid: true, flavor: found.flavor || '', date: found.date || '', query_count: found.query_count || 1 }

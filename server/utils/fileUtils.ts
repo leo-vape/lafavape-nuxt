@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 const dataDir = path.join(process.cwd(), 'server/data')
-fs.mkdirSync(dataDir, { recursive: true })
+try { fs.mkdirSync(dataDir, { recursive: true }) } catch {}
 
 export function readJsonFile(filePath: string): Promise<any> {
   return new Promise((resolve, reject) => {

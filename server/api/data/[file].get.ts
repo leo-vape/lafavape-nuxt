@@ -1,17 +1,28 @@
 import { readJsonFile, getDataPath } from '../../utils/fileUtils'
 
+// Static imports for build-time bundling
+import productsData from '../../../server/data/products.json'
+import blogData from '../../../server/data/blog.json'
+import heroData from '../../../server/data/hero.json'
+import settingsData from '../../../server/data/settings.json'
+import codesData from '../../../server/data/codes.json'
+
+const staticData: Record<string, any> = {
+  products: productsData,
+  blog: blogData,
+  hero: heroData,
+  settings: settingsData,
+  codes: codesData,
+}
+
 export default defineEventHandler(async (event) => {
   const file = getRouterParam(event, 'file')
   if (!file) throw createError({ statusCode: 400, message: 'Missing file parameter' })
 
-  // Try storage first (Vercel runtime), fallback to filesystem (build/prerender)
-  try {
-    const assets = useStorage('assets:data')
-    const raw = await assets.getItem(`${file}.json`)
-    if (raw) return typeof raw === 'string' ? JSON.parse(raw) : raw
-  } catch {}
+  // Static import (works on Vercel serverless)
+  if (staticData[file]) return staticData[file]
 
-  // Fallback: direct file read
+  // Fallback: file system (for prerender / local dev)
   const filePath = getDataPath(file)
   const data = await readJsonFile(filePath)
   if (data === null) throw createError({ statusCode: 404, message: 'File not found' })
