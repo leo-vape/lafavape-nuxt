@@ -1,7 +1,7 @@
 # LAFA Vape — 项目说明书
 
 > 面向海外华人的高端电子烟品牌官网。唐宋风韵，现代工艺。
-> 版本：v2.5.0 | 最后更新：2026-06-02
+> 版本：v2.5.1 | 最后更新：2026-06-13
 
 ---
 
@@ -13,7 +13,7 @@
 | **定位** | 高端电子烟品牌展示官网 |
 | **目标用户** | 海外华人（中英双语） |
 | **风格** | 唐宋美学 + Apple 极简设计 |
-| **上线地址** | https://lafavape.com（待部署） |
+| **上线地址** | https://lafavape.onrender.com |
 
 ### 核心功能
 
@@ -53,7 +53,7 @@
 | 代码 | 1 个巨石 main.js | 8 组件 + 7 页面 |
 | 分享 | ❌ 无 OG 标签 | ✅ 自动生成 |
 | 构建 | ❌ 无 | ✅ Vite 压缩分割 |
-| 部署 | VPS | Vercel(免费)/VPS |
+| 部署 | VPS | Render(免费) |
 
 ---
 
@@ -305,22 +305,30 @@ npm install
 npm run dev          # http://localhost:3000
 ```
 
-### 生产部署（Vercel — 推荐，免费）
+### 生产部署（Render — 免费，当前方案）
 
-```bash
-# 1. 安装 Vercel CLI
-npm i -g vercel
+网站已部署在 Render (https://lafavape.onrender.com)，通过 GitHub 自动部署。
 
-# 2. 部署
-vercel
+**部署配置：**
 
-# 3. 设置环境变量
-# Vercel Dashboard → Settings → Environment Variables
-# PASSWORD_HASH=...
-# RESEND_API_KEY=re_...
-# MAIL_FROM=your-email@gmail.com
-# MAIL_TO=your-email@gmail.com
-```
+| 配置项 | 值 |
+|--------|-----|
+| **Runtime** | Node |
+| **Build Command** | `npm run build` |
+| **Start Command** | `node .output/server/index.mjs` |
+| **Node Version** | 20.x+ |
+
+**环境变量（Render Dashboard → Environment）：**
+
+| 变量 | 说明 | 示例 |
+|------|------|------|
+| `PASSWORD_HASH` | bcrypt 管理员密码哈希 | `$2b$10$...` |
+| `COOKIE_SECRET` | Cookie 签名密钥 | `random-string` |
+| `RESEND_API_KEY` | Resend API 密钥 | `re_xxxx...` |
+| `MAIL_FROM` | 发件人 | `your-email@gmail.com` |
+| `MAIL_TO` | 收件人 | `your-email@gmail.com` |
+
+> **注意：** Render 免费实例在 15 分钟无访问后会休眠，下次访问需等待 30-50 秒冷启动。
 
 ### 生产部署（VPS）
 

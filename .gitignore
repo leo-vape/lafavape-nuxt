@@ -36,3 +36,4 @@ tmp/
 .env
 server/data/products.db*
 server/data/.products_migrated
+.vercel

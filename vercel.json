@@ -1,0 +1,10 @@
+{
+  "experimentalServices": {
+    "lafavape": {
+      "type": "web",
+      "routePrefix": "/",
+      "framework": "nuxtjs"
+    }
+  },
+  "outputDirectory": ".vercel/output"
+}

@@ -56,7 +56,11 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'node-server',
+    preset: 'vercel',
+    serverAssets: [{
+      baseName: 'data',
+      dir: 'server/data'
+    }],
     prerender: {
       routes: ['/blog', '/story', '/faq', '/refer', '/verify'],
       crawlLinks: false
