@@ -37,3 +37,6 @@ tmp/
 server/data/products.db*
 server/data/.products_migrated
 .vercel
+
+# Source product images (not for deployment)
+lafa 产品图/

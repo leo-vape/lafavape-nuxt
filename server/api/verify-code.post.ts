@@ -1,4 +1,4 @@
-import { codeDb } from '../utils/database'
+import { readJsonFile, getDataPath } from '../utils/fileUtils'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -6,18 +6,19 @@ export default defineEventHandler(async (event) => {
 
   if (!code) throw createError({ statusCode: 400, message: '请输入防伪码' })
 
-  const row = codeDb.prepare('SELECT code, flavor, date, query_count FROM codes WHERE code = ?').get(code) as any
+  try {
+    const codes = await readJsonFile(getDataPath('codes')) || []
+    const found = codes.find((c: any) => c.code?.toUpperCase() === code.toUpperCase())
 
-  if (row) {
-    const newCount = row.query_count + 1
-    codeDb.prepare('UPDATE codes SET query_count = ? WHERE code = ?').run(newCount, code)
-    return {
-      valid: true,
-      flavor: row.flavor,
-      date: row.date,
-      query_count: newCount
+    if (found) {
+      return {
+        valid: true,
+        flavor: found.flavor || '',
+        date: found.date || '',
+        query_count: found.query_count || 1
+      }
     }
-  }
+  } catch {}
 
   return {
     valid: false,

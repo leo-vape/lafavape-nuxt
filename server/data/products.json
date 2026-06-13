@@ -2,137 +2,55 @@
   {
     "id": 1,
     "name": "LAFA Pod Pro",
-    "description": "Premium pod system with ceramic coil for pure flavor delivery.",
+    "description": "Premium pod system with ceramic coil for pure flavor delivery. 14 distinct flavors inspired by Tang-Song heritage.",
     "price": 24.99,
     "comparePrice": 29.99,
-    "image": "/uploads/384c4c0c-1b71-4f09-a9ce-15a45457d936.webp",
-    "specs": [
-      {
-        "label": "Puffs",
-        "value": "600"
-      },
-      {
-        "label": "Nicotine",
-        "value": "3% / 5%"
-      },
-      {
-        "label": "Battery",
-        "value": "350mAh"
-      },
-      {
-        "label": "Pod",
-        "value": "1.8ml"
-      }
+    "image": "/uploads/device-1.webp",
+    "images": [
+      "/uploads/device-1.webp",
+      "/uploads/device-2.webp",
+      "/uploads/device-3.webp",
+      "/uploads/device-4.webp",
+      "/uploads/device-5.webp",
+      "/uploads/device-6.webp"
     ],
-    "reviews": [
-      {
-        "name": "Wei L.",
-        "date": "2026-05-20",
-        "rating": 5,
-        "text": "Love the flavor selection. Smooth draw and great battery."
-      }
+    "specs": [
+      { "label": "Puffs", "value": "600" },
+      { "label": "Nicotine", "value": "3% / 5%" },
+      { "label": "Battery", "value": "350mAh" },
+      { "label": "Pod", "value": "1.8ml" }
     ],
     "series": [
       {
         "name": "Fruit",
         "zh": "水果味",
         "flavors": [
-          {
-            "name": "Lychee Ice",
-            "zh": "荔枝冰",
-            "image": "/uploads/384c4c0c-1b71-4f09-a9ce-15a45457d936.webp",
-            "desc": "Crisp lychee with cool menthol finish"
-          },
-          {
-            "name": "Grape Mist",
-            "zh": "葡萄雾",
-            "image": "/uploads/2bedb5cd-198a-4ae7-9379-4555a8e1bb27.webp",
-            "desc": "Bold grape with chilled mist"
-          },
-          {
-            "name": "Watermelon Ice",
-            "zh": "西瓜冰",
-            "image": "/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp",
-            "desc": "Sweet watermelon with icy exhale"
-          },
-          {
-            "name": "Strawberry Blast",
-            "zh": "草莓爆炸",
-            "image": "/uploads/384c4c0c-1b71-4f09-a9ce-15a45457d936.webp",
-            "desc": "Ripe strawberry burst"
-          },
-          {
-            "name": "Green Grape",
-            "zh": "青提",
-            "image": "/uploads/2bedb5cd-198a-4ae7-9379-4555a8e1bb27.webp",
-            "desc": "Crisp green grape essence"
-          },
-          {
-            "name": "Guava Ice",
-            "zh": "番石榴冰",
-            "image": "/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp",
-            "desc": "Tropical guava with cool touch"
-          }
+          { "name": "Lychee Ice", "zh": "荔枝冰", "image": "/uploads/口味图_画板 1.webp", "desc": "Crisp lychee with cool menthol finish" },
+          { "name": "Grape Mist", "zh": "葡萄雾", "image": "/uploads/口味图-02.webp", "desc": "Bold grape with chilled mist" },
+          { "name": "Watermelon Ice", "zh": "西瓜冰", "image": "/uploads/口味图-03.webp", "desc": "Sweet watermelon with icy exhale" },
+          { "name": "Strawberry Blast", "zh": "草莓爆炸", "image": "/uploads/口味图-04.webp", "desc": "Ripe strawberry burst" },
+          { "name": "Green Grape", "zh": "青提", "image": "/uploads/口味图-05.webp", "desc": "Crisp green grape essence" },
+          { "name": "Guava Ice", "zh": "番石榴冰", "image": "/uploads/口味图-06.webp", "desc": "Tropical guava with cool touch" }
         ]
       },
       {
         "name": "Tea",
         "zh": "茶味",
         "flavors": [
-          {
-            "name": "Jasmine Green Tea",
-            "zh": "茉莉花茶",
-            "image": "/uploads/d812903d-892e-4f7d-a9e9-9797806b415d.webp",
-            "desc": "Floral jasmine with smooth green tea"
-          },
-          {
-            "name": "Osmanthus Oolong",
-            "zh": "桂花乌龙",
-            "image": "/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp",
-            "desc": "Sweet osmanthus with roasted oolong"
-          },
-          {
-            "name": "Longjing Green",
-            "zh": "龙井",
-            "image": "/uploads/d812903d-892e-4f7d-a9e9-9797806b415d.webp",
-            "desc": "Classic Dragon Well tea"
-          },
-          {
-            "name": "Earl Grey",
-            "zh": "伯爵茶",
-            "image": "/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp",
-            "desc": "Bergamot-infused black tea"
-          }
+          { "name": "Jasmine Green Tea", "zh": "茉莉花茶", "image": "/uploads/口味图-07.webp", "desc": "Floral jasmine with smooth green tea" },
+          { "name": "Osmanthus Oolong", "zh": "桂花乌龙", "image": "/uploads/口味图-08.webp", "desc": "Sweet osmanthus with roasted oolong" },
+          { "name": "Longjing Green", "zh": "龙井", "image": "/uploads/口味图-09.webp", "desc": "Classic Dragon Well tea" },
+          { "name": "Earl Grey", "zh": "伯爵茶", "image": "/uploads/口味图-10.webp", "desc": "Bergamot-infused black tea" }
         ]
       },
       {
         "name": "Other",
         "zh": "其他",
         "flavors": [
-          {
-            "name": "Mung Bean",
-            "zh": "绿豆",
-            "image": "/uploads/2bedb5cd-198a-4ae7-9379-4555a8e1bb27.webp",
-            "desc": "Classic mung bean paste"
-          },
-          {
-            "name": "Taro Milk",
-            "zh": "香芋奶茶",
-            "image": "/uploads/ac6a5144-cf01-4bc7-9e89-f6142c1358b5.webp",
-            "desc": "Creamy taro milk tea"
-          },
-          {
-            "name": "Cola Ice",
-            "zh": "可乐冰",
-            "image": "/uploads/384c4c0c-1b71-4f09-a9ce-15a45457d936.webp",
-            "desc": "Fizzy cola with ice"
-          },
-          {
-            "name": "Mint Blast",
-            "zh": "薄荷爆炸",
-            "image": "/uploads/2bedb5cd-198a-4ae7-9379-4555a8e1bb27.webp",
-            "desc": "Intense cooling mint"
-          }
+          { "name": "Mung Bean", "zh": "绿豆", "image": "/uploads/口味图-11.webp", "desc": "Classic mung bean paste" },
+          { "name": "Taro Milk", "zh": "香芋奶茶", "image": "/uploads/口味图-12.webp", "desc": "Creamy taro milk tea" },
+          { "name": "Cola Ice", "zh": "可乐冰", "image": "/uploads/口味图-13.webp", "desc": "Fizzy cola with ice" },
+          { "name": "Mint Blast", "zh": "薄荷爆炸", "image": "/uploads/口味图-14.webp", "desc": "Intense cooling mint" }
         ]
       }
     ]

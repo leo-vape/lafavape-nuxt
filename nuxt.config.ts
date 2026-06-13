@@ -62,26 +62,31 @@ export default defineNuxtConfig({
       dir: 'server/data'
     }],
     prerender: {
-      routes: ['/blog', '/story', '/faq', '/refer', '/verify'],
-      crawlLinks: false
+      crawlLinks: true,
+      failOnError: false,
     },
+    hooks: {
+      async 'prerender:routes'(routes) {
+        // Dynamically add product and blog pages for prerendering
+        const fs = await import('fs')
+        const path = await import('path')
+        const dataDir = path.join('server/data')
+
+        try {
+          const products = JSON.parse(fs.readFileSync(path.join(dataDir, 'products.json'), 'utf-8'))
+          products.forEach((p: any) => routes.add(`/product/${p.id}`))
+        } catch {}
+
+        try {
+          const blogs = JSON.parse(fs.readFileSync(path.join(dataDir, 'blog.json'), 'utf-8'))
+          blogs.forEach((b: any) => routes.add(`/blog/${b.id}`))
+        } catch {}
+      }
+    }
   },
 
-  hooks: {
-    'prerender:generate'(route) {
-      // Generate sitemap during prerender
-    },
-  },
-
-  // Nitro route rules for better SEO
   routeRules: {
-    '/blog': { prerender: true },
-    '/blog/**': { swr: 3600 },
-    '/product/**': { swr: 3600 },
-    '/story': { prerender: true },
-    '/faq': { prerender: true },
-    '/refer': { prerender: true },
-    '/verify': { prerender: true },
+    '/api/**': { cors: true },
   },
 
   typescript: {

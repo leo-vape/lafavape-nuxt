@@ -1,6 +1,4 @@
-import { subDb } from '../utils/database'
 import { sendEmail } from '../utils/mailer'
-import { readJsonFile, getDataPath } from '../utils/fileUtils'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -10,25 +8,20 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, message: '请输入有效邮箱' })
   }
 
-  const existing = subDb.prepare('SELECT email FROM subscribers WHERE email = ?').get(email)
-  if (existing) return { success: true }
-
-  subDb.prepare('INSERT INTO subscribers (email, subscribed_at) VALUES (?, ?)').run(email, new Date().toISOString())
-
-  const settings = await readJsonFile(getDataPath('settings')) || {}
-  const toEmail = settings.contactEmail || process.env.MAIL_TO || ''
+  const toEmail = process.env.MAIL_TO || ''
+  const fromEmail = process.env.MAIL_FROM || ''
 
   try {
     await Promise.all([
       sendEmail({
-        to: toEmail,
-        subject: '新订阅 from LAFA Vape',
-        html: `<h3>新订阅通知</h3><p><strong>邮箱:</strong> ${email}</p>`
+        to: toEmail || fromEmail,
+        subject: 'New Subscriber — LAFA Vape',
+        html: `<h3>New Subscriber</h3><p><strong>Email:</strong> ${email}</p>`
       }).catch(e => console.error('Notify email failed:', e)),
       sendEmail({
         to: email,
-        subject: '欢迎订阅 LAFA Vape！',
-        html: `<h3>欢迎订阅 LAFA Vape！</h3><p>感谢您加入我们！您将收到最新的动态、唐宋风味新品和独家优惠。</p><p><strong>LAFA Vape 团队</strong></p>`
+        subject: 'Welcome to LAFA Vape!',
+        html: `<h3>Welcome to LAFA Vape!</h3><p>Thanks for subscribing! You'll receive updates on new Tang-Song flavors, exclusive offers, and more.</p><p><strong>— LAFA Vape Team</strong></p>`
       }).catch(e => console.error('Welcome email failed:', e))
     ])
   } catch (e: any) {
