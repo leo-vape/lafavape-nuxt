@@ -1,5 +1,3 @@
-import { readJsonFile, getDataPath } from '../utils/fileUtils'
-
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   const { code } = body || {}
@@ -7,8 +5,13 @@ export default defineEventHandler(async (event) => {
   if (!code) throw createError({ statusCode: 400, message: '请输入防伪码' })
 
   try {
-    const codes = await readJsonFile(getDataPath('codes')) || []
-    const found = codes.find((c: any) => c.code?.toUpperCase() === code.toUpperCase())
+    const assets = useStorage('assets:data')
+    const raw = await assets.getItem('codes.json') as string
+    const codes = raw ? (typeof raw === 'string' ? JSON.parse(raw) : raw) : []
+
+    const found = Array.isArray(codes)
+      ? codes.find((c: any) => c.code?.toUpperCase() === code.toUpperCase())
+      : null
 
     if (found) {
       return {
@@ -18,7 +21,9 @@ export default defineEventHandler(async (event) => {
         query_count: found.query_count || 1
       }
     }
-  } catch {}
+  } catch (e: any) {
+    console.error('Verify code error:', e.message)
+  }
 
   return {
     valid: false,
