@@ -1,87 +1,26 @@
 [
-  {
-    "id": 1,
-    "name": "LAFA Device",
-    "description": "Premium pod system with ceramic coil. Available in 6 sophisticated colors.",
-    "price": 39,
-    "comparePrice": 49,
-    "image": "/uploads/钛合金:titanium alloy.webp",
-    "images": [
-      "/uploads/钛合金:titanium alloy.webp",
-      "/uploads/商务黑:business black.webp",
-      "/uploads/天空蓝:sky blue.webp",
-      "/uploads/沙漠金:desert gold.webp",
-      "/uploads/玫瑰金:rose pink.webp",
-      "/uploads/镜面蓝:mirror blue.webp"
-    ],
-    "specs": [
-      { "label": "Battery", "value": "350mAh" },
-      { "label": "Charging", "value": "Type-C" }
-    ],
-    "series": [
-      {
-        "name": "Colors",
-        "zh": "颜色",
-        "flavors": [
-          { "name": "Titanium Alloy", "zh": "钛合金", "image": "/uploads/钛合金:titanium alloy.webp", "desc": "Premium titanium finish, sleek and modern" },
-          { "name": "Business Black", "zh": "商务黑", "image": "/uploads/商务黑:business black.webp", "desc": "Classic matte black for the professional" },
-          { "name": "Sky Blue", "zh": "天空蓝", "image": "/uploads/天空蓝:sky blue.webp", "desc": "Bright sky blue, fresh and energetic" },
-          { "name": "Desert Gold", "zh": "沙漠金", "image": "/uploads/沙漠金:desert gold.webp", "desc": "Warm desert gold, luxurious texture" },
-          { "name": "Rose Pink", "zh": "玫瑰金", "image": "/uploads/玫瑰金:rose pink.webp", "desc": "Elegant rose gold with a soft pink hue" },
-          { "name": "Mirror Blue", "zh": "镜面蓝", "image": "/uploads/镜面蓝:mirror blue.webp", "desc": "Mirror-finish blue, bold and reflective" }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "LAFA Pod Pro Flavors",
-    "description": "17 distinct flavors crafted with Tang-Song heritage. Ceramic coil for pure taste.",
-    "price": 24.99,
-    "comparePrice": 29.99,
-    "image": "/uploads/葡萄 :grape:fruit.webp",
-    "images": [],
-    "specs": [
-      { "label": "Puffs", "value": "600" },
-      { "label": "Nicotine", "value": "3%" },
-      { "label": "Pod", "value": "3ml" }
-    ],
-    "series": [
-      {
-        "name": "Fruit",
-        "zh": "水果味",
-        "flavors": [
-          { "name": "Lemon", "zh": "柠檬", "image": "/uploads/柠檬 :lemon:fruit.webp", "desc": "Zesty lemon with a refreshing citrus burst" },
-          { "name": "Pineapple", "zh": "菠萝", "image": "/uploads/菠萝 :pineapple:fruit.webp", "desc": "Tropical pineapple, sweet and tangy" },
-          { "name": "Grape", "zh": "葡萄", "image": "/uploads/葡萄 :grape:fruit.webp", "desc": "Rich grape flavor with a smooth finish" },
-          { "name": "Watermelon", "zh": "西瓜", "image": "/uploads/西瓜 :watermelon:fruit.webp", "desc": "Juicy watermelon with icy cool exhale" },
-          { "name": "Mango", "zh": "芒果", "image": "/uploads/芒果:mango:fruit.webp", "desc": "Ripe mango, tropical and creamy" },
-          { "name": "Peach", "zh": "桃子", "image": "/uploads/桃子 :peach:fruit.webp", "desc": "Sweet peach with a soft, smooth aftertaste" },
-          { "name": "Green Grape", "zh": "青提", "image": "/uploads/青提 :green grape:fruit.webp", "desc": "Crisp green grape, light and refreshing" },
-          { "name": "Strawberry", "zh": "草莓", "image": "/uploads/草莓 :strawberry.webp", "desc": "Ripe strawberry, sweet and juicy" },
-          { "name": "Emerald Melon", "zh": "哈密瓜", "image": "/uploads/哈密瓜:emerald melon.webp", "desc": "Sweet emerald melon, rich and mellow" }
-        ]
-      },
-      {
-        "name": "Tea",
-        "zh": "茶味",
-        "flavors": [
-          { "name": "Longjing", "zh": "龙井", "image": "/uploads/龙井:longjing:tea.webp", "desc": "Classic Dragon Well green tea, nutty and smooth" },
-          { "name": "Tieguanyin", "zh": "铁观音", "image": "/uploads/铁观音:teguanyin.webp", "desc": "Premium Iron Goddess oolong, floral and roasted" }
-        ]
-      },
-      {
-        "name": "Other",
-        "zh": "其他",
-        "flavors": [
-          { "name": "Coke", "zh": "可乐", "image": "/uploads/可乐 :coke:not fruit.webp", "desc": "Fizzy cola with an icy kick" },
-          { "name": "Taro", "zh": "香芋", "image": "/uploads/香芋 :taro:not fruit.webp", "desc": "Creamy taro milk, sweet and comforting" },
-          { "name": "Old Popsicle", "zh": "老冰棍", "image": "/uploads/老冰棍:old popsicle.webp", "desc": "Nostalgic popsicle, cool and sweet" },
-          { "name": "Cold Mint", "zh": "凉薄荷", "image": "/uploads/凉薄荷:cold mint.webp", "desc": "Intense cooling mint, crisp and fresh" },
-          { "name": "Mung Bean", "zh": "绿豆", "image": "/uploads/绿豆:mung bean.webp", "desc": "Traditional mung bean, earthy and smooth" },
-          { "name": "Orange Soda", "zh": "橙子汽水", "image": "/uploads/橙子汽水:orange soda.webp", "desc": "Bubbly orange soda, fruity and fun" }
-        ]
-      }
-    ]
-  }
+  { "id": 1, "type": "device", "name": "Titanium Alloy", "zh": "钛合金", "description": "Premium titanium finish, sleek and modern.", "price": 39, "comparePrice": 49, "image": "/uploads/钛合金:titanium alloy.webp", "specs": [{"label":"Battery","value":"350mAh"},{"label":"Charging","value":"Type-C"}] },
+  { "id": 2, "type": "device", "name": "Business Black", "zh": "商务黑", "description": "Classic matte black for the professional.", "price": 39, "comparePrice": 49, "image": "/uploads/商务黑:business black.webp", "specs": [{"label":"Battery","value":"350mAh"},{"label":"Charging","value":"Type-C"}] },
+  { "id": 3, "type": "device", "name": "Sky Blue", "zh": "天空蓝", "description": "Bright sky blue, fresh and energetic.", "price": 39, "comparePrice": 49, "image": "/uploads/天空蓝:sky blue.webp", "specs": [{"label":"Battery","value":"350mAh"},{"label":"Charging","value":"Type-C"}] },
+  { "id": 4, "type": "device", "name": "Desert Gold", "zh": "沙漠金", "description": "Warm desert gold, luxurious texture.", "price": 39, "comparePrice": 49, "image": "/uploads/沙漠金:desert gold.webp", "specs": [{"label":"Battery","value":"350mAh"},{"label":"Charging","value":"Type-C"}] },
+  { "id": 5, "type": "device", "name": "Rose Pink", "zh": "玫瑰金", "description": "Elegant rose gold with a soft pink hue.", "price": 39, "comparePrice": 49, "image": "/uploads/玫瑰金:rose pink.webp", "specs": [{"label":"Battery","value":"350mAh"},{"label":"Charging","value":"Type-C"}] },
+  { "id": 6, "type": "device", "name": "Mirror Blue", "zh": "镜面蓝", "description": "Mirror-finish blue, bold and reflective.", "price": 39, "comparePrice": 49, "image": "/uploads/镜面蓝:mirror blue.webp", "specs": [{"label":"Battery","value":"350mAh"},{"label":"Charging","value":"Type-C"}] },
+
+  { "id": 10, "type": "pod", "name": "Lemon", "zh": "柠檬", "category": "Fruit", "categoryZh": "水果味", "description": "Zesty lemon with a refreshing citrus burst.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/柠檬 :lemon:fruit.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 11, "type": "pod", "name": "Pineapple", "zh": "菠萝", "category": "Fruit", "categoryZh": "水果味", "description": "Tropical pineapple, sweet and tangy.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/菠萝 :pineapple:fruit.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 12, "type": "pod", "name": "Grape", "zh": "葡萄", "category": "Fruit", "categoryZh": "水果味", "description": "Rich grape flavor with a smooth finish.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/葡萄 :grape:fruit.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 13, "type": "pod", "name": "Watermelon", "zh": "西瓜", "category": "Fruit", "categoryZh": "水果味", "description": "Juicy watermelon with icy cool exhale.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/西瓜 :watermelon:fruit.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 14, "type": "pod", "name": "Mango", "zh": "芒果", "category": "Fruit", "categoryZh": "水果味", "description": "Ripe mango, tropical and creamy.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/芒果:mango:fruit.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 15, "type": "pod", "name": "Peach", "zh": "桃子", "category": "Fruit", "categoryZh": "水果味", "description": "Sweet peach with a soft, smooth aftertaste.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/桃子 :peach:fruit.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 16, "type": "pod", "name": "Green Grape", "zh": "青提", "category": "Fruit", "categoryZh": "水果味", "description": "Crisp green grape, light and refreshing.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/青提 :green grape:fruit.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 17, "type": "pod", "name": "Strawberry", "zh": "草莓", "category": "Fruit", "categoryZh": "水果味", "description": "Ripe strawberry, sweet and juicy.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/草莓 :strawberry.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 18, "type": "pod", "name": "Emerald Melon", "zh": "哈密瓜", "category": "Fruit", "categoryZh": "水果味", "description": "Sweet emerald melon, rich and mellow.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/哈密瓜:emerald melon.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 20, "type": "pod", "name": "Longjing", "zh": "龙井", "category": "Tea", "categoryZh": "茶味", "description": "Classic Dragon Well green tea, nutty and smooth.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/龙井:longjing:tea.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 21, "type": "pod", "name": "Tieguanyin", "zh": "铁观音", "category": "Tea", "categoryZh": "茶味", "description": "Premium Iron Goddess oolong, floral and roasted.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/铁观音:teguanyin.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 30, "type": "pod", "name": "Coke", "zh": "可乐", "category": "Other", "categoryZh": "其他", "description": "Fizzy cola with an icy kick.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/可乐 :coke:not fruit.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 31, "type": "pod", "name": "Taro", "zh": "香芋", "category": "Other", "categoryZh": "其他", "description": "Creamy taro milk, sweet and comforting.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/香芋 :taro:not fruit.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 32, "type": "pod", "name": "Old Popsicle", "zh": "老冰棍", "category": "Other", "categoryZh": "其他", "description": "Nostalgic popsicle, cool and sweet.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/老冰棍:old popsicle.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 33, "type": "pod", "name": "Cold Mint", "zh": "凉薄荷", "category": "Other", "categoryZh": "其他", "description": "Intense cooling mint, crisp and fresh.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/凉薄荷:cold mint.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 34, "type": "pod", "name": "Mung Bean", "zh": "绿豆", "category": "Other", "categoryZh": "其他", "description": "Traditional mung bean, earthy and smooth.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/绿豆:mung bean.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] },
+  { "id": 35, "type": "pod", "name": "Orange Soda", "zh": "橙子汽水", "category": "Other", "categoryZh": "其他", "description": "Bubbly orange soda, fruity and fun.", "price": 24.99, "comparePrice": 29.99, "image": "/uploads/橙子汽水:orange soda.webp", "specs": [{"label":"Puffs","value":"600"},{"label":"Nicotine","value":"3%"},{"label":"Pod","value":"3ml"}] }
 ]

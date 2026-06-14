@@ -54,6 +54,18 @@ function getImageUrl(image: string, size?: string): string {
 }
 const { data: hero } = await useFetch('/api/data/hero', { default: () => [] })
 const { data: products } = await useAsyncData('products-home', () => $fetch('/api/data/products'), { default: () => [] })
+const devices = computed(() => (products.value as any[])?.filter((p:any) => p.type === 'device') || [])
+const pods = computed(() => (products.value as any[])?.filter((p:any) => p.type === 'pod') || [])
+// Group PODs by category
+const podCategories = computed(() => {
+  const cats: Record<string, any[]> = {}
+  for (const p of pods.value) {
+    const c = p.category || 'Other'
+    if (!cats[c]) cats[c] = []
+    cats[c].push(p)
+  }
+  return cats
+})
 const { data: blogs } = await useFetch('/api/data/blog', { default: () => [] })
 const toastMsg = ref(''); const toastType = ref('success')
 function showToast(d: { message: string; type: string }) { toastMsg.value = d.message; toastType.value = d.type }
@@ -98,13 +110,26 @@ useHead({ title: 'LAFA — Tang-Song Flavors' })
       </div>
     </section>
 
-    <!-- Products -->
-    <section id="products" class="section section-alt">
+    <!-- Device -->
+    <section id="devices" class="section section-alt">
       <div class="max-w-[1400px] mx-auto">
-        <h2 class="sec-label">{{ t('sec.products') }}</h2>
+        <h2 class="sec-label">{{ lang === 'zh' ? '设备' : 'Device' }}</h2>
         <div class="card-grid">
-          <ProductCard v-for="item in products" :key="item.id" :item="item" />
+          <ProductCard v-for="item in devices" :key="item.id" :item="item" />
         </div>
+      </div>
+    </section>
+
+    <!-- POD -->
+    <section id="pods" class="section">
+      <div class="max-w-[1400px] mx-auto">
+        <h2 class="sec-label">{{ lang === 'zh' ? 'POD 口味' : 'POD Flavors' }}</h2>
+        <template v-for="(catItems, catName) in podCategories" :key="catName">
+          <h3 class="text-sm font-semibold text-text-secondary mb-3 mt-6">{{ catName }}</h3>
+          <div class="card-grid">
+            <ProductCard v-for="item in catItems" :key="item.id" :item="item" />
+          </div>
+        </template>
       </div>
     </section>
 
