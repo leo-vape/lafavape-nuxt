@@ -167,21 +167,13 @@ const messages: Record<Lang, Record<string, string>> = {
 
 const currentLang = ref<Lang>('en')
 
-if (import.meta.client) {
-  const saved = localStorage.getItem('lang') as Lang | null
-  if (saved === 'zh' || saved === 'en') currentLang.value = saved
-}
-
 export function useI18n() {
   const t = (key: string): string => {
     return messages[currentLang.value]?.[key] || messages.en[key] || key
   }
   const toggleLang = () => {
     currentLang.value = currentLang.value === 'zh' ? 'en' : 'zh'
-    if (import.meta.client) {
-      localStorage.setItem('lang', currentLang.value)
-      document.cookie = `lang=${currentLang.value};path=/;max-age=31536000`
-    }
+    if (import.meta.client) localStorage.setItem('lang', currentLang.value)
   }
   const lang = computed(() => currentLang.value)
   return { t, lang, toggleLang }
