@@ -42,14 +42,7 @@
     "price": 24.99,
     "comparePrice": 29.99,
     "image": "/uploads/葡萄 :grape:fruit.webp",
-    "images": [
-      "/uploads/葡萄 :grape:fruit.webp",
-      "/uploads/西瓜 :watermelon:fruit.webp",
-      "/uploads/芒果:mango:fruit.webp",
-      "/uploads/草莓 :strawberry.webp",
-      "/uploads/龙井:longjing:tea.webp",
-      "/uploads/绿豆:mung bean.webp"
-    ],
+    "images": [],
     "specs": [
       { "label": "Compatible", "value": "LAFA Device" },
       { "label": "Nicotine", "value": "3% / 5%" },
