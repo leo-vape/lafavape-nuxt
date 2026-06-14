@@ -15,10 +15,8 @@
       "/uploads/镜面蓝:mirror blue.webp"
     ],
     "specs": [
-      { "label": "Puffs", "value": "600" },
-      { "label": "Nicotine", "value": "3% / 5%" },
       { "label": "Battery", "value": "350mAh" },
-      { "label": "Pod", "value": "1.8ml" }
+      { "label": "Charging", "value": "Type-C" }
     ],
     "series": [
       {
@@ -44,10 +42,9 @@
     "image": "/uploads/葡萄 :grape:fruit.webp",
     "images": [],
     "specs": [
-      { "label": "Compatible", "value": "LAFA Device" },
-      { "label": "Nicotine", "value": "3% / 5%" },
-      { "label": "Pod Capacity", "value": "1.8ml" },
-      { "label": "Puffs per Pod", "value": "~600" }
+      { "label": "Puffs", "value": "600" },
+      { "label": "Nicotine", "value": "3%" },
+      { "label": "Pod", "value": "3ml" }
     ],
     "series": [
       {
