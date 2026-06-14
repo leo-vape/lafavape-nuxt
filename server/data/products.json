@@ -1,35 +1,18 @@
 [
   {
     "id": 1,
-    "name": "LAFA Pod Pro",
-    "description": "Premium pod system with ceramic coil for pure flavor delivery. 14 distinct flavors inspired by Tang-Song heritage.",
-    "price": 24.99,
-    "comparePrice": 29.99,
-    "image": "/uploads/device-1.webp",
+    "name": "LAFA Device",
+    "description": "Premium pod system with ceramic coil. Available in 6 sophisticated colors.",
+    "price": 39,
+    "comparePrice": 49,
+    "image": "/uploads/钛合金:titanium alloy.webp",
     "images": [
-      "/uploads/device-1.webp",
-      "/uploads/device-2.webp",
-      "/uploads/device-3.webp",
-      "/uploads/device-4.webp",
-      "/uploads/device-5.webp",
-      "/uploads/device-6.webp"
-    ],
-    "detailImages": [
-      "/uploads/detail-产品详情页AQ-01-01_01_01.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_02.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_03.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_04.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_05.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_06.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_07.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_08.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_09.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_10.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_11.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_12.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_13.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_14.webp",
-      "/uploads/detail-产品详情页AQ-01-01_01_15.webp"
+      "/uploads/钛合金:titanium alloy.webp",
+      "/uploads/商务黑:business black.webp",
+      "/uploads/天空蓝:sky blue.webp",
+      "/uploads/沙漠金:desert gold.webp",
+      "/uploads/玫瑰金:rose pink.webp",
+      "/uploads/镜面蓝:mirror blue.webp"
     ],
     "specs": [
       { "label": "Puffs", "value": "600" },
@@ -39,35 +22,74 @@
     ],
     "series": [
       {
+        "name": "Colors",
+        "zh": "颜色",
+        "flavors": [
+          { "name": "Titanium Alloy", "zh": "钛合金", "image": "/uploads/钛合金:titanium alloy.webp", "desc": "Premium titanium finish, sleek and modern" },
+          { "name": "Business Black", "zh": "商务黑", "image": "/uploads/商务黑:business black.webp", "desc": "Classic matte black for the professional" },
+          { "name": "Sky Blue", "zh": "天空蓝", "image": "/uploads/天空蓝:sky blue.webp", "desc": "Bright sky blue, fresh and energetic" },
+          { "name": "Desert Gold", "zh": "沙漠金", "image": "/uploads/沙漠金:desert gold.webp", "desc": "Warm desert gold, luxurious texture" },
+          { "name": "Rose Pink", "zh": "玫瑰金", "image": "/uploads/玫瑰金:rose pink.webp", "desc": "Elegant rose gold with a soft pink hue" },
+          { "name": "Mirror Blue", "zh": "镜面蓝", "image": "/uploads/镜面蓝:mirror blue.webp", "desc": "Mirror-finish blue, bold and reflective" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "LAFA Pod Pro Flavors",
+    "description": "17 distinct flavors crafted with Tang-Song heritage. Ceramic coil for pure taste.",
+    "price": 24.99,
+    "comparePrice": 29.99,
+    "image": "/uploads/葡萄 :grape:fruit.webp",
+    "images": [
+      "/uploads/葡萄 :grape:fruit.webp",
+      "/uploads/西瓜 :watermelon:fruit.webp",
+      "/uploads/芒果:mango:fruit.webp",
+      "/uploads/草莓 :strawberry.webp",
+      "/uploads/龙井:longjing:tea.webp",
+      "/uploads/绿豆:mung bean.webp"
+    ],
+    "specs": [
+      { "label": "Compatible", "value": "LAFA Device" },
+      { "label": "Nicotine", "value": "3% / 5%" },
+      { "label": "Pod Capacity", "value": "1.8ml" },
+      { "label": "Puffs per Pod", "value": "~600" }
+    ],
+    "series": [
+      {
         "name": "Fruit",
         "zh": "水果味",
         "flavors": [
-          { "name": "Lychee Ice", "zh": "荔枝冰", "image": "/uploads/口味图_画板 1.webp", "desc": "Crisp lychee with cool menthol finish" },
-          { "name": "Grape Mist", "zh": "葡萄雾", "image": "/uploads/口味图-02.webp", "desc": "Bold grape with chilled mist" },
-          { "name": "Watermelon Ice", "zh": "西瓜冰", "image": "/uploads/口味图-03.webp", "desc": "Sweet watermelon with icy exhale" },
-          { "name": "Strawberry Blast", "zh": "草莓爆炸", "image": "/uploads/口味图-04.webp", "desc": "Ripe strawberry burst" },
-          { "name": "Green Grape", "zh": "青提", "image": "/uploads/口味图-05.webp", "desc": "Crisp green grape essence" },
-          { "name": "Guava Ice", "zh": "番石榴冰", "image": "/uploads/口味图-06.webp", "desc": "Tropical guava with cool touch" }
+          { "name": "Lemon", "zh": "柠檬", "image": "/uploads/柠檬 :lemon:fruit.webp", "desc": "Zesty lemon with a refreshing citrus burst" },
+          { "name": "Pineapple", "zh": "菠萝", "image": "/uploads/菠萝 :pineapple:fruit.webp", "desc": "Tropical pineapple, sweet and tangy" },
+          { "name": "Grape", "zh": "葡萄", "image": "/uploads/葡萄 :grape:fruit.webp", "desc": "Rich grape flavor with a smooth finish" },
+          { "name": "Watermelon", "zh": "西瓜", "image": "/uploads/西瓜 :watermelon:fruit.webp", "desc": "Juicy watermelon with icy cool exhale" },
+          { "name": "Mango", "zh": "芒果", "image": "/uploads/芒果:mango:fruit.webp", "desc": "Ripe mango, tropical and creamy" },
+          { "name": "Peach", "zh": "桃子", "image": "/uploads/桃子 :peach:fruit.webp", "desc": "Sweet peach with a soft, smooth aftertaste" },
+          { "name": "Green Grape", "zh": "青提", "image": "/uploads/青提 :green grape:fruit.webp", "desc": "Crisp green grape, light and refreshing" },
+          { "name": "Strawberry", "zh": "草莓", "image": "/uploads/草莓 :strawberry.webp", "desc": "Ripe strawberry, sweet and juicy" },
+          { "name": "Emerald Melon", "zh": "哈密瓜", "image": "/uploads/哈密瓜:emerald melon.webp", "desc": "Sweet emerald melon, rich and mellow" }
         ]
       },
       {
         "name": "Tea",
         "zh": "茶味",
         "flavors": [
-          { "name": "Jasmine Green Tea", "zh": "茉莉花茶", "image": "/uploads/口味图-07.webp", "desc": "Floral jasmine with smooth green tea" },
-          { "name": "Osmanthus Oolong", "zh": "桂花乌龙", "image": "/uploads/口味图-08.webp", "desc": "Sweet osmanthus with roasted oolong" },
-          { "name": "Longjing Green", "zh": "龙井", "image": "/uploads/口味图-09.webp", "desc": "Classic Dragon Well tea" },
-          { "name": "Earl Grey", "zh": "伯爵茶", "image": "/uploads/口味图-10.webp", "desc": "Bergamot-infused black tea" }
+          { "name": "Longjing", "zh": "龙井", "image": "/uploads/龙井:longjing:tea.webp", "desc": "Classic Dragon Well green tea, nutty and smooth" },
+          { "name": "Tieguanyin", "zh": "铁观音", "image": "/uploads/铁观音:teguanyin.webp", "desc": "Premium Iron Goddess oolong, floral and roasted" }
         ]
       },
       {
         "name": "Other",
         "zh": "其他",
         "flavors": [
-          { "name": "Mung Bean", "zh": "绿豆", "image": "/uploads/口味图-11.webp", "desc": "Classic mung bean paste" },
-          { "name": "Taro Milk", "zh": "香芋奶茶", "image": "/uploads/口味图-12.webp", "desc": "Creamy taro milk tea" },
-          { "name": "Cola Ice", "zh": "可乐冰", "image": "/uploads/口味图-13.webp", "desc": "Fizzy cola with ice" },
-          { "name": "Mint Blast", "zh": "薄荷爆炸", "image": "/uploads/口味图-14.webp", "desc": "Intense cooling mint" }
+          { "name": "Coke", "zh": "可乐", "image": "/uploads/可乐 :coke:not fruit.webp", "desc": "Fizzy cola with an icy kick" },
+          { "name": "Taro", "zh": "香芋", "image": "/uploads/香芋 :taro:not fruit.webp", "desc": "Creamy taro milk, sweet and comforting" },
+          { "name": "Old Popsicle", "zh": "老冰棍", "image": "/uploads/老冰棍:old popsicle.webp", "desc": "Nostalgic popsicle, cool and sweet" },
+          { "name": "Cold Mint", "zh": "凉薄荷", "image": "/uploads/凉薄荷:cold mint.webp", "desc": "Intense cooling mint, crisp and fresh" },
+          { "name": "Mung Bean", "zh": "绿豆", "image": "/uploads/绿豆:mung bean.webp", "desc": "Traditional mung bean, earthy and smooth" },
+          { "name": "Orange Soda", "zh": "橙子汽水", "image": "/uploads/橙子汽水:orange soda.webp", "desc": "Bubbly orange soda, fruity and fun" }
         ]
       }
     ]
