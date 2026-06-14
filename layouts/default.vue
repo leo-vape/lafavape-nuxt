@@ -95,10 +95,10 @@ function denyAge() {
       <NavHeader />
       <main class="main-content"><slot /></main>
       <SiteFooter />
-      <ClientOnly>
-        <ChatWidget />
-        <SocialProof />
-      </ClientOnly>
     </template>
+    <ClientOnly>
+      <ChatWidget />
+      <SocialProof />
+    </ClientOnly>
   </div>
 </template>

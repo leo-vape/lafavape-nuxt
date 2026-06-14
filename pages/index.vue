@@ -52,6 +52,8 @@ function getImageUrl(image: string, size?: string): string {
   if (size === 'small') return base.replace(/\.webp$/i, '_small.webp')
   return base
 }
+definePageMeta({ ssr: false })
+
 const { data: hero } = await useFetch('/api/data/hero', { default: () => [] })
 const { data: allProducts } = await useAsyncData('products-home', () => $fetch('/api/data/products'), { default: () => [] })
 
