@@ -1,4 +1,4 @@
-import codesData from '../../server/data/codes.json'
+import codesData from '../data/codes.json'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)

@@ -1,11 +1,11 @@
 import { readJsonFile, getDataPath } from '../../utils/fileUtils'
 
 // Static imports for build-time bundling
-import productsData from '../../../server/data/products.json'
-import blogData from '../../../server/data/blog.json'
-import heroData from '../../../server/data/hero.json'
-import settingsData from '../../../server/data/settings.json'
-import codesData from '../../../server/data/codes.json'
+import productsData from '../../data/products.json'
+import blogData from '../../data/blog.json'
+import heroData from '../../data/hero.json'
+import settingsData from '../../data/settings.json'
+import codesData from '../../data/codes.json'
 
 const staticData: Record<string, any> = {
   products: productsData,
