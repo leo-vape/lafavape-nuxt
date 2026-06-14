@@ -166,7 +166,13 @@ const messages: Record<Lang, Record<string, string>> = {
 }
 
 const currentLang = ref<Lang>('en')
-if (import.meta.client) {
+
+// Read lang from cookie (works both SSR and client)
+if (import.meta.server) {
+  const cookieHeader = useRequestHeaders(['cookie'])
+  const match = cookieHeader.cookie?.match(/lang=([^;]+)/)
+  if (match && (match[1] === 'zh' || match[1] === 'en')) currentLang.value = match[1] as Lang
+} else if (import.meta.client) {
   const saved = localStorage.getItem('lang') as Lang | null
   if (saved === 'zh' || saved === 'en') currentLang.value = saved
 }
@@ -178,6 +184,8 @@ export function useI18n() {
   const toggleLang = () => {
     currentLang.value = currentLang.value === 'zh' ? 'en' : 'zh'
     if (import.meta.client) localStorage.setItem('lang', currentLang.value)
+    // Also set cookie for SSR consistency
+    if (import.meta.client) document.cookie = `lang=${currentLang.value};path=/;max-age=31536000`
   }
   const lang = computed(() => currentLang.value)
   return { t, lang, toggleLang }
