@@ -165,30 +165,14 @@ const messages: Record<Lang, Record<string, string>> = {
   }
 }
 
-// State is shared across all composable instances
 const currentLang = ref<Lang>('en')
-let initialized = false
+
+if (import.meta.client) {
+  const saved = localStorage.getItem('lang') as Lang | null
+  if (saved === 'zh' || saved === 'en') currentLang.value = saved
+}
 
 export function useI18n() {
-  // Init once: check localStorage on client, cookie on server
-  if (!initialized) {
-    initialized = true
-    if (import.meta.server) {
-      // Server: read cookie from request headers (safe inside composable function)
-      try {
-        const headers = useRequestHeaders()
-        const cookie = (headers as any).cookie || ''
-        const match = cookie.match(/lang=([^;]+)/)
-        if (match && (match[1] === 'zh' || match[1] === 'en')) {
-          currentLang.value = match[1] as Lang
-        }
-      } catch {}
-    } else if (import.meta.client) {
-      const saved = localStorage.getItem('lang') as Lang | null
-      if (saved === 'zh' || saved === 'en') currentLang.value = saved
-    }
-  }
-
   const t = (key: string): string => {
     return messages[currentLang.value]?.[key] || messages.en[key] || key
   }
