@@ -7,7 +7,6 @@ const product = computed(() => (products.value as any[])?.find((p: any) => Strin
 const seriesList = computed(() => product.value.series || [])
 const activeSeriesIdx = ref(0)
 const activeFlavorIdx = ref(0)
-const showShare = ref(false)
 
 const curSeries = computed(() => seriesList.value[activeSeriesIdx.value] || {})
 const curFlavor = computed(() => curSeries.value.flavors?.[activeFlavorIdx.value] || {})
@@ -19,9 +18,18 @@ const dName = computed(() => curFlavor.value.name || product.value.name)
 const dDesc = computed(() => curFlavor.value.desc || product.value.description)
 const dImg = computed(() => curFlavor.value.image || product.value.image)
 
+// Gallery
+const galleryIdx = ref(0)
+const allImages = computed(() => product.value.images || [])
+function prevImg() { if (allImages.value.length) galleryIdx.value = (galleryIdx.value - 1 + allImages.value.length) % allImages.value.length }
+function nextImg() { if (allImages.value.length) galleryIdx.value = (galleryIdx.value + 1) % allImages.value.length }
+
+// Detail images
+const detailImages = computed(() => product.value.detailImages || [])
+
 function getImg(img: string): string {
   if (!img) return '/uploads/placeholder.png'
-  return `/uploads/${img.replace(/^.*[\\/]/, '')}`
+  return img.startsWith('/') ? img : `/uploads/${img}`
 }
 
 const openTab = ref('desc')
@@ -48,15 +56,29 @@ useHead({ title: computed(() => `${dName.value} — LAFA`) })
   </section>
 
   <template v-else>
+    <!-- Product Image Gallery -->
     <section class="section section-alt pt-20">
       <div class="max-w-[1200px] mx-auto">
         <div class="grid md:grid-cols-2 gap-8 md:gap-12">
           <div>
-            <div class="rounded-2xl overflow-hidden bg-[#0a0a0a] aspect-square mb-6">
+            <!-- Main Gallery -->
+            <div v-if="allImages.length" class="relative rounded-2xl overflow-hidden bg-[#0a0a0a] aspect-square mb-4 group">
+              <img :src="getImg(allImages[galleryIdx])" :alt="product.name" class="w-full h-full object-cover transition-opacity duration-300">
+              <button v-if="allImages.length > 1" @click="prevImg" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition">‹</button>
+              <button v-if="allImages.length > 1" @click="nextImg" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition">›</button>
+            </div>
+            <div v-else class="rounded-2xl overflow-hidden bg-[#0a0a0a] aspect-square mb-4">
               <img :src="getImg(dImg)" :alt="dName" class="w-full h-full object-cover" @error="(e:any)=>e.target.src='/uploads/placeholder.png'">
             </div>
-            <!-- Description / Reviews tabs -->
-            <div class="flex border-b border-border mb-4">
+            <!-- Thumbnails -->
+            <div v-if="allImages.length > 1" class="flex gap-2 overflow-x-auto pb-2">
+              <button v-for="(img, i) in allImages" :key="i" @click="galleryIdx = i" class="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition" :class="i === galleryIdx ? 'border-gold' : 'border-transparent opacity-60 hover:opacity-100'">
+                <img :src="getImg(img)" class="w-full h-full object-cover" :alt="`${product.name} ${i+1}`">
+              </button>
+            </div>
+
+            <!-- Description / Reviews -->
+            <div class="flex border-b border-border mb-4 mt-6">
               <button class="prod-tab" :class="{active:openTab==='desc'}" @click="openTab='desc'">{{ lang==='zh'?'描述':'Description' }}</button>
               <button class="prod-tab" :class="{active:openTab==='rev'}" @click="openTab='rev'">{{ lang==='zh'?'评价':'Reviews' }}{{ (product.reviews||[]).length ? ` (${product.reviews.length})` : '' }}</button>
             </div>
@@ -79,7 +101,6 @@ useHead({ title: computed(() => `${dName.value} — LAFA`) })
               <span v-if="product.comparePrice" class="prod-original">${{ product.comparePrice }}</span>
             </div>
 
-            <!-- Specs -->
             <p class="specs-section-title">{{ lang === 'zh' ? '参数' : 'Specifications' }}</p>
             <div v-if="product.specs?.length" class="specs-block mb-4">
               <div class="specs-labels">
@@ -91,13 +112,11 @@ useHead({ title: computed(() => `${dName.value} — LAFA`) })
             </div>
             <div class="specs-divider"></div>
 
-            <!-- Series -->
             <p class="specs-section-title">{{ lang === 'zh' ? '口味分类' : 'Category' }}</p>
             <div class="flex gap-1 mb-3">
               <button v-for="(s,i) in seriesList" :key="s.name" class="series-tab" :class="{active:activeSeriesIdx===i}" @click="selectSeries(i)">{{ lang==='zh'?s.zh:s.name }}</button>
             </div>
 
-            <!-- Flavors -->
             <p class="specs-section-title">{{ lang === 'zh' ? '口味' : 'Flavor' }}</p>
             <div class="flex flex-wrap gap-2 mb-6">
               <button v-for="(f,i) in curSeries.flavors" :key="f.name" class="flavor-btn" :class="{active:activeFlavorIdx===i}" @click="selectFlavor(i)">{{ lang==='zh'?f.zh:f.name }}</button>
@@ -106,7 +125,18 @@ useHead({ title: computed(() => `${dName.value} — LAFA`) })
             <button v-if="product.price" class="buy-btn" @click="checkout" :disabled="checkingOut">
               {{ checkingOut ? t('product.redirecting') : `${t('product.buyNow')}  $${product.price}` }}
             </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Detail Images Section -->
+    <section v-if="detailImages.length" class="section bg-black">
+      <div class="max-w-[800px] mx-auto">
+        <h2 class="sec-label mb-8">{{ lang === 'zh' ? '产品详情' : 'Product Details' }}</h2>
+        <div class="space-y-4">
+          <div v-for="(img, i) in detailImages" :key="i" class="rounded-2xl overflow-hidden bg-[#0a0a0a]">
+            <img :src="getImg(img)" :alt="`${product.name} detail ${i+1}`" class="w-full h-auto" loading="lazy">
           </div>
         </div>
       </div>

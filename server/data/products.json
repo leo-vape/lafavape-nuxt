@@ -14,6 +14,23 @@
       "/uploads/device-5.webp",
       "/uploads/device-6.webp"
     ],
+    "detailImages": [
+      "/uploads/detail-产品详情页AQ-01-01_01_01.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_02.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_03.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_04.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_05.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_06.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_07.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_08.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_09.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_10.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_11.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_12.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_13.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_14.webp",
+      "/uploads/detail-产品详情页AQ-01-01_01_15.webp"
+    ],
     "specs": [
       { "label": "Puffs", "value": "600" },
       { "label": "Nicotine", "value": "3% / 5%" },
