@@ -53,20 +53,13 @@ function getImageUrl(image: string, size?: string): string {
   return base
 }
 const { data: hero } = await useFetch('/api/data/hero', { default: () => [] })
-const { data: allProducts } = await useFetch('/api/data/products', { default: () => [] })
-const products = computed(() => (allProducts.value as any[]) || [])
+const { data: allProducts } = await useAsyncData('products-home', () => $fetch('/api/data/products'), { default: () => [] })
 
-const devices = computed(() => {
-  if (!allProducts.value) return []
-  const list = allProducts.value as any[]
-  return list.filter((p: any) => p.type === 'device')
-})
+const all = computed(() => (allProducts.value as any[]) || [])
 
-const pods = computed(() => {
-  if (!allProducts.value) return []
-  const list = allProducts.value as any[]
-  return list.filter((p: any) => p.type === 'pod')
-})
+const devices = computed(() => all.value.filter((p: any) => p.type === 'device'))
+
+const pods = computed(() => all.value.filter((p: any) => p.type === 'pod'))
 
 const podCategories = computed(() => {
   const cats: Record<string, any[]> = {}
