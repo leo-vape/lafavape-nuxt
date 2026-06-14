@@ -61,14 +61,15 @@ const devices = computed(() => all.value.filter((p: any) => p.type === 'device')
 
 const pods = computed(() => all.value.filter((p: any) => p.type === 'pod'))
 
-const podCategories = computed(() => {
-  const cats: Record<string, any[]> = {}
+const podGroups = computed(() => {
+  const map: Record<string, any[]> = {}
   for (const p of pods.value) {
     const c = p.category || 'Other'
-    if (!cats[c]) cats[c] = []
-    cats[c].push(p)
+    if (!map[c]) map[c] = []
+    map[c].push(p)
   }
-  return cats
+  // Return as sorted array for deterministic SSR/client rendering
+  return Object.entries(map).map(([name, items]) => ({ name, items }))
 })
 const { data: blogs } = await useFetch('/api/data/blog', { default: () => [] })
 const toastMsg = ref(''); const toastType = ref('success')
@@ -128,10 +129,10 @@ useHead({ title: 'LAFA — Tang-Song Flavors' })
 
         <!-- POD -->
         <h3 class="text-lg font-semibold text-text-primary mb-4">{{ lang === 'zh' ? 'POD 口味' : 'POD Flavors' }}</h3>
-        <template v-for="(catItems, catName) in podCategories" :key="catName">
-          <h4 class="text-sm font-semibold text-text-secondary mb-3 mt-6">{{ catName }}</h4>
+        <template v-for="group in podGroups" :key="group.name">
+          <h4 class="text-sm font-semibold text-text-secondary mb-3 mt-6">{{ group.name }}</h4>
           <div class="card-grid mb-6">
-            <ProductCard v-for="item in catItems" :key="item.id" :item="item" />
+            <ProductCard v-for="item in group.items" :key="item.id" :item="item" />
           </div>
         </template>
       </div>
