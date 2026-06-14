@@ -110,23 +110,23 @@ useHead({ title: 'LAFA — Tang-Song Flavors' })
       </div>
     </section>
 
-    <!-- Device -->
-    <section id="devices" class="section section-alt">
+    <!-- Products -->
+    <section id="products" class="section section-alt">
       <div class="max-w-[1400px] mx-auto">
-        <h2 class="sec-label">{{ lang === 'zh' ? '设备' : 'Device' }}</h2>
-        <div class="card-grid">
+        <h2 class="sec-label">{{ t('sec.products') }}</h2>
+        <p class="sec-sub text-center mb-10">{{ t('sec.productsSub') }}</p>
+
+        <!-- Device -->
+        <h3 class="text-lg font-semibold text-text-primary mb-4">{{ lang === 'zh' ? '设备' : 'Device' }}</h3>
+        <div class="card-grid mb-10">
           <ProductCard v-for="item in devices" :key="item.id" :item="item" />
         </div>
-      </div>
-    </section>
 
-    <!-- POD -->
-    <section id="pods" class="section">
-      <div class="max-w-[1400px] mx-auto">
-        <h2 class="sec-label">{{ lang === 'zh' ? 'POD 口味' : 'POD Flavors' }}</h2>
+        <!-- POD -->
+        <h3 class="text-lg font-semibold text-text-primary mb-4">{{ lang === 'zh' ? 'POD 口味' : 'POD Flavors' }}</h3>
         <template v-for="(catItems, catName) in podCategories" :key="catName">
-          <h3 class="text-sm font-semibold text-text-secondary mb-3 mt-6">{{ catName }}</h3>
-          <div class="card-grid">
+          <h4 class="text-sm font-semibold text-text-secondary mb-3 mt-6">{{ catName }}</h4>
+          <div class="card-grid mb-6">
             <ProductCard v-for="item in catItems" :key="item.id" :item="item" />
           </div>
         </template>
