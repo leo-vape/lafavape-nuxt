@@ -16,7 +16,7 @@ function openWechat() { window.open('weixin://') }
   <button v-if="!open && wxId" class="wx-float-btn" @click="open = true" aria-label="微信客服">💬</button>
 
   <Teleport to="body">
-    <div v-if="open" class="fixed inset-0 z-[200] flex items-center justify-center p-4" style="background:rgba(0,0,0,0.88)" @click="open = false">
+    <div v-if="open" class="fixed inset-0 flex items-center justify-center p-4" style="z-index:200;background:rgba(0,0,0,0.88)" @click="open = false">
       <div class="wx-dialog" @click.stop>
         <div class="wx-dialog-head">
           <p class="wx-dialog-title">{{ lang === 'zh' ? '微信客服' : 'WeChat Support' }}</p>

@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /api
+Disallow: /api/
+Disallow: /_nuxt/
+Disallow: /_payload.json
 
 Sitemap: https://lafavape.com/sitemap.xml

@@ -23,12 +23,12 @@ onMounted(() => {
   referrals.value = refData?.visits || 0
 })
 
-const REWARDS = [
+const REWARDS = computed(() => [
   { tier: 1, title: lang.value === 'zh' ? '欢迎礼' : 'Welcome Gift', need: 1 },
   { tier: 3, title: lang.value === 'zh' ? '银质奖励' : 'Silver Reward', need: 3 },
   { tier: 5, title: lang.value === 'zh' ? '金质奖励' : 'Gold Reward', need: 5 },
   { tier: 10, title: lang.value === 'zh' ? 'VIP 专属礼盒' : 'VIP Gift Box', need: 10 },
-]
+])
 
 function getShareLink(productId?: number) {
   const base = 'https://lafavape.com'
@@ -154,8 +154,7 @@ useHead({ title: 'Refer a Friend — LAFA' })
 
     <!-- Share Modal -->
     <Teleport to="body">
-      <div v-if="showShare" class="fixed inset-0 z-[300] flex items-center justify-center p-5"
-        style="background:rgba(0,0,0,0.88);backdrop-filter:blur(8px)" @click="showShare = false">
+      <div v-if="showShare" class="fixed inset-0 flex items-center justify-center p-5" style="z-index:300;background:rgba(0,0,0,0.88);backdrop-filter:blur(8px)" @click="showShare = false">
         <div class="bg-[#111] rounded-2xl p-6 max-w-[360px] w-full text-center border border-border" @click.stop>
           <p class="text-xl mb-2">📤</p>
           <p class="text-[0.9375rem] font-semibold text-text-primary mb-1">
@@ -184,8 +183,7 @@ useHead({ title: 'Refer a Friend — LAFA' })
 
     <!-- Claim Modal -->
     <Teleport to="body">
-      <div v-if="showClaim" class="fixed inset-0 z-[400] flex items-center justify-center p-5"
-        style="background:rgba(0,0,0,0.9);backdrop-filter:blur(12px)" @click="showClaim = false">
+      <div v-if="showClaim" class="fixed inset-0 flex items-center justify-center p-5" style="z-index:400;background:rgba(0,0,0,0.9);backdrop-filter:blur(12px)" @click="showClaim = false">
         <div class="bg-[#111] rounded-2xl p-8 max-w-[360px] w-full text-center border border-gold/30" @click.stop>
           <div class="text-4xl mb-4">🎁</div>
           <p class="text-[0.75rem] font-semibold uppercase tracking-[0.2em] text-gold mb-2">

@@ -13,6 +13,7 @@ const staticData: Record<string, any> = {
   hero: heroData,
   settings: settingsData,
   codes: codesData,
+  'referral-stats': { total: 0, shares: 0, visits: 0, referrers: {} },
 }
 
 export default defineEventHandler(async (event) => {
@@ -20,7 +21,7 @@ export default defineEventHandler(async (event) => {
   if (!file) throw createError({ statusCode: 400, message: 'Missing file parameter' })
 
   // Static import (works on Vercel serverless)
-  if (staticData[file]) return staticData[file]
+  if (staticData[file] !== undefined) return staticData[file]
 
   // Fallback: file system (for prerender / local dev)
   const filePath = getDataPath(file)

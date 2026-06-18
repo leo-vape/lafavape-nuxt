@@ -1,60 +1,107 @@
 [
   {
     "id": 1,
-    "title": "The Art of Flavor: Why Chinese Tea Makes the Perfect Vape",
-    "content": "For over a thousand years, the Chinese tea ceremony has been more than just drinking — it is a meditation, an art form, a way of life. At LAFA, we asked ourselves: what if we could capture this experience in a modern form?\n\nOur Jasmine Green Tea flavor is the result of months of research into traditional tea roasting techniques. Unlike artificial tea flavors that dominate the market, ours uses a layered extraction process that preserves the delicate floral notes of jasmine while maintaining the subtle earthiness of green tea.\n\nThe Song Dynasty (960–1279) was the golden age of Chinese tea culture. It was during this period that tea became central to social life — scholars would gather to appreciate tea in the same way they appreciated poetry and painting. This spirit of refinement guides everything we do.\n\nEvery LAFA device uses a ceramic coil specifically calibrated for tea-based flavors. Ceramic preserves the purity of taste, ensuring no metallic aftertaste interferes with the subtle flavor profile. The result is a vaping experience that feels less like a nicotine delivery system and more like an afternoon tea session.\n\nWe invite you to try the Song Collection and experience the difference that real craftsmanship makes.",
-    "image": "/uploads/f63859a4-81c7-4e18-9543-c0ae5f05bd5e.webp",
-    "excerpt": "How the thousand-year tradition of Chinese tea culture inspired our most refined flavor collection yet.",
-    "date": "2026-05-25",
+    "title": "The LAFA Manifesto — Our Brand Story",
+    "zh_title": "LAFA 宣言 — 品牌故事全篇",
+    "content": "<div style=\"text-align:center;max-width:640px;margin:0 auto;\">\n\n<p style=\"font-size:1.125rem;line-height:2.2;margin-bottom:1rem;color:#a1a1a6;\">\nWander far, stand firm; never bow or yield, bear solitude, weather every storm\n</p>\n\n<p style=\"font-size:1.125rem;line-height:2.2;margin-bottom:2rem;color:#a1a1a6;\">\nAmid mist and longing for home, one's heart craves <span style=\"color:#d4a853;font-weight:500;\">exclusive devotion</span>\n</p>\n\n<div style=\"margin:3rem 0;\">\n<div style=\"width:2rem;height:1px;background:rgba(212,168,83,0.3);margin:0 auto 1.5rem;\"></div>\n<p style=\"font-size:1.5rem;font-weight:600;color:#f5f5f7;\">\nLAFA, <span style=\"color:#d4a853;\">was made to fill that void</span>\n</p>\n<div style=\"width:2rem;height:1px;background:rgba(212,168,83,0.3);margin:1.5rem auto 0;\"></div>\n</div>\n\n<p style=\"font-size:1.125rem;line-height:2.2;margin-bottom:1rem;color:#a1a1a6;\">\nCrafted with homeland grit and uncompromising standards, every sip is <span style=\"color:#d4a853;font-weight:500;\">smooth</span>\n</p>\n\n<p style=\"font-size:1.125rem;line-height:2.2;margin-bottom:2rem;color:#a1a1a6;\">\nTired from endless journeys, lost in lonely nights: <span style=\"color:#d4a853;font-weight:500;\">A familiar taste</span> eases fatigue; <span style=\"color:#d4a853;font-weight:500;\">a whiff of home</span> heals homesickness\n</p>\n\n<div style=\"margin:3rem 0;\">\n<div style=\"width:2rem;height:1px;background:rgba(212,168,83,0.3);margin:0 auto 1.5rem;\"></div>\n<p style=\"font-size:1.5rem;font-weight:600;color:#f5f5f7;\">\nLAFA stands for <span style=\"color:#d4a853;\">fine craftsmanship</span>, and spiritual kinship\n</p>\n<div style=\"width:2rem;height:1px;background:rgba(212,168,83,0.3);margin:1.5rem auto 0;\"></div>\n</div>\n\n<p style=\"font-size:1.25rem;line-height:2.2;margin-bottom:2rem;color:#a1a1a6;font-weight:500;\">\nFor every overseas Chinese chasing dreams across the globe, it brings <span style=\"color:#d4a853;font-weight:600;\">authentic hometown flavor and lifelong fondness</span>\n</p>\n\n<p style=\"font-size:1.375rem;font-weight:600;color:#f5f5f7;line-height:2.2;\">\nLAFA <span style=\"color:#d4a853;\">sees your perseverance</span>, <span style=\"color:#d4a853;\">respects your grit</span>, and <span style=\"color:#d4a853;\">warms your soul</span>\n</p>\n\n</div>",
+    "zh_content": "<div style=\"text-align:center;max-width:640px;margin:0 auto;\">\n\n<p style=\"font-size:1.125rem;line-height:2.2;margin-bottom:1rem;color:#a1a1a6;\">\n<span style=\"color:#d4a853;\">游子无疆</span>，一生要强，不低眉，不退让，扛下孤独，吞尽风浪\n</p>\n\n<p style=\"font-size:1.125rem;line-height:2.2;margin-bottom:2rem;color:#a1a1a6;\">\n<span style=\"color:#d4a853;\">雾化万千</span>，故土深情，精神归处，独缺一份<span style=\"color:#d4a853;font-weight:500;\">专属偏爱</span>\n</p>\n\n<div style=\"margin:3rem 0;\">\n<div style=\"width:2rem;height:1px;background:rgba(212,168,83,0.3);margin:0 auto 1.5rem;\"></div>\n<p style=\"font-size:1.5rem;font-weight:600;color:#f5f5f7;\">\n<span style=\"color:#d4a853;\">LAFA</span>，为此而生\n</p>\n<div style=\"width:2rem;height:1px;background:rgba(212,168,83,0.3);margin:1.5rem auto 0;\"></div>\n</div>\n\n<p style=\"font-size:1.125rem;line-height:2.2;margin-bottom:1rem;color:#a1a1a6;\">\n以故土匠心，永不妥协，雕琢每一口<span style=\"color:#d4a853;font-weight:500;\">温润</span>\n</p>\n\n<p style=\"font-size:1.125rem;line-height:2.2;margin-bottom:2rem;color:#a1a1a6;\">\n昼夜奔波的疲惫，灯火阑珊的落寞，<span style=\"color:#d4a853;font-weight:500;\">一口熟悉的风味</span>，消解劳顿；<span style=\"color:#d4a853;font-weight:500;\">一缕故土气息</span>，抚慰万里乡愁\n</p>\n\n<div style=\"margin:3rem 0;\">\n<div style=\"width:2rem;height:1px;background:rgba(212,168,83,0.3);margin:0 auto 1.5rem;\"></div>\n<p style=\"font-size:1.5rem;font-weight:600;color:#f5f5f7;\">\n<span style=\"color:#d4a853;\">LAFA</span>，不止是品质的执念，更是<span style=\"color:#d4a853;\">灵魂的共鸣</span>\n</p>\n<div style=\"width:2rem;height:1px;background:rgba(212,168,83,0.3);margin:1.5rem auto 0;\"></div>\n</div>\n\n<p style=\"font-size:1.25rem;line-height:2.2;margin-bottom:2rem;color:#a1a1a6;font-weight:500;\">\n<span style=\"color:#d4a853;\">LAFA</span>，让每一位奔赴山海的勇敢华人，终有一口......<span style=\"color:#d4a853;font-weight:600;\">故土的质感，不灭的偏爱</span>\n</p>\n\n<p style=\"font-size:1.375rem;font-weight:600;color:#f5f5f7;line-height:2.2;\">\n<span style=\"color:#d4a853;\">LAFA</span>，<span style=\"color:#d4a853;\">懂你的坚守</span>，<span style=\"color:#d4a853;\">敬你的要强</span>，<span style=\"color:#d4a853;\">予你的滚烫</span>\n</p>\n\n</div>",
+    "excerpt": "The complete LAFA brand story — eight verses of grit, devotion, and the taste of home.",
+    "zh_excerpt": "LAFA 品牌故事全篇——八句诗篇，写尽游子的坚守、故土的偏爱与灵魂的共鸣。",
+    "image": "/uploads/blog.webp",
+    "date": "2026-06-15",
     "author": "LAFA Editorial",
     "tags": [
-      "tea",
-      "culture",
-      "craftsmanship"
+      "brand-story",
+      "manifesto",
+      "inspiration"
     ],
-    "likes": 12
+    "likes": 0
   },
   {
     "id": 2,
-    "title": "Tang Dynasty Flavors: A Journey Through Imperial Taste",
-    "content": "The Tang Dynasty (618–907) was an era of unprecedented openness and cultural exchange. The Silk Road brought flavors, spices, and fruits from across Asia into the imperial court. It is this spirit of discovery that inspires our Tang Collection.\n\nLychee, the 'fruit of the imperial concubine,' was so beloved by Emperor Xuanzong that he ordered express horse relays to deliver fresh lychee from the south to his beloved Yang Guifei in Chang'an. Our Lychee Ice captures this decadent sweetness, balanced with a cooling finish that evokes the mountain springs of the imperial gardens.\n\nOsmanthus, the flower of the autumn moon, was celebrated in Tang poetry for its intoxicating fragrance. Our Osmanthus Oolong blends this floral sweetness with the roasted depth of Taiwanese oolong — a pairing the Tang poets would have approved of.\n\nAt LAFA, we believe that vaping can be more than a habit. It can be a sensory journey through history. Each flavor in the Tang Collection is designed to transport you to a different moment in China's most romantic dynasty.",
-    "image": "/uploads/ac9115de-e170-4bf1-b332-418642878bb1.webp",
-    "excerpt": "Exploring the imperial flavors of China's golden age — from lychee to osmanthus.",
-    "date": "2026-05-18",
+    "title": "The Spirit of Tang-Song: Why We Build Vapes for the Overseas Chinese",
+    "content": "<p>When you leave your homeland, you leave behind more than just a place. You leave behind the taste of jasmine tea on a spring morning, the burst of fresh lychee on a summer day, the quiet ritual of brewing oolong as the autumn leaves fall.</p><p>At LAFA, we believe that vaping can be more than a habit — it can be a bridge back home. Every flavor we craft is a tribute to a thousand years of Chinese culinary and tea culture, reimagined for the modern world.</p><h2>Born from a Gap in the Market</h2><p>Walk into any vape shop in North America or Europe, and you will find endless fruit medleys, candy flavors, and iced everything. But where is the taste of Longjing tea? Where is the floral depth of osmanthus? Where is the comfort of a perfectly brewed Tieguanyin?</p><p>These flavors didn't exist — so we created them. The LAFA team spent over 18 months working with tea masters and flavor chemists to recreate authentic Chinese taste profiles in vapor form. The result is a collection that feels like home in every puff.</p><h2>Ceramic Coil Technology</h2><p>Tea flavors are notoriously difficult to capture in vapor. They are subtle, layered, and easily destroyed by high heat or metallic coils. Our solution was a ceramic coil specifically calibrated for tea-based and delicate fruit flavors.</p><p>Ceramic heats more evenly than traditional cotton-and-wire systems. It preserves the purity of taste, ensuring no metallic aftertaste interferes with the subtle flavor profile. When you vape our Jasmine Green Tea or Tieguanyin, you taste the tea — not the device.</p><h2>The LAFA Philosophy</h2><p>We are not just a vape brand. We are a cultural bridge. Every LAFA product is designed to remind you that no matter how far you wander, the taste of home is never more than a puff away.</p><p>游子无疆，故土不忘。Wander far, never forget home.</p>",
+    "image": "/uploads/2cb72af3-572d-47fc-b272-e4253d2c3f5b.webp",
+    "excerpt": "How a gap in the global vape market led to a brand built on thousand-year-old Chinese tea and flavor traditions.",
+    "date": "2026-06-10",
     "author": "LAFA Editorial",
     "tags": [
-      "tang-dynasty",
-      "flavor",
-      "history"
+      "culture",
+      "tea",
+      "brand-story"
     ],
-    "likes": 8
+    "likes": 24,
+    "zh_title": "唐宋精神：为什么我们为海外华人打造电子烟",
+    "zh_excerpt": "全球电子烟市场的一个空白，如何催生了一个根植于千年中国茶文化和风味的品牌。"
   },
   {
     "id": 3,
-    "title": "Vaping Etiquette: The Modern Scholar's Guide",
-    "content": "In the Song Dynasty, tea drinking followed strict etiquette. The right cup, the right temperature, the right company — each element contributed to the experience. At LAFA, we believe vaping deserves the same level of consideration.\n\nRule 1: Choose your flavor like you would choose a tea. Match it to the occasion. Lychee Ice for social gatherings. Jasmine Green Tea for quiet contemplation. Grape Mist for all-day enjoyment.\n\nRule 2: The draw matters. A slow, gentle draw — like sipping hot tea — yields better flavor than a quick pull. Our adjustable airflow lets you find your perfect draw.\n\nRule 3: Share the experience. Just as tea is best enjoyed with friends, a great vape flavor is worth sharing. Use our Refer program to introduce friends to LAFA — both of you earn rewards.\n\nRule 4: Respect the device. A clean mouthpiece and properly charged battery are the modern equivalents of a well-maintained tea set. Treat your LAFA device with care and it will reward you with consistent flavor.\n\nVaping doesn't have to be mindless. With the right approach, it can be a moment of mindfulness in a busy day.",
-    "image": "/uploads/2cb72af3-572d-47fc-b272-e4253d2c3f5b.webp",
-    "excerpt": "Four principles for elevating your vaping experience, inspired by Song Dynasty tea culture.",
-    "date": "2026-05-10",
+    "title": "A Connoisseur's Guide to Tea-Infused Vaping",
+    "content": "<p>For over a millennium, Chinese tea culture has been more than a beverage — it is an art form, a meditation, a way of life. At LAFA, we asked ourselves: what if we could capture this experience and make it portable?</p><h2>Longjing (Dragon Well) — The Emperor's Tea</h2><p>Longjing is China's most famous green tea, prized for its flat, emerald leaves and distinctive chestnut-like aroma. It was declared a imperial tea by the Qing dynasty's Kangxi Emperor. Our Longjing pod captures this nutty, smooth character with remarkable fidelity.</p><p>The key was low-temperature extraction. Traditional vaping temperatures destroy the delicate amino acids that give Longjing its signature taste. Our ceramic coil runs at a lower, calibrated temperature that preserves these compounds.</p><h2>Tieguanyin (Iron Goddess) — The Floral Oolong</h2><p>Tieguanyin sits between green and black tea — partially oxidized, with a complex profile that ranges from floral to roasted depending on the roast level. Our Tieguanyin pod leans into the medium-roast tradition, with orchid notes and a buttery finish.</p><p>This flavor pairs beautifully with our Titanium Alloy device. The titanium finish adds no flavor interference, letting the tea shine through.</p><h2>Why Tea Vapes Are Different</h2><p>Most vape flavors are simple — one or two dominant notes that hit you immediately. Tea flavors are the opposite. They unfold slowly, with a beginning, middle, and end — much like drinking a real cup of tea. The first draw gives you the aroma, the second the body, and the exhale leaves a lingering sweetness.</p><p>If you are new to tea vaping, we recommend starting with Longjing for its approachable nuttiness, then graduating to Tieguanyin for a more complex experience.</p>",
+    "image": "/uploads/pod-longjing.webp",
+    "excerpt": "Discover the art of tea vaping: from Longjing's nutty smoothness to Tieguanyin's floral complexity.",
+    "date": "2026-06-05",
     "author": "LAFA Editorial",
     "tags": [
-      "lifestyle",
-      "etiquette",
-      "culture"
+      "tea",
+      "flavor-guide",
+      "longjing",
+      "tieguanyin"
     ],
-    "likes": 15
+    "likes": 18,
+    "zh_title": "茶味品鉴指南：龙井与铁观音",
+    "zh_excerpt": "探索茶味电子烟的艺术：从龙井的坚果醇厚到铁观音的花香层次。"
   },
   {
     "id": 4,
-    "title": "测试博客",
-    "content": "测试博客",
-    "image": "/uploads/f2fd3719-78d3-49ac-8667-c86830ae4013.webp",
-    "excerpt": "测试博客...",
-    "date": "2026-06-03",
-    "author": "crazy",
+    "title": "The Fruit Collection: 9 Flavors Inspired by Asian Orchards",
+    "content": "<p>Walk through any night market in Asia, and you will be surrounded by the fragrance of fresh-cut fruit — mangoes dripping with juice, pineapples on skewers, the crisp snap of a green grape between your teeth. Our Fruit Collection is an homage to these sensory memories.</p><h2>Lychee — The Imperial Fruit</h2><p>Legend says that Tang Dynasty Emperor Xuanzong loved lychee so much that he ordered express horse relays to deliver fresh fruit from the south to the capital — a distance of over 1,000 kilometers. Our Lychee Ice captures this decadent sweetness, balanced with a cooling finish.</p><h2>Mango — Tropical Gold</h2><p>Ripe, creamy, unmistakably tropical. Our Mango pod uses a Philippine Carabao mango profile — widely considered the sweetest mango variety in the world. No artificial candy notes, just pure fruit.</p><h2>The Complete Fruit Lineup</h2><p>Our Fruit Collection features nine flavors: Lychee, Lemon, Pineapple, Grape, Watermelon, Mango, Peach, Green Grape, and Strawberry. Each one is crafted using real fruit extract bases, never artificial flavors alone.</p><p>The Emerald Melon deserves special mention — it is based on the Hami melon from Xinjiang, a variety so sweet it was once tribute to the imperial court. Creamy, honeyed, and utterly unique in the vaping world.</p><h2>Pairing Suggestions</h2><p>Try Lychee with our Desert Gold device for a warm, luxurious aesthetic. Mango pairs beautifully with the Sky Blue — tropical vibes all around. And for the full fruit tasting experience, we recommend picking up a 3-pack sampler.</p>",
+    "image": "/uploads/pod-mango.webp",
+    "excerpt": "From imperial lychee to Xinjiang Hami melon — nine fruit flavors that taste like Asia's best orchards.",
+    "date": "2026-05-28",
+    "author": "LAFA Editorial",
     "tags": [
-      "测试博客"
+      "fruit",
+      "flavor-guide",
+      "lychee",
+      "mango"
     ],
-    "likes": 0
+    "likes": 31,
+    "zh_title": "水果系列：9款亚洲果园风味",
+    "zh_excerpt": "从贡品荔枝到新疆哈密瓜——九款水果风味，还原亚洲最好的果园味道。"
+  },
+  {
+    "id": 5,
+    "title": "Behind the Design: The Six LAFA Device Colors",
+    "content": "<p>A great vaping experience starts before the first puff — it starts the moment you hold the device in your hand. That is why we obsess over every detail of our device design, from the aerospace-grade materials to the six meticulously chosen finishes.</p><h2>Six Colors, Six Personalities</h2><p><strong>Titanium Alloy</strong> — The connoisseur's choice. A premium titanium finish that is fingerprint-resistant and impossibly sleek. Pairs perfectly with our tea flavors for the ultimate refined experience.</p><p><strong>Business Black</strong> — Understated and professional. The matte black finish disappears in your hand during meetings, letting you focus on what matters.</p><p><strong>Sky Blue</strong> — Bright and energetic. This color was inspired by the clear skies over Hangzhou's West Lake. It brings a sense of freshness to every draw.</p><p><strong>Desert Gold</strong> — Warm and luxurious. The golden tone echoes the sand dunes of the Silk Road, a reminder of the cultural exchange that defines LAFA's identity.</p><p><strong>Rose Pink</strong> — Elegant with a soft pink hue. Designed for those who appreciate subtlety and grace in equal measure.</p><p><strong>Mirror Blue</strong> — Bold and reflective. A mirror-finish blue that catches light and attention. For those who want their device to make a statement.</p><h2>Built to Last</h2><p>Every LAFA device features a 350mAh battery with Type-C fast charging. The ceramic coil is rated for over 500 refills before any flavor degradation — that is months of consistent performance. And at just 39 USD (originally 49), it is an investment in quality that does not break the bank.</p>",
+    "image": "/uploads/device-titanium-alloy.webp",
+    "excerpt": "From Titanium Alloy to Mirror Blue — the design philosophy behind our six signature device colors.",
+    "date": "2026-05-20",
+    "author": "LAFA Editorial",
+    "tags": [
+      "design",
+      "devices",
+      "colors"
+    ],
+    "likes": 15,
+    "zh_title": "设计背后：六款 LAFA 设备配色",
+    "zh_excerpt": "从钛合金到镜面蓝——我们六款标志性设备配色背后的设计哲学。"
+  },
+  {
+    "id": 6,
+    "title": "Vaping with Intention: A Modern Ritual for the Discerning User",
+    "content": "<p>In the Song Dynasty, every aspect of tea preparation was considered an art — the temperature of the water, the shape of the cup, the rhythm of the pour. This spirit of intentional ritual is something we believe vaping can embrace.</p><h2>Rule 1: Choose Your Flavor Like You Would Choose a Tea</h2><p>Match the flavor to the moment. A crisp Green Grape for a morning commute. A soothing Longjing for an afternoon break. A bold Tieguanyin for an evening of reflection. Your flavor choice sets the tone for the experience ahead.</p><h2>Rule 2: The Draw Matters</h2><p>A slow, gentle draw — like sipping hot tea — yields far better flavor than a quick, harsh pull. Our devices feature adjustable airflow so you can find your perfect resistance. Start loose and tighten until you hit the sweet spot.</p><h2>Rule 3: Share the Ritual</h2><p>Just as the Song scholars gathered to appreciate tea together, a great flavor is worth sharing. Use our Refer program to introduce friends to LAFA — both of you earn rewards. It is the modern equivalent of inviting someone for tea.</p><h2>Rule 4: Honor the Device</h2><p>A clean mouthpiece and a properly charged battery are the modern equivalents of a well-maintained tea set. Treat your LAFA device with care, and it will reward you with months of consistent, pure flavor.</p><h2>Beyond the Puff</h2><p>Vaping does not have to be mindless. With the right approach, it can be a moment of mindfulness — a pause in a busy day to reconnect with your senses. It can be a taste of home when you are thousands of miles away. It can be, in its own way, a small ritual of self-care.</p><p>That is the LAFA way.</p>",
+    "image": "/uploads/device-titanium-alloy.webp",
+    "excerpt": "Four principles for elevating your vaping into a mindful daily ritual, inspired by Song Dynasty tea culture.",
+    "date": "2026-05-12",
+    "author": "LAFA Editorial",
+    "tags": [
+      "lifestyle",
+      "ritual",
+      "mindfulness"
+    ],
+    "likes": 22,
+    "zh_title": "有意 vaping：现代人的品味仪式",
+    "zh_excerpt": "四个原则，将你的 vaping 提升为每日正念仪式，灵感来自宋代茶道。"
   }
 ]

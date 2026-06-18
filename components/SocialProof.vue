@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { lang } = useI18n()
 
-// Simulated social proof notifications
 const proofs = [
   { name: 'Wei L.', action: 'purchased', product: 'Lychee Ice', time: '2 min ago' },
   { name: 'Yun C.', action: 'reviewed', product: 'Jasmine Green Tea', time: '5 min ago', rating: 5 },
@@ -19,7 +18,6 @@ onMounted(() => {
     setTimeout(() => { visible.value = false }, 5000)
     current.value = (current.value + 1) % proofs.length
   }, 8000)
-  // Initial show
   setTimeout(() => { visible.value = true }, 3000)
   setTimeout(() => { visible.value = false }, 8000)
 })
@@ -37,8 +35,8 @@ function actionText(p: typeof proofs[0]) {
   <Teleport to="body">
     <div
       v-if="visible && proofs.length"
-      class="fixed bottom-20 left-4 z-[250] bg-[#1a1a1a]/95 backdrop-blur-xl border border-border rounded-2xl px-4 py-3 flex items-center gap-3 shadow-2xl max-w-[320px]"
-      style="animation: fadeUp 0.4s ease-out;">
+      class="fixed bottom-20 left-4 bg-[#1a1a1a]/95 backdrop-blur-xl border border-border rounded-2xl px-4 py-3 flex items-center gap-3 shadow-2xl max-w-[320px]"
+      style="z-index:250;animation:fadeUp 0.4s ease-out">
       <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
         {{ proofs[current].action === 'purchased' ? '🛒' : proofs[current].action === 'reviewed' ? '⭐' : '✅' }}
       </div>

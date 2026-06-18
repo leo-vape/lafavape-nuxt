@@ -1,32 +1,39 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, lang } = useI18n()
 const route = useRoute()
-const toastMsg = ref('')
-const toastType = ref('success')
 
-const { data: blogs, pending, error: fetchError } = await useFetch('/api/data/blog', { default: () => [] })
+import blogData from '~/server/data/blog.json'
+const blogs = blogData as any[]
 
-const blog = computed(() => {
-  const id = route.params.id
-  return (blogs.value as any[]).find((b: any) => String(b.id) === String(id)) || {}
-})
+const blog = computed(() =>
+  blogs.find((b: any) => String(b.id) === String(route.params.id)) || {}
+)
 
-const loading = computed(() => pending.value)
-const error = computed(() => {
-  if (fetchError.value) return 'Failed to load'
-  if (!pending.value && !blog.value.id) return t('blog.notFound')
-  return ''
-})
+const displayTitle = computed(() => lang.value === 'zh' ? (blog.value.zh_title || blog.value.title) : blog.value.title)
+const displayExcerpt = computed(() => lang.value === 'zh' ? (blog.value.zh_excerpt || blog.value.excerpt) : blog.value.excerpt)
 
-function getImageUrl(image: string, size?: string): string {
+const toastMsg = ref(''); const toastType = ref('success')
+
+function getImageUrl(image: string): string {
   if (!image) return '/uploads/placeholder.png'
   const base = `/uploads/${image.replace(/^.*[\\/]/, '')}`
-  if (size === 'small') return base.replace(/\.webp$/i, '_small.webp')
   return base
 }
 
+const blogImageHTML = computed(() => {
+  if (!blog.value.id) return ''
+  const img = getImageUrl(blog.value.image)
+  const alt = (displayTitle.value || '').replace(/"/g, '&quot;')
+  return `<img src="${img}" alt="${alt}" class="w-full aspect-square object-cover">`
+})
+
 function formatDate(date: string): string {
   return date ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : ''
+}
+
+function showToast(message: string, type: string = 'success') {
+  toastMsg.value = message
+  toastType.value = type
 }
 
 async function likeBlog() {
@@ -42,10 +49,10 @@ async function likeBlog() {
 }
 
 useHead({
-  title: computed(() => `LAFA — ${blog.value.title || 'Article'}`),
+  title: computed(() => `LAFA — ${displayTitle.value || 'Article'}`),
   meta: [
-    { name: 'description', content: computed(() => blog.value.excerpt || '') },
-    { property: 'og:title', content: computed(() => `LAFA — ${blog.value.title || 'Article'}`) },
+    { name: 'description', content: computed(() => displayExcerpt.value || '') },
+    { property: 'og:title', content: computed(() => `LAFA — ${displayTitle.value || 'Article'}`) },
     { property: 'og:image', content: computed(() => blog.value.image || '/uploads/placeholder.png') },
   ]
 })
@@ -54,26 +61,16 @@ useHead({
 <template>
   <section class="section section-alt pt-20">
     <div class="max-w-[900px] mx-auto">
-      <div v-if="loading" class="text-center py-20 space-y-4">
-        <div class="skeleton h-8 w-48 mx-auto"></div>
-        <div class="skeleton h-80 w-full"></div>
-      </div>
-      <div v-else-if="error" class="text-center py-20">
-        <p class="text-text-secondary">{{ error }}</p>
+      <div v-if="!blog.id" class="text-center py-20">
+        <p class="text-text-secondary">{{ t('blog.notFound') }}</p>
         <NuxtLink to="/blog" class="btn btn-outline mt-6">{{ t('blog.back') }}</NuxtLink>
       </div>
-      <article v-else-if="blog.id">
-        <span class="section-eyebrow mb-6 inline-block">{{ blog.tags?.[0] || t('section.journal') }}</span>
-        <h1 class="section-heading mb-4">{{ blog.title }}</h1>
+      <article v-else>
+        <span class="section-eyebrow mb-6 inline-block">{{ blog.tags?.[0] || 'Journal' }}</span>
+        <h1 class="section-heading mb-4">{{ displayTitle }}</h1>
         <p class="text-[0.875rem] text-text-tertiary mb-10">{{ formatDate(blog.date) }} &middot; {{ blog.author }}</p>
-        <div class="rounded-[24px] overflow-hidden mb-12 bg-surface">
-          <picture>
-            <source :srcset="getImageUrl(blog.image, 'small')" media="(max-width: 768px)" type="image/webp">
-            <img :src="getImageUrl(blog.image)" :alt="blog.title" class="w-full aspect-square object-cover"
-              @error="(e: any) => e.target.src = '/uploads/placeholder.png'">
-          </picture>
-        </div>
-        <div class="prose" v-html="blog.content"></div>
+        <div class="rounded-[24px] overflow-hidden mb-12 bg-surface" v-html="blogImageHTML"></div>
+        <div class="prose" v-html="lang === 'zh' && blog.zh_content ? blog.zh_content : blog.content"></div>
         <div class="flex flex-wrap gap-2 mt-12 mb-10">
           <span v-for="tag in blog.tags" :key="tag" class="tag">{{ tag }}</span>
         </div>
@@ -83,9 +80,6 @@ useHead({
             target="_blank" class="btn btn-outline">{{ t('share') }}</a>
         </div>
       </article>
-      <div v-else class="text-center py-20">
-        <p class="text-text-secondary">{{ t('blog.notFound') }}</p>
-      </div>
       <ToastNotification :message="toastMsg" :type="toastType" />
     </div>
   </section>

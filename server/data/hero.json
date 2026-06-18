@@ -1,5 +1,11 @@
 [
   {
+    "id": 0,
+    "title": "LAFA Vape",
+    "description": "Tang-Song Flavors — Premium vape for the global Chinese community",
+    "image": "/uploads/hero1.webp"
+  },
+  {
     "id": 1,
     "title": "Tang-Song Flavors",
     "description": "Premium vape crafted for the global Chinese community. Every flavor tells a story from a golden age.",

@@ -2,25 +2,21 @@ import productsData from '../data/products.json'
 import blogData from '../data/blog.json'
 
 export default defineEventHandler(async (event) => {
-  const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : 'https://lafavape.com'
+  const baseUrl = 'https://lafavape.com'
 
-  // Static pages
   const staticPages = [
-    { url: '/', priority: '1.0' },
-    { url: '/blog', priority: '0.8' },
-    { url: '/story', priority: '0.9' },
-    { url: '/faq', priority: '0.7' },
-    { url: '/refer', priority: '0.6' },
-    { url: '/verify', priority: '0.6' },
+    { url: '/', priority: '1.0', changefreq: 'weekly' },
+    { url: '/story', priority: '0.9', changefreq: 'monthly' },
+    { url: '/blog', priority: '0.8', changefreq: 'weekly' },
+    { url: '/faq', priority: '0.7', changefreq: 'monthly' },
+    { url: '/refer', priority: '0.6', changefreq: 'monthly' },
+    { url: '/verify', priority: '0.6', changefreq: 'monthly' },
   ]
 
   let urls = staticPages.map(p =>
-    `  <url><loc>${baseUrl}${p.url}</loc><changefreq>weekly</changefreq><priority>${p.priority}</priority></url>`
+    `  <url><loc>${baseUrl}${p.url}</loc><changefreq>${p.changefreq}</changefreq><priority>${p.priority}</priority></url>`
   )
 
-  // Dynamic pages from static imports
   const products: any[] = Array.isArray(productsData) ? productsData : []
   for (const p of products) {
     urls.push(`  <url><loc>${baseUrl}/product/${p.id}</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`)
