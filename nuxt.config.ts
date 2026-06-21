@@ -17,7 +17,7 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'en' },
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=5.0' },
         { name: 'description', content: 'LAFA Vape — Tang-Song Flavors. Premium vape crafted for the global Chinese community. Every flavor tells a story from the Tang and Song dynasties.' },
         { name: 'keywords', content: 'LAFA Vape, 电子烟, vape, 唐宋风味, Tang Dynasty, Song Dynasty, premium vape, Chinese vape, lychee vape, jasmine tea vape, osmanthus oolong, longjing tea vape, ceramic coil vape' },
         { name: 'author', content: 'LAFA Vape' },

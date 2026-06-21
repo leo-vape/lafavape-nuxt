@@ -1,15 +1,16 @@
 {
   "name": "lafavape-nuxt",
   "version": "2.0.0",
-  "description": "LAFA Vape - 唐宋风味高端电子烟品牌官网 (Nuxt 3)",
+  "description": "LAFA Vape - \u5510\u5b8b\u98ce\u5473\u9ad8\u7aef\u7535\u5b50\u70df\u54c1\u724c\u5b98\u7f51 (Nuxt 3)",
   "type": "module",
   "private": true,
   "scripts": {
     "dev": "nuxt dev --port 3000",
-    "build": "nuxt build",
+    "build": "bash scripts/build-static.sh",
     "start": "node .output/server/index.mjs",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "build:nuxt": "nuxt build"
   },
   "dependencies": {
     "@libsql/client": "^0.17.3",

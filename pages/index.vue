@@ -87,7 +87,7 @@ function productCardHTML(item: any): string {
   const priceHTML = item.price
     ? `<div class="flex items-baseline gap-2 mt-1"><span class="text-sm font-semibold text-white">US $${item.price}</span>${item.comparePrice ? `<span class="text-xs line-through" style="color:#C41E24">$${item.comparePrice}</span>` : ''}</div>`
     : ''
-  return `<a href="/product/${item.id}" class="card card-overlay group" onclick="window.location.href='/product/${item.id}';return false"><div class="card-media"><img src="${img}" alt="${name.replace(/"/g, '&quot;')}"></div><div class="card-overlay-text"><h3 class="card-title">${name}</h3>${priceHTML}</div></a>`
+  return `<a href="/product/${item.id}" class="card card-overlay group" ><div class="card-media"><img src="${img}" alt="${name.replace(/"/g, '&quot;')}"></div><div class="card-overlay-text"><h3 class="card-title">${name}</h3>${priceHTML}</div></a>`
 }
 
 function blogCardHTML(item: any): string {
@@ -96,7 +96,7 @@ function blogCardHTML(item: any): string {
   const title = (isZh ? (item.zh_title || item.title) : item.title || '').replace(/"/g, '&quot;')
   const excerpt = (isZh ? (item.zh_excerpt || item.excerpt) : item.excerpt || '').replace(/"/g, '&quot;')
   const date = item.date ? new Date(item.date).toLocaleDateString(isZh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : ''
-  return `<a href="/blog/${item.id}" class="card group" onclick="window.location.href='/blog/${item.id}';return false"><div class="card-media"><img src="${img}" alt="${title}"></div><div class="card-body"><h3 class="card-title">${title}</h3><p class="card-desc">${excerpt}</p><p class="card-meta">${date} &middot; ${item.author || ''}</p><span class="card-cta">${t('card.read')} <span>&rarr;</span></span></div></a>`
+  return `<a href="/blog/${item.id}" class="card group" ><div class="card-media"><img src="${img}" alt="${title}"></div><div class="card-body"><h3 class="card-title">${title}</h3><p class="card-desc">${excerpt}</p><p class="card-meta">${date} &middot; ${item.author || ''}</p><span class="card-cta">${t('card.read')} <span>&rarr;</span></span></div></a>`
 }
 
 // Pre-render all hero slides as single static HTML (no v-for, no Vue hydration)

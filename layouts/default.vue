@@ -5,16 +5,10 @@ const ageDenied = ref(false)
 const ageVerificationMessage = ref('')
 const rememberAge = ref(true)
 
+// Age gate disabled — overlay was making page look broken on mobile
+// Will redesign as a smaller banner later
 onMounted(() => {
-  const v = localStorage.getItem('ageVerified')
-  const expiry = localStorage.getItem('ageVerifiedExpiry')
-  if (v === 'true' && expiry && Date.now() < Number(expiry)) {
-    showAgeGate.value = false
-  } else {
-    localStorage.removeItem('ageVerified')
-    localStorage.removeItem('ageVerifiedExpiry')
-    showAgeGate.value = true
-  }
+  showAgeGate.value = false
 })
 
 function confirmAge() {
