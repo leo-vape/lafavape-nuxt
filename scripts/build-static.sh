@@ -58,3 +58,5 @@ print(f'OK: {len(html)}B, {html.count("<img")} images, 0 Nuxt JS, carousel ready
 PYEOF
 
 echo "=== Done ==="
+
+# Note: build output goes to .vercel/output (Build Output API) for Vercel git auto-deploy
