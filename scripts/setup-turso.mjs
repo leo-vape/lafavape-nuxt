@@ -1,5 +1,5 @@
 // 初始化 Turso 数据库表结构（可重复运行，幂等）
-import { createClient } from '@libsql/client'
+import { createClient } from '@libsql/client/web'
 
 const url = process.env.TURSO_DATABASE_URL || process.env.TURSO_URL
 const authToken = process.env.TURSO_AUTH_TOKEN || process.env.TURSO_TOKEN
