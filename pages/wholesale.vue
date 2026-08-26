@@ -71,6 +71,26 @@ useHead({ title: lang.value === 'zh' ? '批发合作 — LAFA' : 'Wholesale — 
         </div>
       </div>
 
+      <!-- Brand flexibility -->
+      <div class="bg-[#0a0a0a] rounded-2xl p-6 md:p-8 border border-border mb-10">
+        <p class="text-[0.9375rem] font-semibold text-text-primary mb-2 text-center">🔀 {{ t('wholesale.brandTitle') }}</p>
+        <p class="text-[0.8125rem] text-text-secondary text-center mb-6">{{ t('wholesale.brandDesc') }}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="rounded-xl border border-border p-4 text-center">
+            <p class="text-[0.875rem] font-semibold text-text-primary">{{ t('wholesale.brandOwn') }}</p>
+            <p class="text-[0.75rem] text-text-secondary mt-1">{{ t('wholesale.brandOwnDesc') }}</p>
+          </div>
+          <div class="rounded-xl border border-border p-4 text-center">
+            <p class="text-[0.875rem] font-semibold text-text-primary">{{ t('wholesale.brandOther') }}</p>
+            <p class="text-[0.75rem] text-text-secondary mt-1">{{ t('wholesale.brandOtherDesc') }}</p>
+          </div>
+          <div class="rounded-xl border border-border p-4 text-center">
+            <p class="text-[0.875rem] font-semibold text-text-primary">{{ t('wholesale.brandOem') }}</p>
+            <p class="text-[0.75rem] text-text-secondary mt-1">{{ t('wholesale.brandOemDesc') }}</p>
+          </div>
+        </div>
+      </div>
+
       <!-- Compliance documents -->
       <div class="bg-[#0a0a0a] rounded-2xl p-6 md:p-8 border border-border mb-10">
         <p class="text-[0.9375rem] font-semibold text-text-primary mb-2 text-center">📄 {{ t('wholesale.complianceTitle') }}</p>

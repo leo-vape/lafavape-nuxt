@@ -18,14 +18,14 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=5.0' },
-        { name: 'description', content: 'LAFA Vape — B2B vape supplier for US & Middle East vape shops and small wholesalers. US domestic stock (2-4 day delivery), full compliance documents (MSDS, UN38.3, COA), low-MOQ trial & sample orders.' },
-        { name: 'keywords', content: 'vape wholesale, vape supplier, vape shop wholesale, small wholesale vape, disposable vape bulk, vape OEM ODM, US vape wholesale, Middle East vape supplier, low MOQ vape, mixed flavors, MSDS, UN38.3, COA, LAFA Vape' },
+        { name: 'description', content: 'LAFA Vape — B2B vape supplier for US & Middle East vape shops and small wholesalers. Brand-flexible sourcing: LAFA own brand, other brands, or OEM white-label. US domestic stock (2-4 day delivery), full compliance documents (MSDS, UN38.3, COA), low-MOQ trial & sample orders.' },
+        { name: 'keywords', content: 'vape wholesale, vape supplier, vape shop wholesale, small wholesale vape, disposable vape bulk, vape OEM ODM, white label vape, own brand vape, US vape wholesale, Middle East vape supplier, low MOQ vape, mixed flavors, MSDS, UN38.3, COA, LAFA Vape' },
         { name: 'author', content: 'LAFA Vape' },
         { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large' },
 
         // Open Graph
         { property: 'og:title', content: 'LAFA Vape — Vape Wholesale for US & Middle East Shops' },
-        { property: 'og:description', content: 'B2B vape supplier for US & Middle East vape shops and small wholesalers. US domestic stock, full compliance docs, low-MOQ trial & sample orders.' },
+        { property: 'og:description', content: 'B2B vape supplier for US & Middle East vape shops and small wholesalers. Own brand, other brands, or OEM white-label. US domestic stock, full compliance docs, low-MOQ & sample orders.' },
         { property: 'og:image', content: '/uploads/hero1.webp' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
@@ -39,7 +39,7 @@ export default defineNuxtConfig({
         // Twitter
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'LAFA Vape — Vape Wholesale for Shops & Small Wholesalers' },
-        { name: 'twitter:description', content: 'US domestic stock, full compliance docs, low-MOQ & mixed-SKU orders for US & Middle East vape shops.' },
+        { name: 'twitter:description', content: 'Own brand, other brands, or OEM white-label. US domestic stock, full compliance docs, low-MOQ & mixed-SKU for US & Middle East shops.' },
         { name: 'twitter:image', content: '/uploads/hero1.webp' },
 
         // Additional SEO
