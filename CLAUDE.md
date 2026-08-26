@@ -1,13 +1,22 @@
 # LAFA Vape — Nuxt 3 (B2B Wholesale)
 
 ## Project overview
-LAFA Vape is a solo-run B2B vape export business targeting wholesale distributors in the
-**US** and **Middle East**. This is the public website (lafavape.com).
+LAFA Vape is a solo-run B2B vape export business targeting **small-B clients**: vape shops and
+small wholesalers in the **US** and **Middle East** (NOT large distributors). This is the public
+website (lafavape.com).
 
-- **Positioning:** US domestic stock (2–4 day delivery) + Dubai global hub, full compliance
-  docs (MSDS / UN38.3 / COA), low-MOQ trial orders for distributors.
+- **Positioning:** US domestic stock (2–4 day delivery) + Dubai global hub, low MOQ + sample
+  orders + mixed-SKU, full compliance docs (MSDS / UN38.3 / COA), logistics & payments handled
+  for US + Middle East.
 - **Stack:** Nuxt 3 (SSR + Build Output API) + Nitro API + Tailwind CSS + Turso (HTTP client)
   + Resend (email), deployed on Vercel.
+
+### ⚠️ Positioning rules (important)
+- Target audience is **vape shops + small wholesalers** — write copy for "店主 / 小批发商",
+  never "distributors / 分销伙伴".
+- **"Gray customs" is an operational reality but must NEVER appear on the public site.** The
+  public posture stays: "full compliance docs + import compliance/customs are the importer's
+  responsibility." Keep operational/payment/customs details in private WhatsApp chat only.
 
 ## Commands
 ```bash

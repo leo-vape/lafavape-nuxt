@@ -10,17 +10,17 @@ let textTimer: ReturnType<typeof setInterval> | null = null
 const storyLines = computed(() => {
   const zh = lang.value === 'zh'
   return zh ? [
-    '<span class="text-gold">美国本土现货</span>，2-4 天到货，无需跨境清关',
-    '<span class="text-gold">全套合规文件</span>，MSDS · UN38.3 · COA 随货附',
-    '<span class="text-gold">低 MOQ 试单</span>，小批量先试，降低首次合作门槛',
-    '<span class="text-gold">中东全球仓</span>，迪拜枢纽，覆盖全球发货',
-    '<span class="text-gold">LAFA</span>，为美国与中东批发商而生的供应链伙伴',
+    '<span class="text-gold">美国本土现货</span>，2-4 天到货，快速补货',
+    '<span class="text-gold">低起订量 + 样品单</span>，先试后批，降低首批压力',
+    '<span class="text-gold">支持混批拼柜</span>，一个订单多种口味，减少库存',
+    '<span class="text-gold">收款 + 物流全搞定</span>，美国 + 中东付款无障碍',
+    '<span class="text-gold">LAFA</span>，为电子烟店与小批发商而生',
   ] : [
-    '<span class="text-gold">US domestic stock</span> &mdash; 2-4 day delivery, no cross-border customs',
-    '<span class="text-gold">Full compliance docs</span> &mdash; MSDS, UN38.3 &amp; COA with every shipment',
-    '<span class="text-gold">Low-MOQ trial orders</span> &mdash; start small, lower the barrier',
-    '<span class="text-gold">Middle East hub</span> &mdash; Dubai logistics, ships worldwide',
-    '<span class="text-gold">LAFA</span> &mdash; your supply-chain partner for US &amp; Middle East distributors',
+    '<span class="text-gold">US domestic stock</span> &mdash; 2-4 day delivery for fast restocking',
+    '<span class="text-gold">Low MOQ + samples</span> &mdash; try before bulk, low first-order pressure',
+    '<span class="text-gold">Mixed-SKU orders</span> &mdash; many flavors in one order, less inventory risk',
+    '<span class="text-gold">Logistics &amp; payments handled</span> &mdash; US &amp; Middle East, no friction',
+    '<span class="text-gold">LAFA</span> &mdash; built for vape shops &amp; small wholesalers',
   ]
 })
 
@@ -131,10 +131,10 @@ useHead({ title: 'LAFA — Tang-Song Flavors' })
     <section class="section" style="padding-top:3rem;padding-bottom:3rem;">
       <div class="max-w-[1400px] mx-auto text-center">
         <p class="text-xs uppercase tracking-[0.2em] text-gold mb-3">{{ lang === 'zh' ? 'B2B 批发' : 'B2B WHOLESALE' }}</p>
-        <h2 class="sec-label mb-4">{{ lang === 'zh' ? '美国本土仓 · 中东全球仓 · 全套合规文件' : 'US Stock · Global Hub · Full Compliance Docs' }}</h2>
-        <p class="sec-sub text-center mb-8">{{ lang === 'zh' ? '面向美国与中东的批发商 / 店主，低 MOQ 试单，先试后批。' : 'For US & Middle East distributors and shop owners. Low-MOQ trial orders — try before bulk.' }}</p>
+        <h2 class="sec-label mb-4">{{ lang === 'zh' ? '美国本土仓 · 低起订量 · 可混批 · 收款搞定' : 'US Stock · Low MOQ · Mixed SKU · Payments Handled' }}</h2>
+        <p class="sec-sub text-center mb-8">{{ lang === 'zh' ? '面向美国与中东的电子烟店与小批发商，低起订量，先试后批。' : 'For US & Middle East vape shops and small wholesalers. Low MOQ — try before bulk.' }}</p>
         <NuxtLink to="/wholesale" class="buy-btn-wa max-w-[420px] mx-auto">
-          {{ lang === 'zh' ? '📦 申请批发合作 →' : '📦 Become a Distribution Partner →' }}
+          {{ lang === 'zh' ? '📦 店主进货 / 批发合作 →' : '📦 For Shops & Wholesalers →' }}
         </NuxtLink>
       </div>
     </section>

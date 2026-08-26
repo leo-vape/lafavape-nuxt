@@ -9,7 +9,7 @@ useHead({ title: 'Terms of Service — LAFA Vape' })
       <p class="text-sm text-text-tertiary mb-10">Last updated: 2026-08-26</p>
 
       <h2 class="text-lg font-semibold text-text-primary mb-3 mt-8">1. Business Model</h2>
-      <p class="text-sm text-text-secondary leading-relaxed mb-2">LAFA Vape operates as a <strong>B2B wholesale supplier only</strong>. We do not sell directly to consumers. All products are offered to verified distributors, vape shops, and wholesalers in the United States, the Middle East, and other permitted regions.</p>
+      <p class="text-sm text-text-secondary leading-relaxed mb-2">LAFA Vape operates as a <strong>B2B wholesale supplier only</strong>. We do not sell directly to consumers. All products are offered to vape shops and small wholesalers in the United States, the Middle East, and other permitted regions.</p>
 
       <h2 class="text-lg font-semibold text-text-primary mb-3 mt-8">2. Orders & Payment</h2>
       <p class="text-sm text-text-secondary leading-relaxed mb-2">Orders are confirmed via Proforma Invoice (PI). Standard terms are T/T bank transfer with a deposit (typically 30%) before production or dispatch, with the balance due before shipment. We ship under EXW or FOB Incoterms unless otherwise agreed in writing.</p>

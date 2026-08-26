@@ -42,8 +42,11 @@ async function submitInquiry() {
 
 const perks = computed(() => [
   { title: t('wholesale.usTitle'), desc: t('wholesale.usDesc'), icon: '🇺🇸' },
-  { title: t('wholesale.meTitle'), desc: t('wholesale.meDesc'), icon: '🌍' },
   { title: t('wholesale.moqTitle'), desc: t('wholesale.moqDesc'), icon: '📦' },
+  { title: t('wholesale.mixedTitle'), desc: t('wholesale.mixedDesc'), icon: '🧬' },
+  { title: t('wholesale.meTitle'), desc: t('wholesale.meDesc'), icon: '🌍' },
+  { title: t('wholesale.payTitle'), desc: t('wholesale.payDesc'), icon: '💳' },
+  { title: t('wholesale.complianceTitle'), desc: t('wholesale.complianceDesc'), icon: '📄' },
 ])
 
 useHead({ title: lang.value === 'zh' ? '批发合作 — LAFA' : 'Wholesale — LAFA' })

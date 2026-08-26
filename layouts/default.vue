@@ -44,7 +44,7 @@ function denyAge() {
       "name": "LAFA Vape",
       "url": "https://lafavape.com",
       "logo": "https://lafavape.com/logo.png",
-      "description": "B2B vape wholesale for the US & Middle East. US domestic stock, full compliance documents, low-MOQ trial orders.",
+      "description": "B2B vape supplier for US & Middle East vape shops and small wholesalers. US domestic stock, full compliance documents, low-MOQ & mixed-SKU orders.",
       "sameAs": [
         "https://x.com/lafavape",
         "https://instagram.com/lafavape"
