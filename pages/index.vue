@@ -10,23 +10,17 @@ let textTimer: ReturnType<typeof setInterval> | null = null
 const storyLines = computed(() => {
   const zh = lang.value === 'zh'
   return zh ? [
-    '<span class="text-gold">游子无疆</span>，一生要强，不低眉，不退让，扛下孤独，吞尽风浪',
-    '<span class="text-gold">雾化万千</span>，故土深情，精神归处，独缺一份<span class="text-gold">专属偏爱</span>',
-    '<span class="text-gold">LAFA</span>，为此而生',
-    '以故土匠心，永不妥协，雕琢每一口<span class="text-gold">温润</span>',
-    '昼夜奔波的疲惫，灯火阑珊的落寞，<span class="text-gold">一口熟悉的风味</span>，消解劳顿；<span class="text-gold">一缕故土气息</span>，抚慰万里乡愁',
-    '<span class="text-gold">LAFA</span>，<span class="text-gold">不止是品质的执念</span>，更是灵魂的共鸣',
-    '<span class="text-gold">LAFA</span>，让每一位奔赴山海的勇敢华人，终有一口......<span class="text-gold">故土的质感，不灭的偏爱</span>',
-    '<span class="text-gold">LAFA</span>，<span class="text-gold">懂你的坚守</span>，<span class="text-gold">敬你的要强</span>，<span class="text-gold">予你的滚烫</span>',
+    '<span class="text-gold">美国本土现货</span>，2-4 天到货，无需跨境清关',
+    '<span class="text-gold">全套合规文件</span>，MSDS · UN38.3 · COA 随货附',
+    '<span class="text-gold">低 MOQ 试单</span>，小批量先试，降低首次合作门槛',
+    '<span class="text-gold">中东全球仓</span>，迪拜枢纽，覆盖全球发货',
+    '<span class="text-gold">LAFA</span>，为美国与中东批发商而生的供应链伙伴',
   ] : [
-    '<span class="text-gold">Wander far</span>, stand firm; never bow or yield, bear solitude, weather every storm',
-    'Amid mist and longing for home, one&rsquo;s heart craves <span class="text-gold">exclusive devotion</span>&mdash;',
-    '<span class="text-gold">LAFA</span> was made to fill that void',
-    'Crafted with homeland grit and uncompromising standards, every sip is <span class="text-gold">smooth</span>',
-    'Tired from endless journeys, lost in lonely nights: <span class="text-gold">A familiar taste</span> eases fatigue; <span class="text-gold">a whiff of home</span> heals homesickness',
-    '<span class="text-gold">LAFA</span> stands for <span class="text-gold">fine craftsmanship</span> and spiritual kinship',
-    'For every overseas Chinese chasing dreams across the globe, it brings <span class="text-gold">authentic hometown flavor and lifelong fondness</span>',
-    '<span class="text-gold">LAFA</span> <span class="text-gold">sees your perseverance</span>, <span class="text-gold">respects your grit</span>, and <span class="text-gold">warms your soul</span>',
+    '<span class="text-gold">US domestic stock</span> &mdash; 2-4 day delivery, no cross-border customs',
+    '<span class="text-gold">Full compliance docs</span> &mdash; MSDS, UN38.3 &amp; COA with every shipment',
+    '<span class="text-gold">Low-MOQ trial orders</span> &mdash; start small, lower the barrier',
+    '<span class="text-gold">Middle East hub</span> &mdash; Dubai logistics, ships worldwide',
+    '<span class="text-gold">LAFA</span> &mdash; your supply-chain partner for US &amp; Middle East distributors',
   ]
 })
 
@@ -130,6 +124,18 @@ useHead({ title: 'LAFA — Tang-Song Flavors' })
       <div class="hero-bg-carousel" v-html="heroSlidesHTML"></div>
       <div class="absolute inset-0 flex items-center justify-center text-center px-6 sm:px-12" style="z-index:2">
         <p :key="textKey" class="hero-shockwave text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-relaxed tracking-wider max-w-[700px]" style="text-shadow:0 0 8px rgba(255,255,255,0.4),0 0 30px rgba(184,148,31,0.35),0 0 60px rgba(184,148,31,0.2),0 2px 4px rgba(0,0,0,0.8);animation:heroScaleIn 1.8s cubic-bezier(0.1,0.8,0.2,1) both" :style="{ fontFamily: heroFont }" v-html="storyLines[textIndex]"></p>
+      </div>
+    </section>
+
+    <!-- Wholesale CTA -->
+    <section class="section" style="padding-top:3rem;padding-bottom:3rem;">
+      <div class="max-w-[1400px] mx-auto text-center">
+        <p class="text-xs uppercase tracking-[0.2em] text-gold mb-3">{{ lang === 'zh' ? 'B2B 批发' : 'B2B WHOLESALE' }}</p>
+        <h2 class="sec-label mb-4">{{ lang === 'zh' ? '美国本土仓 · 中东全球仓 · 全套合规文件' : 'US Stock · Global Hub · Full Compliance Docs' }}</h2>
+        <p class="sec-sub text-center mb-8">{{ lang === 'zh' ? '面向美国与中东的批发商 / 店主，低 MOQ 试单，先试后批。' : 'For US & Middle East distributors and shop owners. Low-MOQ trial orders — try before bulk.' }}</p>
+        <NuxtLink to="/wholesale" class="buy-btn-wa max-w-[420px] mx-auto">
+          {{ lang === 'zh' ? '📦 申请批发合作 →' : '📦 Become a Distribution Partner →' }}
+        </NuxtLink>
       </div>
     </section>
 

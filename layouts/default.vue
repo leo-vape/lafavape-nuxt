@@ -5,10 +5,15 @@ const ageDenied = ref(false)
 const ageVerificationMessage = ref('')
 const rememberAge = ref(true)
 
-// Age gate disabled — overlay was making page look broken on mobile
-// Will redesign as a smaller banner later
+// Age gate: show unless visitor verified within the last 30 days
 onMounted(() => {
-  showAgeGate.value = false
+  try {
+    const verified = localStorage.getItem('ageVerified')
+    const expiry = localStorage.getItem('ageVerifiedExpiry')
+    showAgeGate.value = !(verified === 'true' && expiry && Number(expiry) > Date.now())
+  } catch {
+    showAgeGate.value = true
+  }
 })
 
 function confirmAge() {
@@ -39,7 +44,7 @@ function denyAge() {
       "name": "LAFA Vape",
       "url": "https://lafavape.com",
       "logo": "https://lafavape.com/logo.png",
-      "description": "Premium vape crafted for the global Chinese community. Tang-Song dynasty inspired flavors.",
+      "description": "B2B vape wholesale for the US & Middle East. US domestic stock, full compliance documents, low-MOQ trial orders.",
       "sameAs": [
         "https://x.com/lafavape",
         "https://instagram.com/lafavape"
@@ -90,7 +95,6 @@ function denyAge() {
     <SiteFooter />
     <ClientOnly>
       <ChatWidget />
-      <SocialProof />
     </ClientOnly>
   </div>
 </template>

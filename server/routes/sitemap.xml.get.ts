@@ -8,8 +8,8 @@ export default defineEventHandler(async (event) => {
     { url: '/', priority: '1.0', changefreq: 'weekly' },
     { url: '/story', priority: '0.9', changefreq: 'monthly' },
     { url: '/blog', priority: '0.8', changefreq: 'weekly' },
+    { url: '/wholesale', priority: '0.8', changefreq: 'monthly' },
     { url: '/faq', priority: '0.7', changefreq: 'monthly' },
-    { url: '/refer', priority: '0.6', changefreq: 'monthly' },
     { url: '/verify', priority: '0.6', changefreq: 'monthly' },
   ]
 

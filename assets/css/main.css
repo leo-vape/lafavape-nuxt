@@ -314,6 +314,27 @@ body {
 .buy-btn:hover { background: transparent; color: #C41E24; }
 .buy-btn:disabled { opacity: 0.5; cursor: default; }
 
+/* Order CTA — WhatsApp / WeChat */
+.buy-btn-wa {
+  display: block; width: 100%; padding: 14px; margin-bottom: 10px;
+  font-size: 16px; font-weight: 600; color: #fff;
+  background: #25D366; border: 1px solid #25D366; border-radius: 8px;
+  cursor: pointer; transition: all 0.2s; text-align: center; text-decoration: none;
+}
+.buy-btn-wa:hover { background: #1ebe5b; border-color: #1ebe5b; color: #fff; }
+.buy-btn-wechat {
+  display: block; width: 100%; padding: 14px; margin-bottom: 10px;
+  font-size: 16px; font-weight: 600; color: #fff;
+  background: #07c160; border: 1px solid #07c160; border-radius: 8px;
+  cursor: pointer; transition: all 0.2s;
+}
+.buy-btn-wechat:hover { background: #06a354; border-color: #06a354; color: #fff; }
+.wholesale-link {
+  display: block; text-align: center; margin-top: 14px;
+  font-size: 13px; font-weight: 600; color: #b8941f; text-decoration: none;
+}
+.wholesale-link:hover { color: #d4a853; }
+
 
 /* Specs */
 .specs-block { display: flex; flex-direction: column; gap: 4px; }
@@ -346,13 +367,17 @@ body {
 .prod-tab.active { color: #f5f5f7; border-bottom-color: #C41E24; }
 
 /* WeChat widget */
-.wx-float-btn {
+.chat-float-stack {
   position: fixed; bottom: 24px; right: 24px; z-index: 50;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.wx-float-btn {
   width: 56px; height: 56px; border-radius: 50%;
   background: #07c160; color: #fff; font-size: 24px;
   border: none; cursor: pointer; box-shadow: 0 4px 20px rgba(7,193,96,0.35);
   transition: transform 0.2s; display: flex; align-items: center; justify-content: center;
 }
+.wx-float-btn.wa { background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
 .wx-float-btn:hover { transform: scale(1.08); }
 .wx-dialog {
   background: #1c1c1e; border-radius: 24px; padding: 32px 28px;

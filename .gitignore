@@ -43,7 +43,3 @@ lafa 产品图/
 # Prevent generated artifacts in public
 public/uploads/.nuxt/
 public/uploads/node_modules/
-
-# Runtime data (generated on server)
-server/data/referral-stats.json
-server/data/rewards.txt

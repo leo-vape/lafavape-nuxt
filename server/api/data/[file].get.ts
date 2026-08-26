@@ -5,15 +5,12 @@ import productsData from '../../data/products.json'
 import blogData from '../../data/blog.json'
 import heroData from '../../data/hero.json'
 import settingsData from '../../data/settings.json'
-import codesData from '../../data/codes.json'
 
 const staticData: Record<string, any> = {
   products: productsData,
   blog: blogData,
   hero: heroData,
   settings: settingsData,
-  codes: codesData,
-  'referral-stats': { total: 0, shares: 0, visits: 0, referrers: {} },
 }
 
 export default defineEventHandler(async (event) => {

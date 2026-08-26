@@ -48,6 +48,15 @@ const statements = [
     blog_id TEXT PRIMARY KEY,
     likes INTEGER NOT NULL DEFAULT 0,
     updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+  )`,
+  `CREATE TABLE IF NOT EXISTS wholesale_inquiries (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    company TEXT NOT NULL,
+    country TEXT,
+    contact TEXT NOT NULL,
+    interest TEXT,
+    quantity TEXT,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
   )`
 ]
 

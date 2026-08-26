@@ -3,17 +3,30 @@ const { lang } = useI18n()
 const open = ref(false)
 const copied = ref(false)
 const wxId = ref('')
+const whatsapp = ref('')
 
 onMounted(async () => {
-  try { const r = await fetch('/api/data/settings'); const d = await r.json(); wxId.value = d.wxId || '' } catch {}
+  try {
+    const r = await fetch('/api/data/settings')
+    const d = await r.json()
+    wxId.value = d.wxId || ''
+    whatsapp.value = d.whatsapp || ''
+  } catch {}
 })
 
 function copyWxId() { navigator.clipboard.writeText(wxId.value); copied.value = true; setTimeout(() => copied.value = false, 2000) }
 function openWechat() { window.open('weixin://') }
+function openWhatsapp() {
+  const num = whatsapp.value.replace(/[^\d]/g, '')
+  if (num) window.open(`https://wa.me/${num}?text=${encodeURIComponent('Hi, I want to know more about LAFA Vape')}`, '_blank')
+}
 </script>
 
 <template>
-  <button v-if="!open && wxId" class="wx-float-btn" @click="open = true" aria-label="微信客服">💬</button>
+  <div v-if="!open" class="chat-float-stack">
+    <button v-if="whatsapp" class="wx-float-btn wa" @click="openWhatsapp" aria-label="WhatsApp">🟢</button>
+    <button v-if="wxId" class="wx-float-btn" @click="open = true" aria-label="微信客服">💬</button>
+  </div>
 
   <Teleport to="body">
     <div v-if="open" class="fixed inset-0 flex items-center justify-center p-4" style="z-index:200;background:rgba(0,0,0,0.88)" @click="open = false">

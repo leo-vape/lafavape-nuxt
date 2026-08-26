@@ -11,10 +11,10 @@ function isActive(to: string) {
 }
 const mainLinks = [
   { to: '/#products', label: 'nav.products' },
+  { to: '/wholesale', label: 'nav.wholesale' },
   { to: '/blog', label: 'nav.journal' },
 ]
 const moreLinks = [
-  { to: '/refer', label: 'nav.refer' },
   { to: '/verify', label: 'nav.verify' },
   { to: '/faq', label: 'nav.support' },
 ]

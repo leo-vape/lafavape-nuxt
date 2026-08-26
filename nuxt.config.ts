@@ -18,14 +18,14 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=5.0' },
-        { name: 'description', content: 'LAFA Vape — Tang-Song Flavors. Premium vape crafted for the global Chinese community. Every flavor tells a story from the Tang and Song dynasties.' },
-        { name: 'keywords', content: 'LAFA Vape, 电子烟, vape, 唐宋风味, Tang Dynasty, Song Dynasty, premium vape, Chinese vape, lychee vape, jasmine tea vape, osmanthus oolong, longjing tea vape, ceramic coil vape' },
+        { name: 'description', content: 'LAFA Vape — B2B vape wholesale. US domestic stock (2-4 day delivery) with full compliance documents (MSDS, UN38.3, COA). Low-MOQ trial orders for US & Middle East distributors.' },
+        { name: 'keywords', content: 'vape wholesale, vape distributor, disposable vape bulk, vape OEM ODM, US vape wholesale, Middle East vape supplier, MSDS, UN38.3, COA, LAFA Vape' },
         { name: 'author', content: 'LAFA Vape' },
         { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large' },
 
         // Open Graph
-        { property: 'og:title', content: 'LAFA Vape — Tang-Song Flavors | Premium Chinese Vape' },
-        { property: 'og:description', content: 'Premium vape crafted for the global Chinese community. Inspired by Tang and Song dynasty flavors.' },
+        { property: 'og:title', content: 'LAFA Vape — B2B Vape Wholesale | US Stock + Full Compliance Docs' },
+        { property: 'og:description', content: 'B2B vape wholesale for the US & Middle East. US domestic stock (2-4 day delivery), complete compliance documents, low-MOQ trial orders.' },
         { property: 'og:image', content: '/uploads/hero1.webp' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
@@ -38,8 +38,8 @@ export default defineNuxtConfig({
 
         // Twitter
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'LAFA Vape — Tang-Song Flavors' },
-        { name: 'twitter:description', content: 'Premium vape for the global Chinese community.' },
+        { name: 'twitter:title', content: 'LAFA Vape — B2B Vape Wholesale' },
+        { name: 'twitter:description', content: 'B2B vape wholesale: US domestic stock, full compliance docs, low-MOQ trial orders.' },
         { name: 'twitter:image', content: '/uploads/hero1.webp' },
 
         // Additional SEO

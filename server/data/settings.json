@@ -1,8 +1,10 @@
 {
   "siteName": "LAFA Vape",
-  "siteDesc": "Tang-Song Flavors — Premium vape for the global Chinese community.",
-  "wxId": "lafavape",
-  "contactEmail": "hello@lafavape.com",
+  "siteDesc": "B2B vape wholesale — US domestic stock, full compliance documents (MSDS/UN38.3/COA), low-MOQ trial orders for the US & Middle East.",
+  "wxId": "",
+  "whatsapp": "971500000000",
+  "contactEmail": "info@lafavape.com",
   "instagram": "https://instagram.com/lafavape",
-  "x": "https://x.com/lafavape"
+  "x": "https://x.com/lafavape",
+  "_note": "PLACEHOLDER: whatsapp 为占位号（971500000000），上线前替换为真实香港实体 SIM WhatsApp 号；wxId 已清空（B2B 移除微信）。"
 }

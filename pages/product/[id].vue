@@ -24,17 +24,22 @@ const productImageHTML = computed(() => {
   return `<img src="${img}" alt="${alt}" class="w-full h-full object-cover">`
 })
 
-const checkingOut = ref(false)
-async function checkout() {
-  checkingOut.value = true
+const settings = ref<any>({})
+onMounted(async () => {
   try {
-    const r = await fetch('/api/create-checkout', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({productName:displayName.value,price:product.value.price,productId:product.value.id}) })
-    const d = await r.json()
-    if (d.checkoutUrl) window.location.href = d.checkoutUrl
-    else window.location.href = '/#contact'
-  } catch { window.location.href = '/#contact' }
-  finally { checkingOut.value = false }
-}
+    const r = await fetch('/api/data/settings')
+    settings.value = await r.json()
+  } catch {}
+})
+
+// WhatsApp order link (prefilled with product name + price)
+const waLink = computed(() => {
+  const num = String(settings.value.whatsapp || '').replace(/[^\d]/g, '')
+  if (!num) return ''
+  const msg = `Hi, I want to discuss wholesale for: ${displayName.value}`
+  return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`
+})
+
 useHead({
   title: computed(() => `${displayName.value || 'Product'} — LAFA`),
   meta: computed(() => product.value.id ? [
@@ -61,19 +66,20 @@ useHead({
         <div>
           <h1 class="prod-title">{{ displayName }}</h1>
           <p v-if="product.categoryZh" class="text-sm text-text-tertiary mb-3">{{ lang === 'zh' ? product.categoryZh : product.category }}</p>
-          <div v-if="product.price" class="flex items-baseline gap-2 mb-6">
-            <span class="prod-price">US ${{ product.price }}</span>
-            <span v-if="product.comparePrice" class="prod-original">${{ product.comparePrice }}</span>
-          </div>
           <p class="specs-section-title">{{ lang === 'zh' ? '参数' : 'Specifications' }}</p>
           <div v-if="product.specs?.length" class="specs-block mb-6">
             <div class="specs-labels"><span v-for="spec in product.specs" :key="spec.label" class="spec-label">{{ spec.label }}</span></div>
             <div class="specs-values"><span v-for="spec in product.specs" :key="spec.label" class="spec-value">{{ spec.value }}</span></div>
           </div>
           <div class="specs-divider"></div>
-          <button v-if="product.price" class="buy-btn" @click="checkout" :disabled="checkingOut">
-            {{ checkingOut ? t('product.redirecting') : `${t('product.buyNow')} — $${product.price}` }}
-          </button>
+          <div class="mt-6">
+            <a v-if="waLink" :href="waLink" target="_blank" rel="noopener" class="buy-btn-wa">
+              💬 {{ t('product.orderWhatsApp') }}
+            </a>
+            <NuxtLink to="/wholesale" class="wholesale-link">
+              📦 {{ t('product.wholesaleInquiry') }} →
+            </NuxtLink>
+          </div>
           <NuxtLink to="/" class="block text-center text-xs text-text-tertiary hover:text-gold mt-4 transition">{{ t('product.back') }}</NuxtLink>
         </div>
       </div>

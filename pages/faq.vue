@@ -4,32 +4,32 @@ useHead({ title: 'FAQ — LAFA' })
 
 const faqs = [
   {
-    q: { zh: '如何下单购买？', en: 'How do I place an order?' },
-    a: { zh: '浏览产品页面，选择您喜欢的口味后点击「Buy Now」按钮，系统将引导您通过 Stripe 安全支付。', en: 'Browse our products, choose your flavor, and click "Buy Now". You\'ll be guided through secure Stripe payment.' },
+    q: { zh: '如何开始批发合作？', en: 'How do I start a wholesale partnership?' },
+    a: { zh: '在批发页面填写询价表单，或直接通过 WhatsApp 联系我们，我们会在 24 小时内回复报价。', en: 'Submit the inquiry form on the Wholesale page, or message us on WhatsApp — we reply with a quote within 24 hours.' },
   },
   {
-    q: { zh: '支持哪些支付方式？', en: 'What payment methods are accepted?' },
-    a: { zh: '我们通过 Stripe 支持 Visa、Mastercard、American Express 等主流信用卡和借记卡。', en: 'We accept Visa, Mastercard, American Express, and most major credit/debit cards via Stripe.' },
+    q: { zh: '起订量（MOQ）和价格？', en: 'What is your MOQ and pricing?' },
+    a: { zh: '我们支持低起订量试单。价格因产品与采购量而异，请联系我们获取阶梯报价。', en: 'We support low-MOQ trial orders. Pricing varies by product and volume — contact us for tiered quotes.' },
+  },
+  {
+    q: { zh: '可以从美国境内发货吗？', en: 'Do you ship from within the US?' },
+    a: { zh: '可以。我们在美国有本土仓，2-4 天到货；同时在中东迪拜设有全球仓，覆盖全球发货。', en: 'Yes. We hold US domestic stock with 2-4 day delivery, plus a Dubai hub for worldwide shipping.' },
+  },
+  {
+    q: { zh: '提供哪些合规文件？', en: 'What compliance documents do you provide?' },
+    a: { zh: '每批货随附 MSDS（材料安全数据表）、UN38.3（电池运输测试报告）和 COA（成分分析证书）。', en: 'Every shipment includes MSDS, UN38.3 battery transport reports, and COA certificates of analysis.' },
   },
   {
     q: { zh: '如何验证产品真伪？', en: 'How do I verify product authenticity?' },
     a: { zh: '每件 LAFA 产品都有唯一防伪码。访问 /verify 页面输入防伪码即可查询。', en: 'Every LAFA product has a unique anti-counterfeit code. Visit /verify and enter your code.' },
   },
   {
-    q: { zh: '配送范围和时间？', en: 'Shipping zones and times?' },
-    a: { zh: '我们配送美国、加拿大、英国、欧盟及亚洲主要国家。标准配送 5-10 个工作日，加急 2-4 个工作日。', en: 'We ship to US, Canada, UK, EU, and major Asian countries. Standard shipping: 5-10 business days. Express: 2-4 days.' },
-  },
-  {
-    q: { zh: '退换货政策？', en: 'What is your return policy?' },
-    a: { zh: '未开封产品可在收货后 14 天内申请退换。请联系客服邮箱 hello@lafavape.com。', en: 'Unopened products can be returned within 14 days of delivery. Contact hello@lafavape.com.' },
+    q: { zh: '进口合规与清关由谁负责？', en: 'Who handles import compliance and customs?' },
+    a: { zh: '进口合规与清关由当地进口商负责。我们提供全套合规文件以协助清关。', en: 'Import compliance and customs clearance are the responsibility of the local importer. We provide the documentation to assist.' },
   },
   {
     q: { zh: 'LAFA 产品的尼古丁含量？', en: 'What nicotine strengths are available?' },
-    a: { zh: '我们提供 2%、3% 和 5% 尼古丁浓度的产品，您可在产品页面选择适合的浓度。', en: 'We offer 2%, 3%, and 5% nicotine strengths. Choose your preference on the product page.' },
-  },
-  {
-    q: { zh: '推荐好友有什么奖励？', en: 'What rewards for referring friends?' },
-    a: { zh: '通过您的专属推荐链接分享给朋友，朋友访问后您即可解锁阶梯奖励，包括欢迎礼、银质奖励、金质奖励和 VIP 礼盒。', en: 'Share your unique referral link. Earn tiered rewards: Welcome Gift, Silver, Gold, and VIP Gift Box as your referrals grow.' },
+    a: { zh: '我们提供 2%、3% 和 5% 尼古丁浓度的产品。', en: 'We offer 2%, 3%, and 5% nicotine strengths.' },
   },
 ]
 
