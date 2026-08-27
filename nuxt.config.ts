@@ -28,7 +28,7 @@ export default defineNuxtConfig({
         // Open Graph
         { property: 'og:title', content: 'LAFA Vape — Vape Wholesale for US & Middle East Shops' },
         { property: 'og:description', content: 'B2B vape supplier for US & Middle East vape shops and small wholesalers. Own brand, other brands, or OEM white-label. US domestic stock, full compliance docs, low-MOQ & sample orders.' },
-        { property: 'og:image', content: '/uploads/hero1.webp' },
+        { property: 'og:image', content: 'https://lafavape.com/uploads/hero1.webp' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
         { property: 'og:image:type', content: 'image/webp' },
@@ -42,7 +42,7 @@ export default defineNuxtConfig({
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'LAFA Vape — Vape Wholesale for Shops & Small Wholesalers' },
         { name: 'twitter:description', content: 'Own brand, other brands, or OEM white-label. US domestic stock, full compliance docs, low-MOQ & mixed-SKU for US & Middle East shops.' },
-        { name: 'twitter:image', content: '/uploads/hero1.webp' },
+        { name: 'twitter:image', content: 'https://lafavape.com/uploads/hero1.webp' },
 
         // Additional SEO
         { name: 'theme-color', content: '#000000' },

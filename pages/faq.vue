@@ -39,6 +39,25 @@ const faqs = [
 
 const openFaq = ref<number | null>(null)
 function toggleFaq(i: number) { openFaq.value = openFaq.value === i ? null : i }
+
+// FAQPage schema for Google rich results (People Also Ask) — English canonical content
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f: any) => ({
+    '@type': 'Question',
+    name: f.q.en,
+    acceptedAnswer: { '@type': 'Answer', text: f.a.en },
+  })),
+}
+
+useHead({
+  title: 'FAQ — LAFA',
+  meta: [
+    { name: 'description', content: 'Answers for vape shop owners and small wholesalers: MOQ, samples, mixed-SKU orders, US delivery, payment, documents, and import responsibility.' },
+  ],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(faqSchema) }],
+})
 </script>
 
 <template>

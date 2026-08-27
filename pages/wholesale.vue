@@ -49,7 +49,65 @@ const perks = computed(() => [
   { title: t('wholesale.complianceTitle'), desc: t('wholesale.complianceDesc'), icon: '📄' },
 ])
 
-useHead({ title: lang.value === 'zh' ? '批发合作 — LAFA' : 'Wholesale — LAFA' })
+// B2B FAQ — also feeds FAQPage JSON-LD for Google rich results (People Also Ask)
+const faqs = [
+  {
+    q: 'What is your minimum order quantity (MOQ)?',
+    zh_q: '你们的起订量（MOQ）是多少？',
+    a: 'We keep MOQ low so small shops can test before scaling. Sample and trial orders are supported, and you can mix SKUs in a single order.',
+    zh_a: '我们保持低起订量，让小店可以先试再批量。支持样品单和试单，单个订单可混批多种 SKU。',
+  },
+  {
+    q: 'Where does my order ship from?',
+    zh_q: '订单从哪里发货？',
+    a: 'From our US regional warehouse (2-4 day restock for many SKUs), from our Middle East hub, or direct from China depending on your market and quantity.',
+    zh_a: '根据市场和数量，可从美国本土仓（多数 SKU 2-4 天补货）、中东仓或中国直发。',
+  },
+  {
+    q: 'Which documents come with each shipment?',
+    zh_q: '每批货带什么文件？',
+    a: 'MSDS, UN38.3 battery transport report, and COA where available. Import compliance and customs clearance remain the responsibility of the local importer.',
+    zh_a: 'MSDS、UN38.3 电池运输报告、以及可用的 COA。进口合规与清关责任归当地进口商。',
+  },
+  {
+    q: 'Can I mix flavors, devices, or even brands in one order?',
+    zh_q: '一个订单可以混口味、混设备甚至混品牌吗？',
+    a: 'Yes. You can mix LAFA SKUs freely, and we also source popular third-party brands. OEM white-label is available if you want your own line.',
+    zh_a: '可以。可自由混配 LAFA 各 SKU，也可代采热门第三方品牌；想要自有品牌还可 OEM 白标。',
+  },
+  {
+    q: 'What payment terms do you offer?',
+    zh_q: '支持什么付款方式？',
+    a: 'Standard B2B terms are T/T bank transfer with a deposit before dispatch, on EXW or FOB Shenzhen Incoterms. We also handle US and Middle East payment channels.',
+    zh_a: '标准 B2B 条款为 T/T 电汇、发货前付定金，EXW 或 FOB 深圳。支持美国和中东收款渠道。',
+  },
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f: any) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+
+useHead({
+  title: computed(() => lang.value === 'zh' ? '一次性电子烟批发供应商 — LAFA' : 'Disposable Vape Wholesale Supplier — LAFA | Bulk Vapes for Shops'),
+  meta: [
+    { name: 'description', content: computed(() => lang.value === 'zh'
+      ? '电子烟 B2B 批发：低起订量、美国仓现货、可混批、可 OEM 白标。随货提供 MSDS / UN38.3 / COA。进口清关由当地进口商负责。'
+      : 'B2B vape wholesale with low MOQ, US-warehouse stock, mixed-SKU orders, and OEM white-label. MSDS / UN38.3 / COA included with shipments. Import compliance is the buyer’s responsibility.') },
+    { name: 'keywords', content: 'disposable vape wholesale, vape distributor, bulk vapes, low MOQ vape, OEM disposable vape, vape wholesale US warehouse, mixed SKU vape' },
+    { property: 'og:title', content: 'Disposable Vape Wholesale Supplier — LAFA' },
+    { property: 'og:description', content: 'Bulk vapes for shops: low MOQ, US warehouse stock, mixed SKU, OEM white-label.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://lafavape.com/wholesale' },
+    { property: 'og:image', content: 'https://lafavape.com/uploads/hero1.webp' },
+  ],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(faqSchema) }],
+})
 </script>
 
 <template>
@@ -151,6 +209,15 @@ useHead({ title: lang.value === 'zh' ? '批发合作 — LAFA' : 'Wholesale — 
             {{ submitting ? '...' : t('wholesale.submit') }}
           </button>
         </form>
+      </div>
+
+      <!-- FAQ (B2B) — feeds FAQPage schema -->
+      <div class="mt-14 max-w-[680px] mx-auto">
+        <h2 class="text-center mb-6 text-[1.15rem] font-semibold">{{ lang === 'zh' ? '批发常见问题' : 'Frequently Asked Questions' }}</h2>
+        <div v-for="(f, i) in faqs" :key="i" class="mb-4 p-5 rounded-2xl border border-border bg-[#0a0a0a]">
+          <p class="text-[0.9375rem] font-semibold text-text-primary mb-2">{{ lang === 'zh' ? f.zh_q : f.q }}</p>
+          <p class="text-[0.8125rem] text-text-secondary leading-relaxed">{{ lang === 'zh' ? f.zh_a : f.a }}</p>
+        </div>
       </div>
     </div>
   </section>

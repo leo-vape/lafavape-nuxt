@@ -28,6 +28,8 @@ export default defineEventHandler(async (event) => {
 
   const blogs: any[] = Array.isArray(blogData) ? blogData : []
   for (const b of blogs) {
+    // Skip posts marked noindex — they stay crawlable but are excluded from the sitemap
+    if (b.noindex) continue
     urls.push(`  <url><loc>${baseUrl}/blog/${b.slug || b.id}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>`)
   }
 
