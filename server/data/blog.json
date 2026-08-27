@@ -149,5 +149,44 @@
       "vape-shop"
     ],
     "likes": 0
+  },
+  {
+    "id": 9,
+    "slug": "vape-shipping-documents-msds-un38-3-coa",
+    "title": "The 3 Documents Every Vape Shipment Needs: MSDS, UN38.3, COA",
+    "zh_title": "每批电子烟货必须带的 3 份文件：MSDS、UN38.3、COA",
+    "content": "<p>Every vape order moves faster when the paperwork is complete. Three documents do most of the work: MSDS for material safety, UN38.3 for battery transport, and COA for analysis. They do not replace your responsibility to confirm the rules in your market &mdash; but a complete document set removes the friction at customs and with your own customers.</p><h2>1. MSDS &mdash; Material Safety Data Sheet</h2><p>The MSDS describes the physical and chemical properties of the product and its contents, including hazard warnings and handling instructions. Shippers, carriers, and customs brokers ask for it routinely. It is the document that tells everyone in the chain how to handle and transport the product safely.</p><h2>2. UN38.3 &mdash; Battery Transport Test Report</h2><p>Vape devices and pods contain lithium batteries, which are classified as dangerous goods for transport. UN38.3 is the standard set of tests a battery must pass to be shipped safely by air or sea &mdash; thermal, altitude, vibration, shock, and short-circuit testing among others. Carriers typically require the UN38.3 summary report before accepting battery-powered goods.</p><h2>3. COA &mdash; Certificate of Analysis</h2><p>The COA is issued by the factory or an independent lab and states what is actually in the product &mdash; nicotine concentration, base liquids, and that contaminants are within limits. Where available, it gives the buyer and their customers confidence in what they are selling.</p><h2>4. Why a Complete Set Saves You Time</h2><p>Missing documents are the most common reason a vape shipment stalls. Each back-and-forth with a broker or carrier costs days. When a supplier ships with MSDS, UN38.3, and COA included as standard, the buyer avoids the email chain and the delay.</p><p>One important boundary: import compliance and customs clearance remain the responsibility of the local importer. A reliable supplier provides the documents and states clearly what they do and do not guarantee. Anyone who promises 'no customs risk' is not being straight with you.</p><h2>Bottom Line</h2><p>Before you place an order, ask which documents ship with it. MSDS, UN38.3, and COA cover the safety, transport, and content questions that come up again and again &mdash; and having them ready is the difference between a smooth restock and a stuck container.</p><p><a href='/wholesale' style='color:#d4a853;font-weight:600;'>Ask LAFA for the document set on your order &rarr;</a></p>",
+    "excerpt": "A plain-English guide to MSDS, UN38.3, and COA — the three documents that keep vape shipments moving, and who is responsible for what.",
+    "zh_excerpt": "用大白话讲清 MSDS、UN38.3、COA——让电子烟货物顺利通关的 3 份文件，以及责任如何划分。",
+    "image": "/uploads/blog.webp",
+    "date": "2026-08-27",
+    "author": "LAFA Editorial",
+    "tags": [
+      "shipping-documents",
+      "msds",
+      "un38-3",
+      "coa",
+      "compliance"
+    ],
+    "likes": 0
+  },
+  {
+    "id": 10,
+    "slug": "low-moq-vape-wholesale-test-new-flavors",
+    "title": "Low MOQ Vape Wholesale: Test New Flavors Without the Risk",
+    "zh_title": "低起订量电子烟批发：无风险测试新口味",
+    "content": "<p>A 5,000-unit minimum is a bet most small shops cannot afford to make on an untested flavor. Low MOQs and sample orders flip the risk &mdash; you test first, then scale only what actually sells. This is how a small vape shop stays nimble without betting the month on a guess.</p><h2>1. Why High MOQ Hurts Small Shops</h2><p>A big minimum forces a shop to buy more of a product than its customers have asked for yet. That cash is now sitting on a shelf, and if the flavor does not move, it becomes dead stock that eats margin twice &mdash; once in the purchase, once in the markdown.</p><ul><li>High MOQ = more cash locked in a single bet.</li><li>Dead SKUs shrink the shelf space your winners deserve.</li><li>Slow-moving stock is the quiet killer of small-shop cash flow.</li></ul><h2>2. Sample Orders &amp; Trial Runs</h2><p>A sample order lets you hold the product, check the quality, and test it with real customers before committing to quantity. Good suppliers offer samples and small trial orders as a normal part of doing business, not a special favor. The cost of a sample is tiny compared with the cost of a bulk order that does not sell.</p><h2>3. Mixed-SKU Orders Spread the Risk</h2><p>Instead of betting on one flavor, a mixed-SKU order carries many flavors in one shipment. Demand spreads across the shelf, so a miss on one SKU is absorbed by hits on others. This is the single most useful tool a small wholesaler has for managing risk while still stocking depth.</p><h2>4. Scaling After a Proven Winner</h2><p>The low-MOQ approach is not about staying small forever &mdash; it is about proving demand before scaling. Once a flavor has real sell-through data, buying it in bigger quantity is a data-backed decision, not a guess. Test cheap, prove the winner, then scale.</p><h2>Bottom Line</h2><p>Low MOQ and sample orders are not just nice-to-have supplier features; they are how a small shop protects its cash while building a range customers actually buy. If a supplier insists on huge minimums for an unproven flavor, the risk is on you &mdash; and it does not need to be.</p><p><a href='/wholesale' style='color:#d4a853;font-weight:600;'>Start with a sample order from LAFA &rarr;</a></p>",
+    "excerpt": "How low minimums, sample orders, and mixed-SKU shipping let small vape shops test flavors without betting the month on a guess.",
+    "zh_excerpt": "低起订量、样品单、混批出货——让小店先试口味再上量，不用把整月押在猜测上。",
+    "image": "/uploads/pod-mango.webp",
+    "date": "2026-08-27",
+    "author": "LAFA Editorial",
+    "tags": [
+      "low-moq",
+      "samples",
+      "mixed-sku",
+      "inventory-risk"
+    ],
+    "likes": 0
   }
 ]
