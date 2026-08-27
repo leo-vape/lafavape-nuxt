@@ -6,7 +6,10 @@ import blogData from '~/server/data/blog.json'
 const blogs = blogData as any[]
 
 const blog = computed(() =>
-  blogs.find((b: any) => String(b.id) === String(route.params.id)) || {}
+  blogs.find((b: any) =>
+    (b.slug && b.slug === String(route.params.id)) ||
+    String(b.id) === String(route.params.id)
+  ) || {}
 )
 
 const displayTitle = computed(() => lang.value === 'zh' ? (blog.value.zh_title || blog.value.title) : blog.value.title)
@@ -53,7 +56,10 @@ useHead({
   meta: [
     { name: 'description', content: computed(() => displayExcerpt.value || '') },
     { property: 'og:title', content: computed(() => `LAFA — ${displayTitle.value || 'Article'}`) },
+    { property: 'og:description', content: computed(() => displayExcerpt.value || '') },
     { property: 'og:image', content: computed(() => blog.value.image || '/uploads/placeholder.png') },
+    { property: 'og:url', content: computed(() => `https://lafavape.com/blog/${blog.value.slug || blog.value.id}`) },
+    { property: 'og:type', content: 'article' },
   ]
 })
 </script>

@@ -1,5 +1,14 @@
 <script setup lang="ts">
 const { lang } = useI18n()
+const route = useRoute()
+
+// Per-page canonical (each page points to itself instead of a fixed homepage URL)
+useHead({
+  link: [
+    { rel: 'canonical', href: computed(() => route.path === '/' ? 'https://lafavape.com' : `https://lafavape.com${route.path}`) }
+  ]
+})
+
 const showAgeGate = ref(false)
 const ageDenied = ref(false)
 const ageVerificationMessage = ref('')

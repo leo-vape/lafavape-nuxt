@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
       sendEmail({
         to: String(email),
         subject: 'Welcome to LAFA Vape!',
-        html: `<h3>Welcome to LAFA Vape!</h3><p>Thanks for subscribing! You'll receive updates on new Tang-Song flavors, exclusive offers, and more.</p><p><strong>— LAFA Vape Team</strong></p>`
+        html: `<h3>Welcome to LAFA Vape!</h3><p>Thanks for subscribing! You'll receive B2B wholesale updates, sourcing insights, and new stock alerts for vape shops and small wholesalers.</p><p><strong>— LAFA Vape Team</strong></p>`
       }).catch(e => console.error('Welcome email failed:', e))
     ])
   } catch (e: any) {

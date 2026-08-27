@@ -6,11 +6,14 @@ export default defineEventHandler(async (event) => {
 
   const staticPages = [
     { url: '/', priority: '1.0', changefreq: 'weekly' },
-    { url: '/story', priority: '0.9', changefreq: 'monthly' },
-    { url: '/blog', priority: '0.8', changefreq: 'weekly' },
-    { url: '/wholesale', priority: '0.8', changefreq: 'monthly' },
-    { url: '/faq', priority: '0.7', changefreq: 'monthly' },
-    { url: '/verify', priority: '0.6', changefreq: 'monthly' },
+    { url: '/story', priority: '0.7', changefreq: 'monthly' },
+    { url: '/blog', priority: '0.9', changefreq: 'weekly' },
+    { url: '/wholesale', priority: '0.9', changefreq: 'monthly' },
+    { url: '/faq', priority: '0.6', changefreq: 'monthly' },
+    { url: '/verify', priority: '0.5', changefreq: 'monthly' },
+    { url: '/compliance', priority: '0.6', changefreq: 'yearly' },
+    { url: '/terms', priority: '0.4', changefreq: 'yearly' },
+    { url: '/privacy', priority: '0.4', changefreq: 'yearly' },
   ]
 
   let urls = staticPages.map(p =>
@@ -24,7 +27,7 @@ export default defineEventHandler(async (event) => {
 
   const blogs: any[] = Array.isArray(blogData) ? blogData : []
   for (const b of blogs) {
-    urls.push(`  <url><loc>${baseUrl}/blog/${b.id}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>`)
+    urls.push(`  <url><loc>${baseUrl}/blog/${b.slug || b.id}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>`)
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

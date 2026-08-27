@@ -90,7 +90,7 @@ function blogCardHTML(item: any): string {
   const title = (isZh ? (item.zh_title || item.title) : item.title || '').replace(/"/g, '&quot;')
   const excerpt = (isZh ? (item.zh_excerpt || item.excerpt) : item.excerpt || '').replace(/"/g, '&quot;')
   const date = item.date ? new Date(item.date).toLocaleDateString(isZh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : ''
-  return `<a href="/blog/${item.id}" class="card group" ><div class="card-media"><img src="${img}" alt="${title}"></div><div class="card-body"><h3 class="card-title">${title}</h3><p class="card-desc">${excerpt}</p><p class="card-meta">${date} &middot; ${item.author || ''}</p><span class="card-cta">${t('card.read')} <span>&rarr;</span></span></div></a>`
+  return `<a href="/blog/${item.slug || item.id}" class="card group" ><div class="card-media"><img src="${img}" alt="${title}"></div><div class="card-body"><h3 class="card-title">${title}</h3><p class="card-desc">${excerpt}</p><p class="card-meta">${date} &middot; ${item.author || ''}</p><span class="card-cta">${t('card.read')} <span>&rarr;</span></span></div></a>`
 }
 
 // Pre-render all hero slides as single static HTML (no v-for, no Vue hydration)
@@ -110,7 +110,12 @@ const blogsHTML = computed(() => (blogs.value as any[]).map(blogCardHTML).join('
 
 const toastMsg = ref(''); const toastType = ref('success')
 function showToast(d: { message: string; type: string }) { toastMsg.value = d.message; toastType.value = d.type }
-useHead({ title: 'LAFA — Tang-Song Flavors' })
+useHead({
+  title: 'LAFA Vape — Vape Wholesale Supplier for US & Middle East',
+  meta: [
+    { name: 'description', content: 'LAFA Vape — B2B vape wholesale for US & Middle East shops and small wholesalers. US domestic stock (2-4 day delivery), low MOQ, mixed-SKU. Own brand, other brands, or OEM white-label.' },
+  ]
+})
 </script>
 
 <template>

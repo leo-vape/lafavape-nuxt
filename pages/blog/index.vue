@@ -16,7 +16,7 @@ function blogCardHTML(item: any): string {
   const title = (isZh ? (item.zh_title || item.title) : item.title || '').replace(/"/g, '&quot;')
   const excerpt = (isZh ? (item.zh_excerpt || item.excerpt) : item.excerpt || '').replace(/"/g, '&quot;')
   const date = item.date ? new Date(item.date).toLocaleDateString(isZh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : ''
-  return `<a href="/blog/${item.id}" class="card group"><div class="card-media"><img src="${img}" alt="${title}"></div><div class="card-body"><h3 class="card-title">${title}</h3><p class="card-desc">${excerpt}</p><p class="card-meta">${date} &middot; ${item.author || ''}</p><span class="card-cta">${t('card.read')} <span>&rarr;</span></span></div></a>`
+  return `<a href="/blog/${item.slug || item.id}" class="card group"><div class="card-media"><img src="${img}" alt="${title}"></div><div class="card-body"><h3 class="card-title">${title}</h3><p class="card-desc">${excerpt}</p><p class="card-meta">${date} &middot; ${item.author || ''}</p><span class="card-cta">${t('card.read')} <span>&rarr;</span></span></div></a>`
 }
 
 const blogsHTML = computed(() => blogs.map(blogCardHTML).join(''))
