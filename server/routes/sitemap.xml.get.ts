@@ -5,7 +5,8 @@ export default defineEventHandler(async (event) => {
   const baseUrl = 'https://lafavape.com'
 
   const staticPages = [
-    { url: '/', priority: '1.0', changefreq: 'weekly' },
+    // Homepage → https://lafavape.com (no trailing slash, matches the page's canonical)
+    { url: '', priority: '1.0', changefreq: 'weekly' },
     { url: '/story', priority: '0.7', changefreq: 'monthly' },
     { url: '/blog', priority: '0.9', changefreq: 'weekly' },
     { url: '/wholesale', priority: '0.9', changefreq: 'monthly' },
