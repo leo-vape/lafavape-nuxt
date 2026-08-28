@@ -3,10 +3,22 @@ const { lang } = useI18n()
 const route = useRoute()
 
 // Per-page canonical (each page points to itself instead of a fixed homepage URL)
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  'name': 'LAFA Vape',
+  'url': 'https://lafavape.com',
+  'logo': 'https://lafavape.com/logo.png',
+  'description': 'B2B vape supplier for US & Middle East vape shops and small wholesalers. Brand-flexible sourcing: LAFA own brand, other brands, or OEM white-label. US domestic stock, full compliance documents, low-MOQ & mixed-SKU orders.',
+  'sameAs': ['https://x.com/lafavape', 'https://instagram.com/lafavape']
+}
+
 useHead({
   link: [
     { rel: 'canonical', href: computed(() => route.path === '/' ? 'https://lafavape.com' : `https://lafavape.com${route.path}`) }
-  ]
+  ],
+  // Organization schema via innerHTML — inline <script> in templates gets HTML-escaped (&quot;), breaking JSON
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(orgSchema) }]
 })
 
 const showAgeGate = ref(false)
@@ -45,22 +57,6 @@ function denyAge() {
 
 <template>
   <div>
-    <!-- JSON-LD Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "LAFA Vape",
-      "url": "https://lafavape.com",
-      "logo": "https://lafavape.com/logo.png",
-      "description": "B2B vape supplier for US & Middle East vape shops and small wholesalers. Brand-flexible sourcing: LAFA own brand, other brands, or OEM white-label. US domestic stock, full compliance documents, low-MOQ & mixed-SKU orders.",
-      "sameAs": [
-        "https://x.com/lafavape",
-        "https://instagram.com/lafavape"
-      ]
-    }
-    </script>
-
     <!-- Age Gate — modal overlay, content always visible underneath -->
     <ClientOnly>
       <div v-if="showAgeGate" class="fixed inset-0 z-[100] flex items-center justify-center p-5" style="background:rgba(0,0,0,0.92);backdrop-filter:blur(8px)">
