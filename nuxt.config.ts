@@ -20,6 +20,8 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=5.0' },
         // Google Search Console verification
         { name: 'google-site-verification', content: 'MCxIyPSxerocVMGE5nNWiPKiia8zXlf5icE9owHELxY' },
+        // Bing Webmaster Tools verification
+        { name: 'msvalidate.01', content: '92B46240F00E223CBA7F6D64230DC3CF' },
         { name: 'description', content: 'LAFA Vape — B2B vape supplier for US & Middle East vape shops and small wholesalers. Brand-flexible sourcing: LAFA own brand, other brands, or OEM white-label. US domestic stock (2-4 day delivery), full compliance documents (MSDS, UN38.3, COA), low-MOQ trial & sample orders.' },
         { name: 'keywords', content: 'vape wholesale, vape supplier, vape shop wholesale, small wholesale vape, disposable vape bulk, vape OEM ODM, white label vape, own brand vape, US vape wholesale, Middle East vape supplier, low MOQ vape, mixed flavors, MSDS, UN38.3, COA, LAFA Vape' },
         { name: 'author', content: 'LAFA Vape' },
