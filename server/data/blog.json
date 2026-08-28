@@ -188,5 +188,43 @@
       "inventory-risk"
     ],
     "likes": 0
+  },
+  {
+    "id": 11,
+    "slug": "mixed-sku-orders-vape-wholesale",
+    "title": "Mixed-SKU Orders: Stocking Smart for a Vape Shop",
+    "zh_title": "混批订单：小店聪明备货的正确姿势",
+    "content": "<p>Buying one flavor in huge quantity is how vape shops end up with dead stock. Mixed-SKU orders let a small shop carry many flavors in one shipment &mdash; spreading demand across the shelf instead of betting the whole order on a single winner.</p><h2>Why single-flavor bulk creates dead stock</h2><p>Customer preferences shift faster than most forecasts. A flavor that sells out in one neighborhood can sit untouched in another. When a shop buys a month's worth of one SKU, it is betting cash flow on a guess. If that flavor slows, the money is locked in a box instead of turning over on the shelf.</p><p>This is exactly why low-MOQ and mixed-SKU suppliers matter to small shops: you order what you can sell, and reorder the winners.</p><h2>What mixed-SKU actually means</h2><p>Mixed-SKU simply means one order, multiple flavors and models. The minimum quantity is spread across several SKUs instead of stacked on one. That gives a shop three practical advantages:</p><p>&bull; A wider shelf with the same total spend<br>&bull; Lower risk per flavor &mdash; no single bet is large<br>&bull; Faster test of what actually moves in your store</p><p>With US domestic stock and 2&ndash;4 day restocking, mixed orders stay practical: you can reorder the top movers quickly and drop the slow ones without over-committing.</p><h2>The cash flow math</h2><p>Fewer dead SKUs means fewer discounted clearouts and more turnover. A shop that replaces one large single-flavor order with a mixed order of the same value typically finds its sell-through improves, because the money is spread across what customers actually ask for.</p><p>The rule of thumb: carry many, reorder the winners, let the rest go.</p><h2>How to start</h2><p>Begin with a sample order or a small mixed trial batch. Watch which flavors move in your market, then scale only those. That keeps inventory lean and cash free &mdash; the quiet edge that keeps small shops competitive.</p><p>As always, import compliance and customs clearance remain the responsibility of the local importer. Your supplier should hand over the full document set &mdash; MSDS, UN38.3, and COA &mdash; so the shipment moves without friction.</p>",
+    "excerpt": "How mixed-SKU orders reduce inventory risk and keep a small vape shop's shelf fresh across many flavors.",
+    "zh_excerpt": "混批（一个订单多种口味）如何帮小店降低库存风险、让货架常新。",
+    "image": "/uploads/pod-mango.webp",
+    "date": "2026-08-27",
+    "author": "LAFA Vape",
+    "tags": [
+      "mixed-sku",
+      "inventory-risk",
+      "wholesale",
+      "small-shop"
+    ],
+    "likes": 0
+  },
+  {
+    "id": 12,
+    "slug": "own-brand-oem-white-label-vapes",
+    "title": "Own Brand or OEM: White-Label Disposable Vapes Explained",
+    "zh_title": "自有品牌还是 OEM：白标一次性电子烟怎么选",
+    "content": "<p>You do not have to be locked to one brand. Wholesalers can carry established names, sell an in-house brand, or build their own line through OEM white-label. The right answer is usually a mix &mdash; flexibility protects you when a single brand falls out of favor.</p><h2>Option 1: Carry an established brand</h2><p>Established brands sell themselves and bring walk-in demand. The trade-offs are real: margins are thinner, the brand controls who can stock it, and if the brand's standing shifts, your shelf takes the hit.</p><p>This is why many shops treat hot brands as a traffic draw, not the whole business.</p><h2>Option 2: Carry your own brand</h2><p>A house brand (like LAFA) gives you pricing control, a moat against reseller permission issues, and a story of your own. Because no third party decides who can sell it, you keep the channel. For a small shop testing its own line, low-MOQ and sample-first ordering make the risk manageable.</p><h2>Option 3: Full OEM white-label</h2><p>OEM white-label puts your logo and your spec on the product from day one. It takes a higher MOQ and a longer lead time, but it earns the highest margin and builds an asset that belongs to you &mdash; not to a brand that could change its mind.</p><p>Most wholesalers begin with a mix: established names for traffic, an in-house line for margin, and white-label reserved for the moment a repeat buyer wants a brand of their own.</p><h2>Which one is right for you?</h2><p>Start with what sells today, add your own brand next, and keep white-label in your back pocket. A supplier that supports all three &mdash; without locking you in &mdash; is the flexibility that protects your shelf when the market moves.</p><p>Import compliance and customs clearance are always the responsibility of the local importer. Every shipment should arrive with its full document set &mdash; MSDS, UN38.3, and COA &mdash; so you can sell with confidence.</p>",
+    "excerpt": "Own brand, third-party brands, or full OEM white-label — the three sourcing options for a vape wholesaler.",
+    "zh_excerpt": "自有品牌、代采热门品牌、还是 OEM 白标做自己的牌子——三种进货路线的利弊拆解。",
+    "image": "/uploads/device-titanium-alloy.webp",
+    "date": "2026-08-27",
+    "author": "LAFA Vape",
+    "tags": [
+      "oem",
+      "white-label",
+      "private-label",
+      "branding"
+    ],
+    "likes": 0
   }
 ]
