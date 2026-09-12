@@ -49,8 +49,7 @@ useHead({
     { property: 'og:image', content: getImg(product.value.image) },
     { property: 'og:url', content: `https://lafavape.com/product/${product.value.id}` },
     { property: 'og:type', content: 'product' },
-    { property: 'product:price:amount', content: String(product.value.price || 0) },
-    { property: 'product:price:currency', content: 'USD' },
+    // 不输出 product:price 结构化价格：批发站不公开零售价（无购物车，只做询盘）
   ] : [])
 })
 </script>
@@ -75,6 +74,10 @@ useHead({
           <div class="mt-6">
             <a v-if="waLink" :href="waLink" target="_blank" rel="noopener" class="buy-btn-wa">
               💬 {{ t('product.orderWhatsApp') }}
+            </a>
+            <!-- WhatsApp 号未启用时不显示死链，改走邮件询价 -->
+            <a v-else href="mailto:sales@lafavape.com?subject=Wholesale%20inquiry" class="buy-btn-wa">
+              ✉️ {{ t('product.orderEmail') }}
             </a>
             <NuxtLink to="/wholesale" class="wholesale-link">
               📦 {{ t('product.wholesaleInquiry') }} →

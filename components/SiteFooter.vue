@@ -16,6 +16,11 @@ const { t, lang } = useI18n()
         <span class="footer-link">{{ lang === 'zh' ? '仅限21岁以上' : '21+ Only' }}</span>
       </div>
     </div>
+    <div class="footer-contact">
+      <span class="footer-contact-label">{{ t('footer.contactLabel') }}</span>
+      <a href="mailto:sales@lafavape.com" class="footer-contact-mail">sales@lafavape.com</a>
+      <span class="footer-contact-note">{{ t('footer.contactNote') }}</span>
+    </div>
     <p style="text-align:center;font-size:0.6875rem;color:#71717a;padding:0 1rem 1.5rem;margin:0 auto;max-width:720px;line-height:1.6;">{{ t('footer.disclaimer') }}</p>
   </footer>
 </template>

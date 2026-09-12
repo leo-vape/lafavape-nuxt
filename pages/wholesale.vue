@@ -173,10 +173,13 @@ useHead({
         <p class="text-[0.75rem] text-text-tertiary text-center mt-6">{{ t('wholesale.complianceNote') }}</p>
       </div>
 
-      <!-- WhatsApp CTA -->
+      <!-- 直接联系方式：WhatsApp 号启用时优先，否则回到邮件（绝不显示死链） -->
       <div class="text-center mb-12">
         <a v-if="waLink" :href="waLink" target="_blank" rel="noopener" class="buy-btn-wa max-w-[420px] mx-auto">
           💬 {{ t('wholesale.whatsappCta') }}
+        </a>
+        <a v-else href="mailto:sales@lafavape.com?subject=Wholesale%20inquiry" class="buy-btn-wa max-w-[420px] mx-auto">
+          ✉️ {{ t('wholesale.emailCta') }}
         </a>
         <p class="text-[0.8125rem] text-text-tertiary mt-3">{{ t('wholesale.samples') }}</p>
       </div>

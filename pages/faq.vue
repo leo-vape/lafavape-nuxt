@@ -5,7 +5,7 @@ useHead({ title: 'FAQ — LAFA' })
 const faqs = [
   {
     q: { zh: '我是店主 / 小批发商，怎么开始进货？', en: 'I run a shop / small wholesale — how do I start?' },
-    a: { zh: '在批发页面填写询价表单，或直接 WhatsApp 联系我们，我们会在 24 小时内回复报价。', en: 'Submit the inquiry form on the Wholesale page, or message us on WhatsApp — we reply with a quote within 24 hours.' },
+    a: { zh: '在批发页面填写询价表单，或直接发邮件到 sales@lafavape.com，我们会在 24 小时内回复报价。', en: 'Submit the inquiry form on the Wholesale page, or email sales@lafavape.com — we reply with a quote within 24 hours.' },
   },
   {
     q: { zh: '起订量（MOQ）多少？能先拿样品吗？', en: 'What is the MOQ? Can I order samples first?' },

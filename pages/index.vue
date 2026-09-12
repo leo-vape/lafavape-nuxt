@@ -78,9 +78,8 @@ const podGroups = computed(() => {
 function productCardHTML(item: any): string {
   const name = lang.value === 'zh' ? (item.zh || item.name) : item.name
   const img = getImageUrl(item.image)
-  const priceHTML = item.price
-    ? `<div class="flex items-baseline gap-2 mt-1"><span class="text-sm font-semibold text-white">US $${item.price}</span>${item.comparePrice ? `<span class="text-xs line-through" style="color:#C41E24">$${item.comparePrice}</span>` : ''}</div>`
-    : ''
+  // B2B 批发站：不展示零售价/划线价，改为引导询价的批发标识
+  const priceHTML = `<div class="mt-1"><span class="text-xs font-medium" style="color:rgba(255,255,255,0.72)">${t('card.wholesaleOnly')}</span></div>`
   return `<a href="/product/${item.id}" class="card card-overlay group" ><div class="card-media"><img src="${img}" alt="${name.replace(/"/g, '&quot;')}"></div><div class="card-overlay-text"><h3 class="card-title">${name}</h3>${priceHTML}</div></a>`
 }
 
@@ -153,7 +152,7 @@ useHead({
         <div class="card-grid mb-10" v-html="devicesHTML"></div>
         <h3 class="text-lg font-semibold text-text-primary mb-4">{{ lang === 'zh' ? 'POD 口味' : 'POD Flavors' }}</h3>
         <div v-html="podGroupsHTML"></div>
-        <p class="text-sm text-text-tertiary text-center mt-6">{{ lang === 'zh' ? '以上为 LAFA 自有品牌部分产品。其他品牌代采 / OEM 白标定制，请 WhatsApp 直接咨询。' : 'Shown: LAFA own-brand products. For other brands or OEM white-label, ask us on WhatsApp.' }}</p>
+        <p class="text-sm text-text-tertiary text-center mt-6">{{ lang === 'zh' ? '以上为 LAFA 自有品牌部分产品。其他品牌代采 / OEM 白标定制，请直接邮件联系 sales@lafavape.com。' : 'Shown: LAFA own-brand products. For other brands or OEM white-label, email us at sales@lafavape.com.' }}</p>
       </div>
     </section>
 
