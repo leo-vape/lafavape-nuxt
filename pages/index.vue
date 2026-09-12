@@ -112,9 +112,9 @@ const blogsHTML = computed(() => (blogs.value as any[]).map(blogCardHTML).join('
 const toastMsg = ref(''); const toastType = ref('success')
 function showToast(d: { message: string; type: string }) { toastMsg.value = d.message; toastType.value = d.type }
 useHead({
-  title: 'LAFA Vape — Vape Wholesale Supplier for US & Middle East',
+  title: 'LAFA Vape — Vape Wholesale Supplier for Middle East & US',
   meta: [
-    { name: 'description', content: 'LAFA Vape — B2B vape wholesale for US & Middle East shops and small wholesalers. US domestic stock (2-4 day delivery), low MOQ, mixed-SKU. Own brand, other brands, or OEM white-label.' },
+    { name: 'description', content: 'LAFA Vape — B2B vape wholesale for Middle East & US shops and small wholesalers. Dubai hub + US stock, low MOQ, mixed-SKU, sample orders. Own brand, other brands, or OEM white-label.' },
   ]
 })
 </script>
