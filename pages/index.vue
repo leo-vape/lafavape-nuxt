@@ -9,18 +9,20 @@ let textTimer: ReturnType<typeof setInterval> | null = null
 
 const storyLines = computed(() => {
   const zh = lang.value === 'zh'
+  // 顺序有讲究：中东客户（周一 6 封的目标）先看到与自己相关的，
+  // 「美国本土现货」放最后 —— 别让迪拜小店第一眼看到美国仓就以为发错人了。
   return zh ? [
-    '<span class="text-gold">美国本土现货</span>，2-4 天到货，快速补货',
     '<span class="text-gold">低起订量 + 样品单</span>，先试后批，降低首批压力',
     '<span class="text-gold">支持混批拼柜</span>，一个订单多种口味，减少库存',
-    '<span class="text-gold">收款 + 物流全搞定</span>，美国 + 中东付款无障碍',
+    '<span class="text-gold">迪拜中东仓 + 美国仓</span>，收款物流全搞定',
     '<span class="text-gold">LAFA + 更多品牌</span>，自有 · 代采 · OEM 白标都行',
+    '<span class="text-gold">美国本土现货</span>，2-4 天到货，快速补货',
   ] : [
-    '<span class="text-gold">US domestic stock</span> &mdash; 2-4 day delivery for fast restocking',
     '<span class="text-gold">Low MOQ + samples</span> &mdash; try before bulk, low first-order pressure',
     '<span class="text-gold">Mixed-SKU orders</span> &mdash; many flavors in one order, less inventory risk',
-    '<span class="text-gold">Logistics &amp; payments handled</span> &mdash; US &amp; Middle East, no friction',
+    '<span class="text-gold">Dubai Middle East hub + US stock</span> &mdash; logistics &amp; payments handled',
     '<span class="text-gold">LAFA + more brands</span> &mdash; own, sourced, or OEM white-label',
+    '<span class="text-gold">US domestic stock</span> &mdash; 2-4 day delivery for fast restocking',
   ]
 })
 
@@ -135,8 +137,8 @@ useHead({
     <section class="section" style="padding-top:3rem;padding-bottom:3rem;">
       <div class="max-w-[1400px] mx-auto text-center">
         <p class="text-xs uppercase tracking-[0.2em] text-gold mb-3">{{ lang === 'zh' ? 'B2B 批发' : 'B2B WHOLESALE' }}</p>
-        <h2 class="sec-label mb-4">{{ lang === 'zh' ? '美国本土仓 · 低起订量 · 可混批 · 收款搞定' : 'US Stock · Low MOQ · Mixed SKU · Payments Handled' }}</h2>
-        <p class="sec-sub text-center mb-8">{{ lang === 'zh' ? '面向美国与中东的电子烟店与小批发商。品牌不设限：LAFA 自有 + 其他品牌 + OEM 白标。低起订量，先试后批。' : 'For US & Middle East vape shops and small wholesalers. Not locked to one brand — LAFA own, other brands, or OEM white-label. Low MOQ, try before bulk.' }}</p>
+        <h2 class="sec-label mb-4">{{ lang === 'zh' ? '低起订量 · 可混批 · 迪拜中东仓 + 美国仓 · 收款搞定' : 'Low MOQ · Mixed SKU · Dubai ME Hub + US Stock · Payments Handled' }}</h2>
+        <p class="sec-sub text-center mb-8">{{ lang === 'zh' ? '面向中东与美国的电子烟店与小批发商。品牌不设限：LAFA 自有 + 其他品牌 + OEM 白标。低起订量，先试后批。' : 'For Middle East & US vape shops and small wholesalers. Not locked to one brand — LAFA own, other brands, or OEM white-label. Low MOQ, try before bulk.' }}</p>
         <NuxtLink to="/wholesale" class="buy-btn-wa max-w-[420px] mx-auto">
           {{ lang === 'zh' ? '📦 店主进货 / 批发合作 →' : '📦 For Shops & Wholesalers →' }}
         </NuxtLink>
