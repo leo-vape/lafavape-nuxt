@@ -24,18 +24,24 @@ const form = reactive({
 })
 const submitting = ref(false)
 const submitted = ref(false)
+const submitError = ref(false)
 
 async function submitInquiry() {
   if (!form.company || !form.contact) return
   submitting.value = true
+  submitError.value = false
   try {
-    await fetch('/api/wholesale', {
+    const res = await fetch('/api/wholesale', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
     })
+    // 只有服务端确认线索真的被记下（入库或已发通知）才显示成功
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
     submitted.value = true
-  } catch {} finally {
+  } catch {
+    submitError.value = true
+  } finally {
     submitting.value = false
   }
 }
@@ -205,6 +211,9 @@ useHead({
             <label class="form-label">{{ t('wholesale.quantity') }}</label>
             <input v-model="form.quantity" type="text" class="form-input" :placeholder="lang === 'zh' ? '例如：首批 500 盒' : 'e.g. First order 500 units'" autocomplete="off">
           </div>
+          <p v-if="submitError" class="text-[0.8125rem] text-red-400 bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-2">
+            {{ t('wholesale.error') }}
+          </p>
           <button type="submit" class="btn btn-filled w-full" :disabled="submitting">
             {{ submitting ? '...' : t('wholesale.submit') }}
           </button>

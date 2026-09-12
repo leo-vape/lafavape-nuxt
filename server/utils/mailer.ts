@@ -1,10 +1,15 @@
 import { Resend } from 'resend'
 
-export async function sendEmail(opts: { to: string; subject: string; html: string; text?: string }) {
+/**
+ * Returns true only when Resend actually accepted the message.
+ * Callers must use this to decide whether a lead was safely captured —
+ * never swallow a delivery failure silently (see wholesale.post.ts).
+ */
+export async function sendEmail(opts: { to: string; subject: string; html: string; text?: string }): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) {
-    console.log('Email not sent: RESEND_API_KEY not configured')
-    return
+    console.error('Email not sent: RESEND_API_KEY not configured')
+    return false
   }
 
   const resend = new Resend(apiKey)
@@ -14,11 +19,13 @@ export async function sendEmail(opts: { to: string; subject: string; html: strin
     const { error } = await resend.emails.send({ from, ...opts })
     if (error) {
       console.error('Resend error:', error.message)
-    } else {
-      console.log('Email sent via Resend')
+      return false
     }
+    console.log('Email sent via Resend')
+    return true
   } catch (e: any) {
     console.error('Resend failed:', e.message)
+    return false
   }
 }
 
