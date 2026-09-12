@@ -67,7 +67,11 @@ const messages: Record<Lang, Record<string, string>> = {
     'form.name': '姓名', 'form.email': '邮箱', 'form.message': '留言',
     'form.namePlaceholder': '您的姓名', 'form.emailPlaceholder': 'you@example.com',
     'form.messagePlaceholder': '告诉我们您的想法...', 'form.send': '发送消息',
+    'form.sent': '已发送，我们会尽快回复你',
+    'form.failed': '提交失败，请直接发邮件到 sales@lafavape.com',
+    'form.error': '网络异常，请直接发邮件到 sales@lafavape.com',
     'newsletter.label': '资讯订阅', 'newsletter.placeholder': '您的邮箱', 'newsletter.subscribe': '订阅',
+    'newsletter.success': '订阅成功，谢谢！', 'newsletter.failed': '订阅失败，请稍后重试',
   },
   en: {
     'nav.products': 'Products', 'nav.journal': 'Blog',
@@ -136,7 +140,11 @@ const messages: Record<Lang, Record<string, string>> = {
     'form.name': 'Name', 'form.email': 'Email', 'form.message': 'Message',
     'form.namePlaceholder': 'Your name', 'form.emailPlaceholder': 'you@example.com',
     'form.messagePlaceholder': 'Tell us what you think...', 'form.send': 'Send Message',
+    'form.sent': 'Sent — we will get back to you shortly',
+    'form.failed': 'Submission failed. Please email sales@lafavape.com directly.',
+    'form.error': 'Network error. Please email sales@lafavape.com directly.',
     'newsletter.label': 'Newsletter', 'newsletter.placeholder': 'Your email', 'newsletter.subscribe': 'Subscribe',
+    'newsletter.success': 'Subscribed — thank you!', 'newsletter.failed': 'Subscription failed, please retry later',
   }
 }
 
